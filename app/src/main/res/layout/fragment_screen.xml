@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by Nethaji on 27/6/20 5:15 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27/6/20 5:15 PM
+  ~  */
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mespace.ui.view.appintro.AppIntroFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        style="@style/TitleTextView"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/label_socialize_at_a_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubTitle"
+        style="@style/TitleTextView"
+        android:lineSpacingExtra="@dimen/spacing_small"
+        android:text="@string/label_socialize_subtitle"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="@dimen/spacing_normal"
+        android:layout_height="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:background="@drawable/circle_shape_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viewCentre"
+        app:layout_constraintTop_toBottomOf="@+id/ivPic" />
+
+    <View
+        android:id="@+id/viewCentre"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivPic" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="@dimen/spacing_normal"
+        android:layout_height="@dimen/spacing_normal"
+        android:background="@drawable/circle_shape_grey"
+        app:layout_constraintStart_toEndOf="@+id/viewCentre"
+        app:layout_constraintTop_toTopOf="@+id/view1" />
+
+    <!--<androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSkip"
+        style="@style/SkipTextView"
+        android:text="@string/action_skip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

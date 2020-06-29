@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by Nethaji on 27/6/20 10:15 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27/6/20 10:15 PM
+  ~  */
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/spacing_normal" />
+    <solid android:color="@color/blue" />
+</shape>
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thickness="6dp"
+        android:useLevel="false"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white"/>
+</shape>
+-->

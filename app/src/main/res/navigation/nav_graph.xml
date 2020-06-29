@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by Nethaji on 27/6/20 4:53 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27/6/20 4:53 PM
+  ~  */
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mespace.ui.view.splash.SplashFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_appIntroFragment"
+            app:destination="@id/appIntroFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/appIntroFragment"
+        android:name="com.mespace.ui.view.appintro.AppIntroFragment"
+        android:label="app_intro_fragment"
+        tools:layout="@layout/app_intro_fragment">
+        <action
+            android:id="@+id/action_appIntroFragment_to_storePhoneNoFragment"
+            app:destination="@id/storePhoneNoFragment"
+            app:popUpTo="@id/splashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storePhoneNoFragment"
+        android:name="com.mespace.ui.view.storephone.StorePhoneNoFragment"
+        android:label="fragment_store_phone_no"
+        tools:layout="@layout/fragment_store_phone_no" />
+</navigation>
