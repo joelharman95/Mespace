@@ -12,10 +12,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
 import com.mespace.R
+import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.applySpanPo
 import kotlinx.android.synthetic.main.fragment_store_phone_no.*
 
@@ -47,6 +49,13 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
 
         ibBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+
+        btnContinue.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_storePhoneNoFragment_to_verifyPhoneNoFragment,
+                bundleOf(PHONE_NUMBER to etPhoneNo.text.toString())
+            )
         }
     }
 

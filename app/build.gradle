@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+//  apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.mespace"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -125,7 +126,7 @@ dependencies {
     //  endregion
 
     //  region Testing
-    implementation 'com.airbnb.android:lottie:2.5.4'
+    implementation 'com.airbnb.android:lottie:3.4.0'
     //  endregion
 
     //  region Testing
@@ -133,4 +134,13 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$android_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     //  endregion
+
+    // Otp View
+    implementation "com.github.mukeshsolanki:android-otpview-pinview:$otp_view"
+    //  endregion
+
+    // add these lines in your app build.gradle
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+
 }

@@ -19,9 +19,7 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_appIntroFragment"
-            app:destination="@id/appIntroFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/appIntroFragment" />
     </fragment>
     <fragment
         android:id="@+id/appIntroFragment"
@@ -31,11 +29,58 @@
         <action
             android:id="@+id/action_appIntroFragment_to_storePhoneNoFragment"
             app:destination="@id/storePhoneNoFragment"
-            app:popUpTo="@id/splashFragment" />
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/storePhoneNoFragment"
         android:name="com.mespace.ui.view.storephone.StorePhoneNoFragment"
         android:label="fragment_store_phone_no"
-        tools:layout="@layout/fragment_store_phone_no" />
+        tools:layout="@layout/fragment_store_phone_no">
+        <action
+            android:id="@+id/action_storePhoneNoFragment_to_verifyPhoneNoFragment"
+            app:destination="@id/verifyPhoneNoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyPhoneNoFragment"
+        android:name="com.mespace.ui.view.verifyphonenumber.VerifyPhoneNoFragment"
+        android:label="fragment_verify_phone_no"
+        tools:layout="@layout/fragment_verify_phone_no">
+        <action
+            android:id="@+id/action_verifyPhoneNoFragment_to_profileSetupFragment"
+            app:destination="@id/profileSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSetupFragment"
+        android:name="com.mespace.ui.view.profile.ProfileSetupFragment"
+        android:label="fragment_profile_setup"
+        tools:layout="@layout/fragment_profile_setup">
+        <action
+            android:id="@+id/action_profileSetupFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/appIntroFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mespace.ui.view.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.mespace.ui.view.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.mespace.ui.view.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

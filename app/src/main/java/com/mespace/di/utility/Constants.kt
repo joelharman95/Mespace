@@ -32,3 +32,15 @@ object Extras {
     const val HEADER_LANGUAGE = "Language"
     const val FROM_LOGIN_TO_HOME = true
 }
+
+object BundleConstants {
+    const val PHONE_NUMBER = "phone_number"
+}
+
+object ImageConstants {
+    const val GALLERY = 1
+    const val CAMERA = 2
+    const val FILE_ = 3
+    const val IMAGE_DIRECTORY = "Docs"
+    const val MULTIPLE_IMAGE = 26
+}

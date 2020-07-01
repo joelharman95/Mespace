@@ -1,0 +1,73 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/spacing_normal"
+    tools:context="com.mespace.ui.view.verifyphonenumber.VerifyPhoneNoFragment">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_navigate_before" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVerifyPhone"
+        style="@style/TitleTextView"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:text="@string/label_verify_phone_no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibBack" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPhoneSubtitle"
+        style="@style/TextViewSubTitle"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:text="@string/label_check_sms_msg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerifyPhone" />
+
+    <com.mukesh.OtpView
+        android:id="@+id/OptEts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_26"
+        app:itemCount="6"
+        app:itemSpacing="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneSubtitle"
+        app:lineColor="@color/grey"
+        app:state_filled="true"
+        app:viewType="rectangle"
+        tools:text="45454" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvResendOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/label_didn_t_receive_sms"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/OptEts" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVerify"
+        style="@style/ConnectionButton"
+        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
+        android:text="@string/action_verify"
+        app:cornerRadius="@dimen/spacing_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResendOtp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,21 @@
     <string name="are_you_a_business_sign_up">Are you a Business? Sign Up</string>
     <string name="are_you_a_business">Are you a Business? </string>
     <string name="label_sign_up">Sign Up</string>
+    <string name="label_verify_phone_no">Verify phone number</string>
+    <string name="label_check_sms_msg">Check your SMS messages. We\'ve sent you the PIN at</string>
+    <string name="action_verify">Verify</string>
+    <string name="label_didn_t_receive_sms">Didn\'t receive SMS?</string>
+    <string name="label_resend_code">Resend Code</string>
+    <string name="label_profile_setup">Profile Setup</string>
+    <string name="label_first_name">FIRST NAME</string>
+    <string name="label_last_name">LAST NAME</string>
+    <string name="label_email">EMAIL</string>
+    <string name="label_keywords">KEYWORDS</string>
+    <string name="action_update_profile">Update Profile</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="label_closest_to_you">Closest to you</string>
+    <string name="label_near_by_stores">Near By Stores</string>
+    <string name="label_my_space">My Space</string>
+    <string name="label_category">Category</string>
+    <string name="label_notification">Notification</string>
 </resources>

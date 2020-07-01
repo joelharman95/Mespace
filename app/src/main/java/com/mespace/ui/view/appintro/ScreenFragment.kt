@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.mespace.R
 import kotlinx.android.synthetic.main.fragment_screen.*
@@ -32,11 +33,19 @@ class ScreenFragment(val position: Int, val title: String, val subTitle: String,
         tvSubTitle.text = subTitle
         ivPic.setImageResource(pic)
         if (position == 1) {
-            view1.background = resources.getDrawable(R.drawable.circle_shape_blue)
-            view2.background = resources.getDrawable(R.drawable.circle_shape_grey)
+            view1.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_blue)
+            view2.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
+            /*  view1.background = resources.getDrawable(R.drawable.circle_shape_blue)
+              view2.background = resources.getDrawable(R.drawable.circle_shape_grey)*/
         } else {
-            view1.background = resources.getDrawable(R.drawable.circle_shape_grey)
-            view2.background = resources.getDrawable(R.drawable.circle_shape_blue)
+            view1.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
+            view2.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_blue)
+            /*view1.background = resources.getDrawable(R.drawable.circle_shape_grey)
+            view2.background = resources.getDrawable(R.drawable.circle_shape_blue)*/
         }
     }
 

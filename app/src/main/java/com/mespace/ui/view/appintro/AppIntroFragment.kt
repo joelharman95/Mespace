@@ -58,7 +58,7 @@ class AppIntroFragment : Fragment(), LifecycleObserver {
         )
 
         vpAppIntro.adapter = pagerAdapter
-        tlAppIntro.setupWithViewPager(vpAppIntro)
+        //  tlAppIntro.setupWithViewPager(vpAppIntro)
 
     }
 
