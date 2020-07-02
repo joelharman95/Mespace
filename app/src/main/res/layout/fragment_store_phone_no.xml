@@ -11,17 +11,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/spacing_normal"
+    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginEnd="@dimen/spacing_normal"
+    android:layout_marginBottom="@dimen/spacing_normal"
     tools:context="com.mespace.ui.view.storephone.StorePhoneNoFragment">
+
+    <ProgressBar
+        android:id="@+id/pbPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ibBack"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_navigate_before" />
+        app:srcCompat="@drawable/ic_back_1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPhoneNo"
@@ -47,23 +62,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
         android:text="@string/label_country_code"
+        android:textColor="@color/country_code"
+        android:textSize="@dimen/size_12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCountryCode"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_small"
         app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCountryCode">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCountryCode"
+            android:id="@+id/tieCountryCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/transparent"
             android:drawableEnd="@drawable/ic_arrow_down"
             android:drawableRight="@drawable/ic_arrow_down"
             android:inputType="number"
@@ -74,20 +91,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPhoneNo"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/spacing_small"
         android:layout_marginLeft="@dimen/spacing_small"
-        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tilCountryCode"
         app:layout_constraintTop_toBottomOf="@id/tvCountryCode">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPhoneNo"
+            android:id="@+id/tiePhoneNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/transparent"
             android:hint="@string/label_phone_no"
             android:imeOptions="actionDone"
             android:inputType="number"
@@ -111,6 +129,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
         android:text="@string/are_you_a_business_sign_up"
+        android:textColor="@color/subtitle_color"
+        android:textSize="@dimen/size_15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnContinue" />

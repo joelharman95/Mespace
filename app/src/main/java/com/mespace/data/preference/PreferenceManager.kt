@@ -16,6 +16,11 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
     val pref: SharedPreferences =
         context.getSharedPreferences("community_app_preference", Context.MODE_PRIVATE)
 
+    override fun saveIsLaunchedOnce(isLaunched: Boolean) =
+        pref.edit().putBoolean(IS_LAUNCHED_ONCE, isLaunched).apply()
+
+    override fun getIsLaunchedOnce() = pref.getBoolean(IS_LAUNCHED_ONCE, false)
+
     override fun setLatitude(Latitude: String?) =
         pref.edit().putString(LATITUDE, Latitude!!).apply()
 
@@ -37,10 +42,10 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
     override fun getDeviceToken(): String = pref.getString(TOKEN_ID, "")!!
 
-    override fun saveToekn(token: String?) =
+    override fun saveToken(token: String?) =
         pref.edit().putString(TOKEN, token).apply()
 
-    override fun getToekn(): String = pref.getString(TOKEN, "")!!
+    override fun getToken(): String = pref.getString(TOKEN, "")!!
 
     override fun sessionId(sessionId: String?) {
         pref.edit().putString(GET_PROFILE_SESSION_ID, sessionId).apply()
@@ -54,6 +59,7 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
     companion object {
         const val PREFERENCE_NAME = "mespace"
+        const val IS_LAUNCHED_ONCE = "is_launched_once"
         const val USER_STATUS = "user_status"
         const val TOKEN_ID = "FIREBASE_TOKEN_ID"
         const val TOKEN = "token"

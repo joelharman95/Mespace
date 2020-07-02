@@ -3,17 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/spacing_normal"
+    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginEnd="@dimen/spacing_normal"
+    android:layout_marginBottom="@dimen/spacing_normal"
     tools:context="com.mespace.ui.view.verifyphonenumber.VerifyPhoneNoFragment">
+
+    <ProgressBar
+        android:id="@+id/pbVerifyOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ibBack"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent"
+        android:paddingEnd="@dimen/spacing_normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_navigate_before" />
+        app:srcCompat="@drawable/ic_back_1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvVerifyPhone"
@@ -40,15 +54,15 @@
         android:layout_marginTop="@dimen/spacing_medium"
         android:inputType="number"
         android:textColor="@color/black"
-        android:textSize="@dimen/size_26"
+        android:textSize="@dimen/size_20"
         app:itemCount="6"
-        app:itemSpacing="@dimen/spacing_normal"
+        app:itemSpacing="@dimen/spacing_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPhoneSubtitle"
         app:lineColor="@color/grey"
         app:state_filled="true"
-        app:viewType="rectangle"
+        app:viewType="line"
         tools:text="45454" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -57,6 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
         android:text="@string/label_didn_t_receive_sms"
+        android:textColor="@color/subtitle_color"
+        android:textSize="@dimen/size_15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/OptEts" />
 

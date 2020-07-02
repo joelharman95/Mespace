@@ -16,7 +16,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.mespace.R
 import com.mespace.di.loadCircularImage
@@ -54,12 +53,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             onImagePicker()
         }
         btnVerify.setOnClickListener {
-            val navoption = NavOptions.Builder().setPopUpTo(R.id.splashFragment, true).build()
-            findNavController().navigate(
-                R.id.action_profileSetupFragment_to_homeFragment,
-                null,
-                null
-            )
+            findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
         }
 
     }

@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "36490090384",
+    "firebase_url": "https://mespace-6987b.firebaseio.com",
+    "project_id": "mespace-6987b",
+    "storage_bucket": "mespace-6987b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36490090384:android:c24d3d35a9edc461304515",
+        "android_client_info": {
+          "package_name": "com.mespace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36490090384-gd8l5a4if5s27fj2pk780318piefdurg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1cLtve_OSf5WBRsorndEP_EMzt1Al1Ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36490090384-gd8l5a4if5s27fj2pk780318piefdurg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "36490090384-gp7khoh6m92aarrbfkj2rptrrpu00068.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mespace.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36490090384:android:094f8038d7495435304515",
+        "android_client_info": {
+          "package_name": "com.mespace.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36490090384-gd8l5a4if5s27fj2pk780318piefdurg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1cLtve_OSf5WBRsorndEP_EMzt1Al1Ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36490090384-gd8l5a4if5s27fj2pk780318piefdurg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "36490090384-gp7khoh6m92aarrbfkj2rptrrpu00068.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mespace.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

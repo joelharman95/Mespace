@@ -10,6 +10,9 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="splash_bg">#C6C9FAF5</color>
     <color name="skip_color">#49E3D2</color>
-    <color name="blue">#FF4285F4</color>
+    <color name="blue">#4285F4</color>
     <color name="grey">#CDCCD1</color>
+
+    <color name="subtitle_color">#666666</color>
+    <color name="country_code">#8992A3</color>
 </resources>

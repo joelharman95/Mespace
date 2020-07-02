@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.mespace.R
 import com.mespace.data.network.api.request.ReferenceRequest
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.ReferenceViewModel
 import com.mespace.di.blockInput
 import com.mespace.di.isConnected
@@ -52,7 +53,12 @@ class SplashFragment : Fragment(), LifecycleObserver {
         super.onActivityCreated(savedInstanceState)
         lifecycleScope.launch {
             delay(2000)
-            findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
+            PreferenceManager(requireContext()).apply {
+                if (getIsLaunchedOnce())
+                    findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
+                else
+                    findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
+            }
         }
         //  getToken()
     }

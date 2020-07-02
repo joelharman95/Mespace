@@ -35,6 +35,7 @@ object Extras {
 
 object BundleConstants {
     const val PHONE_NUMBER = "phone_number"
+    const val IS_BUSINESS = "is_business"
 }
 
 object ImageConstants {

@@ -10,8 +10,11 @@ package com.mespace.data.preference
 
 interface IPreferenceManager {
 
-    fun saveToekn(token: String?)
-    fun getToekn(): String
+    fun saveIsLaunchedOnce(isLaunched: Boolean)
+    fun getIsLaunchedOnce(): Boolean
+
+    fun saveToken(token: String?)
+    fun getToken(): String
 
     fun sessionId(sessionId: String?)
     fun getSessionId(): String

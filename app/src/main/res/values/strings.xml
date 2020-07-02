@@ -34,4 +34,13 @@
     <string name="label_my_space">My Space</string>
     <string name="label_category">Category</string>
     <string name="label_notification">Notification</string>
+    <string name="label_phone_no_empty">Phone number cannot be empty</string>
+    <string name="label_invalid_no">Invalid phone number</string>
+    <string name="label_no_verification_id">No verification id available</string>
+    <string name="label_broadcast_your_ideas">Broadcast your ideas</string>
+    <string name="label_location_announcement">Make location-based announcements and say whats on your mind using local tweets</string>
+    <string name="label_name">NAME</string>
+    <string name="are_you_a_user">Are you a User? </string>
+    <string name="label_login">Login</string>
+    <string name="label_your_business_phone_no">What is your business phone number?</string>
 </resources>

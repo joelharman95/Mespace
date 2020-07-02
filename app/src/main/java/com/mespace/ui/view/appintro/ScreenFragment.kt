@@ -37,15 +37,26 @@ class ScreenFragment(val position: Int, val title: String, val subTitle: String,
                 ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_blue)
             view2.background =
                 ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
+            view3.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
             /*  view1.background = resources.getDrawable(R.drawable.circle_shape_blue)
               view2.background = resources.getDrawable(R.drawable.circle_shape_grey)*/
-        } else {
+        } else if (position == 2) {
             view1.background =
                 ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
             view2.background =
                 ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_blue)
+            view3.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
             /*view1.background = resources.getDrawable(R.drawable.circle_shape_grey)
             view2.background = resources.getDrawable(R.drawable.circle_shape_blue)*/
+        } else {
+            view1.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
+            view2.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_grey)
+            view3.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.circle_shape_blue)
         }
     }
 

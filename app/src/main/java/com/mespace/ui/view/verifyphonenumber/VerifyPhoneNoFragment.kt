@@ -12,12 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.phone.SmsRetriever
-//import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.mespace.R
+import com.mespace.di.blockInput
 import com.mespace.di.dismissKeyboard
-import com.mespace.di.toast
 import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.applySpanPo
+import com.mespace.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_verify_phone_no.*
 import java.util.regex.Pattern
 
@@ -67,23 +67,36 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         }
 
         btnVerify.setOnClickListener {
-            findNavController().navigate(R.id.action_verifyPhoneNoFragment_to_profileSetupFragment)
+            blockInput(pbVerifyOtp)
+            (activity as MainActivity).verifyPhoneNumberWithCode(
+                code = OptEts.text.toString(), _progressBar = pbVerifyOtp
+            )
+            //  findNavController().navigate(R.id.action_verifyPhoneNoFragment_to_profileSetupFragment)
         }
 
-  OptEts.setOtpCompletionListener {
+        OptEts.setOtpCompletionListener {
             dismissKeyboard(view)
         }
+
+        tvResendOtp.setOnClickListener {
+            blockInput(pbVerifyOtp)
+            (activity as MainActivity).resendVerificationCode(
+                arguments?.getString(PHONE_NUMBER).toString(),
+                _progressBar = pbVerifyOtp
+            )
+        }
+
         startSmsUserConsent()
 
     }
 
     private fun startSmsUserConsent() {
-       val client = SmsRetriever.getClient(this.requireActivity())
+        val client = SmsRetriever.getClient(this.requireActivity())
         client.startSmsUserConsent(null)
             .addOnSuccessListener {
-               activity?.toast("On Success")
+                //  activity?.toast("On Success")
             }.addOnFailureListener {
-                activity?.toast("On OnFailure")
+                //   activity?.toast("On OnFailure")
             }
     }
 
@@ -92,7 +105,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         resultCode: Int,
         data: Intent?
     ) {
-      super.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_USER_CONSENT) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 val message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
@@ -108,7 +121,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         val pattern = Pattern.compile("(|^)\\d{6}")
         val matcher = pattern.matcher(message)
         if (matcher.find()) {
-       //     OptEts.setText(matcher.group(0))
+            OptEts?.setText(matcher.group(0))
         }
     }
 
@@ -122,6 +135,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
                         REQ_USER_CONSENT
                     )
                 }
+
                 override fun onFailure() {}
             }
         val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)

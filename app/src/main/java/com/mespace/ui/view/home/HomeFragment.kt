@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.mespace.R
+import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_profile_setup.*
 
 class HomeFragment : Fragment(), LifecycleObserver {
 
@@ -36,9 +34,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
             findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
         }*/
 
-        Glide.with(this)
-            .load("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
-            .into(profile_image);
+        profile_image.loadCircularImage("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
 
     }
 

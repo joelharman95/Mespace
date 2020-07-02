@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mespace.ui.view.homepage.HomeFragment">
+    tools:context="com.mespace.ui.view.home.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -21,15 +21,11 @@
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/header_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="75dp"
-                android:background="@drawable/ic_home_back_ground"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5" />
+                android:layout_marginTop="75dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/AppBar"
@@ -50,15 +46,12 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/profile_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="5dp"
-                            android:padding="5dp"
-                            app:civ_border_color="#FFFFFF"
-                            app:civ_border_width="1dp" />
+                            android:padding="5dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -97,8 +90,6 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
-
-
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -106,8 +97,6 @@
                             android:src="@drawable/ic_arrow_back" />
 
                         <androidx.appcompat.widget.AppCompatImageView
-
-
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -115,8 +104,6 @@
                             android:src="@drawable/ic_arrow_back" />
 
                         <androidx.appcompat.widget.AppCompatImageView
-
-
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -130,8 +117,6 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
     </com.google.android.material.appbar.AppBarLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

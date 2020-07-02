@@ -59,16 +59,15 @@ fun Context.toast(msg: Int) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
 
-fun ImageView.loadCircularImage(image: Int) {
+fun ImageView.loadCircularImage(image: Any) {
     Glide.with(context)
-        .load(ContextCompat.getDrawable(context, image))
-        .circleCrop()
-        .into(this)
-}
-
-fun ImageView.loadCircularImage(image: Bitmap) {
-    Glide.with(context)
-        .load(image)
+        .load(
+            when (image) {
+                is Int -> ContextCompat.getDrawable(context, image)
+                is Bitmap -> image
+                else -> image
+            }
+        )
         .circleCrop()
         .into(this)
 }

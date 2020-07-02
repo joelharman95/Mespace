@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_splashFragment_to_appIntroFragment"
             app:destination="@id/appIntroFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_storePhoneNoFragment"
+            app:destination="@id/storePhoneNoFragment" />
     </fragment>
     <fragment
         android:id="@+id/appIntroFragment"
@@ -41,6 +44,9 @@
         <action
             android:id="@+id/action_storePhoneNoFragment_to_verifyPhoneNoFragment"
             app:destination="@id/verifyPhoneNoFragment" />
+        <action
+            android:id="@+id/action_storePhoneNoFragment_self"
+            app:destination="@id/storePhoneNoFragment" />
     </fragment>
     <fragment
         android:id="@+id/verifyPhoneNoFragment"
