@@ -57,6 +57,11 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
                 bundleOf(PHONE_NUMBER to etPhoneNo.text.toString())
             )
         }
+        tvSignInOrUp.setOnClickListener{
+            findNavController().navigate(
+                R.id.homeFragment
+            )
+        }
     }
 
 }

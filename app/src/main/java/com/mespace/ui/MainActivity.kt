@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (findNavController(R.id.activityNavHost).currentDestination?.id != null) {
             when (findNavController(R.id.activityNavHost).currentDestination?.id) {
-                R.id.splashFragment, R.id.appIntroFragment, R.id.storePhoneNoFragment, R.id.homeFragment -> {
+                R.id.splashFragment, R.id.appIntroFragment, R.id.storePhoneNoFragment -> {
                     finish()
                 }
                 else -> findNavController(R.id.activityNavHost).navigateUp()

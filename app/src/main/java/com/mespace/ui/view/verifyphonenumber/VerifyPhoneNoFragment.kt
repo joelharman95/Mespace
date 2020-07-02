@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.phone.SmsRetriever
+//import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.mespace.R
 import com.mespace.di.dismissKeyboard
 import com.mespace.di.toast
@@ -69,7 +70,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
             findNavController().navigate(R.id.action_verifyPhoneNoFragment_to_profileSetupFragment)
         }
 
-        OptEts.setOtpCompletionListener {
+  OptEts.setOtpCompletionListener {
             dismissKeyboard(view)
         }
         startSmsUserConsent()
@@ -77,12 +78,12 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
     }
 
     private fun startSmsUserConsent() {
-        val client = SmsRetriever.getClient(this.requireActivity())
+       val client = SmsRetriever.getClient(this.requireActivity())
         client.startSmsUserConsent(null)
             .addOnSuccessListener {
-              //  activity?.toast("On Success")
+               activity?.toast("On Success")
             }.addOnFailureListener {
-              //  activity?.toast("On OnFailure")
+                activity?.toast("On OnFailure")
             }
     }
 
@@ -91,7 +92,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         resultCode: Int,
         data: Intent?
     ) {
-        super.onActivityResult(requestCode, resultCode, data)
+      super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_USER_CONSENT) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 val message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
@@ -107,7 +108,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         val pattern = Pattern.compile("(|^)\\d{6}")
         val matcher = pattern.matcher(message)
         if (matcher.find()) {
-            OptEts.setText(matcher.group(0))
+       //     OptEts.setText(matcher.group(0))
         }
     }
 
