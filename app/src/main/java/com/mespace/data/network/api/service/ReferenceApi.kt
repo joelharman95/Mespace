@@ -6,7 +6,7 @@
  *
  */
 
-package com.mespace.data.network.api.calls
+package com.mespace.data.network.api.service
 
 import com.mespace.data.network.api.request.ReferenceRequest
 import com.mespace.data.network.api.response.ReferenceResponse

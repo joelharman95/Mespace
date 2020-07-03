@@ -252,7 +252,7 @@ fun isConnected(activity: Activity): Boolean {
     return connectivityManager.activeNetworkInfo != null
 }
 
-fun String.isSuccess(): Boolean = this == "success"
+fun String.isSuccess(): Boolean = this == "1"
 
 fun String.isFailure(): Boolean = this == "failure"
 

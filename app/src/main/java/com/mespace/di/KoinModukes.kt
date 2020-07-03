@@ -9,11 +9,14 @@
 package com.mespace.di
 
 import android.content.Context
-import com.mespace.data.network.api.calls.ReferenceApi
+import com.mespace.data.network.api.service.ProfileApi
+import com.mespace.data.network.api.service.ReferenceApi
 import com.mespace.data.network.http.HttpClientManager
 import com.mespace.data.network.http.createApi
 import com.mespace.data.preference.PreferenceManager.Companion.PREFERENCE_NAME
+import com.mespace.data.repository.ProfileRepository
 import com.mespace.data.repository.ReferenceRepository
+import com.mespace.data.viewmodel.ProfileViewModel
 import com.mespace.data.viewmodel.ReferenceViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -27,6 +30,7 @@ import org.koin.dsl.module
 val NETWORKING_MODULE = module {
     single { HttpClientManager.newInstance(androidContext()) }
     single { get<HttpClientManager>().createApi<ReferenceApi>() }
+    single { get<HttpClientManager>().createApi<ProfileApi>() }
 }
 
 /**
@@ -35,6 +39,7 @@ val NETWORKING_MODULE = module {
  **/
 val REPOSITORY_MODULE = module {
     single { ReferenceRepository.create(get()) }
+    single { ProfileRepository.create(get()) }
 }
 
 /**
@@ -42,6 +47,7 @@ val REPOSITORY_MODULE = module {
  **/
 val VIEW_MODEL_MODULE = module {
     viewModel { ReferenceViewModel(get(), androidContext()) }
+    viewModel { ProfileViewModel(get(), androidContext()) }
 }
 
 fun getSharedPreference(context: Context) =

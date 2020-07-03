@@ -58,7 +58,7 @@ class AppIntroFragment : Fragment(), LifecycleObserver {
                 2,
                 getString(R.string.label_broadcast_your_ideas),
                 getString(R.string.label_location_announcement),
-                R.drawable.ic_launcher_background
+                R.drawable.ic_walkthrough_2
             )
         )
         pagerAdapter.addFragment(
@@ -66,7 +66,7 @@ class AppIntroFragment : Fragment(), LifecycleObserver {
                 3,
                 getString(R.string.label_virtual_customer_interaction),
                 getString(R.string.label_customer_interaction_subtitle),
-                R.drawable.ic_launcher_background
+                R.drawable.ic_walkthrough_3
             )
         )
 

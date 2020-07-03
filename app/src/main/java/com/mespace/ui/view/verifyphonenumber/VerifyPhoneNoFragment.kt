@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.mespace.R
 import com.mespace.di.blockInput
 import com.mespace.di.dismissKeyboard
+import com.mespace.di.utility.BundleConstants.COUNTRY_CODE
 import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.applySpanPo
 import com.mespace.ui.MainActivity
@@ -53,7 +54,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
 
         tvPhoneSubtitle.applySpanPo(
             getString(R.string.label_check_sms_msg),
-            arguments?.getString(PHONE_NUMBER).toString(),
+            arguments?.getString(COUNTRY_CODE).toString() + arguments?.getString(PHONE_NUMBER).toString(),
             R.color.grey
         )
         tvResendOtp.applySpanPo(
@@ -81,6 +82,7 @@ class VerifyPhoneNoFragment : Fragment(), LifecycleObserver {
         tvResendOtp.setOnClickListener {
             blockInput(pbVerifyOtp)
             (activity as MainActivity).resendVerificationCode(
+                arguments?.getString(COUNTRY_CODE).toString(),
                 arguments?.getString(PHONE_NUMBER).toString(),
                 _progressBar = pbVerifyOtp
             )

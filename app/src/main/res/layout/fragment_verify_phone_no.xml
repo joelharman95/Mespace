@@ -55,6 +55,7 @@
         android:inputType="number"
         android:textColor="@color/black"
         android:textSize="@dimen/size_20"
+        app:cursorColor="@color/blue"
         app:itemCount="6"
         app:itemSpacing="@dimen/spacing_small"
         app:layout_constraintEnd_toEndOf="parent"

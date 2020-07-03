@@ -61,17 +61,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
         android:text="@string/label_country_code"
         android:textColor="@color/country_code"
         android:textSize="@dimen/size_12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/ccpEt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/country_code_underline"
+        android:gravity="bottom|start"
+        android:paddingBottom="@dimen/spacing_tiny"
+        app:ccpDialog_textColor="@color/country_code"
+        app:ccp_defaultNameCode="91"
+        app:ccp_showFlag="false"
+        app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
+        app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tilCountryCode" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCountryCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_small"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCountryCode">
@@ -96,6 +113,7 @@
         android:layout_marginStart="@dimen/spacing_small"
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_tiny"
+        app:hintEnabled="false"
         app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tilCountryCode"

@@ -83,7 +83,7 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
             }
             blockInput(pbPhone)
             (activity as MainActivity).startPhoneNumberVerification(
-                tieCountryCode.text.toString() + tiePhoneNo.text.toString(),
+                ccpEt.selectedCountryCodeWithPlus.toString(), tiePhoneNo.text.toString(),
                 pbPhone
             )
             /*findNavController().navigate(

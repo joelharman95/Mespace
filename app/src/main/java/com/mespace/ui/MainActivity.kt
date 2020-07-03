@@ -21,6 +21,7 @@ import com.google.firebase.auth.*
 import com.mespace.R
 import com.mespace.di.toast
 import com.mespace.di.unblockInput
+import com.mespace.di.utility.BundleConstants.COUNTRY_CODE
 import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import java.util.concurrent.TimeUnit
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private var auth: FirebaseAuth? = null
     private var verificationInProgress = false
+    private var countryCode = ""
     private var phoneNumber = ""
     private var progressBar: ProgressBar? = null
     private var storedVerificationId: String? = null
@@ -81,14 +83,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startPhoneNumberVerification(
+        _countryCode: String,
         _phoneNumber: String,
         _progressBar: ProgressBar
     ) {
+        countryCode = _countryCode
         phoneNumber = _phoneNumber
         progressBar = _progressBar
         verificationInProgress = true
         PhoneAuthProvider.getInstance()
-            .verifyPhoneNumber(_phoneNumber, 60, TimeUnit.SECONDS, this, callbacks)
+            .verifyPhoneNumber(
+                "$_countryCode$_phoneNumber",
+                60,
+                TimeUnit.SECONDS,
+                this,
+                callbacks
+            )
     }
 
     fun verifyPhoneNumberWithCode(
@@ -108,6 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun resendVerificationCode(
+        countryCode: String,
         phoneNumber: String,
         token: PhoneAuthProvider.ForceResendingToken? = null,
         _progressBar: ProgressBar
@@ -115,10 +126,17 @@ class MainActivity : AppCompatActivity() {
         progressBar = _progressBar
         if (resendToken != null) {
             PhoneAuthProvider.getInstance()
-                .verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, this, callbacks, resendToken)
+                .verifyPhoneNumber(
+                    countryCode + phoneNumber,
+                    60,
+                    TimeUnit.SECONDS,
+                    this,
+                    callbacks,
+                    resendToken
+                )
         } else {
             PhoneAuthProvider.getInstance()
-                .verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, this, callbacks)
+                .verifyPhoneNumber(countryCode + phoneNumber, 60, TimeUnit.SECONDS, this, callbacks)
         }
     }
 
@@ -160,7 +178,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.storePhoneNoFragment -> {
                         findNavController(R.id.activityNavHost).navigate(
                             R.id.verifyPhoneNoFragment,
-                            bundleOf(PHONE_NUMBER to phoneNumber)
+                            bundleOf(COUNTRY_CODE to countryCode, PHONE_NUMBER to phoneNumber)
                         )
                     }
                 }
@@ -178,14 +196,26 @@ class MainActivity : AppCompatActivity() {
                     if (cred.smsCode != null) {
                         when (findNavController(R.id.activityNavHost).currentDestination?.id) {
                             R.id.storePhoneNoFragment -> {
-                                findNavController(R.id.activityNavHost).navigate(R.id.profileSetupFragment)
+                                findNavController(R.id.activityNavHost).navigate(
+                                    R.id.profileSetupFragment,
+                                    bundleOf(
+                                        COUNTRY_CODE to countryCode,
+                                        PHONE_NUMBER to phoneNumber
+                                    )
+                                )
                             }
                         }
                         println("GET________" + cred.smsCode)
                     } else {
                         when (findNavController(R.id.activityNavHost).currentDestination?.id) {
                             R.id.storePhoneNoFragment -> {
-                                findNavController(R.id.activityNavHost).navigate(R.id.profileSetupFragment)
+                                findNavController(R.id.activityNavHost).navigate(
+                                    R.id.profileSetupFragment,
+                                    bundleOf(
+                                        COUNTRY_CODE to countryCode,
+                                        PHONE_NUMBER to phoneNumber
+                                    )
+                                )
                             }
                         }
                         println("GET________instant_validation")
@@ -204,7 +234,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.verifyPhoneNoFragment -> {
                         findNavController(R.id.activityNavHost).navigate(
                             R.id.profileSetupFragment,
-                            bundleOf(PHONE_NUMBER to phoneNumber)
+                            bundleOf(COUNTRY_CODE to countryCode, PHONE_NUMBER to phoneNumber)
                         )
                     }
                 }

@@ -15,7 +15,8 @@ object Constants {
 }
 
 object API {
-
+    const val INDEX = "index"
+    const val USER_EXISTS = "user_exists"
 }
 
 object Preference {
@@ -34,6 +35,7 @@ object Extras {
 }
 
 object BundleConstants {
+    const val COUNTRY_CODE = "country_code"
     const val PHONE_NUMBER = "phone_number"
     const val IS_BUSINESS = "is_business"
 }

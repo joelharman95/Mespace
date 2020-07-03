@@ -12,23 +12,28 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import com.mespace.R
-import com.mespace.di.loadCircularImage
-import com.mespace.di.savePic
-import com.mespace.di.showDialogToPick
-import com.mespace.di.toast
+import com.mespace.data.network.api.request.ReqIsUserExists
+import com.mespace.data.viewmodel.ProfileViewModel
+import com.mespace.di.*
+import com.mespace.di.utility.BundleConstants.COUNTRY_CODE
+import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.ImageConstants.CAMERA
 import com.mespace.di.utility.ImageConstants.GALLERY
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class ProfileSetupFragment : Fragment(), LifecycleObserver {
 
+    private val profileViewModel by viewModel<ProfileViewModel>()
     private val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,10 +57,42 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
         ivEditDp.setOnClickListener {
             onImagePicker()
         }
-        btnVerify.setOnClickListener {
+        btnUpdate.setOnClickListener {
             findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
         }
 
+        tieKeywords.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addChipToGroup(tieKeywords.text.toString())
+                tieKeywords.setText("")
+            }
+            false
+        }
+        isUserExists()
+
+    }
+
+    private fun isUserExists() {
+        blockInput(pbProfile)
+        profileViewModel.isUserExists(
+            ReqIsUserExists(
+                arguments?.getString(COUNTRY_CODE),
+                arguments?.getString(PHONE_NUMBER)
+            ), onSuccess = {
+                unblockInput(pbProfile)
+                it.userDetail?.let { userDetail ->
+                    tieFirstName.setText(userDetail.name?.toString())
+                    tieEmail.setText(userDetail.email?.toString())
+                    ivProfile.loadCircularImage(userDetail.profileImage.toString())
+                    userDetail.keywords?.forEach { keywords ->
+                        addChipToGroup(keywords.toString())
+                    }
+                }
+            }, onError = {
+                unblockInput(pbProfile)
+                activity?.toast(it)
+            }
+        )
     }
 
     private fun onImagePicker() {
@@ -142,6 +179,16 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             val idx: Int = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
             cursor.getString(idx)
         }
+    }
+
+    private fun addChipToGroup(keyword: String) {
+        val chip = Chip(context)
+        chip.text = "#$keyword"
+        chip.isCloseIconVisible = true
+        chip.isClickable = true
+        chip.isCheckable = false
+        cgTag.addView(chip as View)
+        chip.setOnCloseIconClickListener { cgTag.removeView(chip as View) }
     }
 
 }
