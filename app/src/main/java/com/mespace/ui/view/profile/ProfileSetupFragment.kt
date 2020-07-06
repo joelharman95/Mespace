@@ -84,9 +84,13 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                     tieFirstName.setText(userDetail.name?.toString())
                     tieEmail.setText(userDetail.email?.toString())
                     ivProfile.loadCircularImage(userDetail.profileImage.toString())
-                    userDetail.keywords?.forEach { keywords ->
-                        addChipToGroup(keywords.toString())
+                    val keywords = userDetail.keywords?.split(",")
+                    keywords?.forEach { tag ->
+                        addChipToGroup(tag)
                     }
+                    /*userDetail.keywords?.forEach { keywords ->
+                        addChipToGroup(keywords.toString())
+                    }*/
                 }
             }, onError = {
                 unblockInput(pbProfile)

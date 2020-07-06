@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back_1" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.mespace.di.widget.TitleTextView
         android:id="@+id/tvPhoneNo"
         style="@style/TitleTextView"
         android:paddingStart="0dp"
@@ -71,7 +71,6 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginTop="@dimen/spacing_normal"
         android:src="@drawable/ic_keyboard_arrow_down"
         app:layout_constraintBottom_toBottomOf="@id/ccpEt"
@@ -88,7 +87,7 @@
         app:ccp_arrowColor="@color/black"
         app:ccp_contentColor="@color/country_code"
         app:ccp_defaultNameCode="91"
-
+        app:ccp_showArrow="false"
         app:ccp_showFlag="false"
         app:ccp_showFullName="false"
         app:ccp_showNameCode="false"
@@ -160,10 +159,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
+        android:padding="@dimen/spacing_small"
         android:text="@string/are_you_a_business_sign_up"
         android:textColor="@color/subtitle_color"
         android:textSize="@dimen/size_15"
-        android:padding="@dimen/spacing_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnContinue" />

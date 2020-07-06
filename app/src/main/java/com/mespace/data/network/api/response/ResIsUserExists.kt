@@ -14,7 +14,8 @@ data class UserDetail(
     val name: String? = null,
     val email: String? = null,
     val status: String? = null,
-    val keywords: List<String?>? = null,
+    val keywords: String? = null,
+    //  val keywords: List<String?>? = null,
     @SerializedName("profile_image") val profileImage: String? = null,
     @SerializedName("user_id") val userId: String? = null
 )
