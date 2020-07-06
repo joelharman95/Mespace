@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back_1" />
 
-    <com.mespace.di.widget.TitleTextView
+    <com.mespace.utils.CommonTextView
         android:id="@+id/tvPhoneNo"
         style="@style/TitleTextView"
         android:paddingStart="0dp"

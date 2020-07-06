@@ -70,8 +70,11 @@
             android:id="@+id/ivName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
             android:background="@color/transparent"
-            android:src="@drawable/ic_person_outline"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tilName" />
 
@@ -94,13 +97,27 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tilEmail" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:background="@color/transparent"
             android:hint="@string/label_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivEmail"
             app:layout_constraintTop_toBottomOf="@id/tilName">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -113,19 +130,35 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cgTag" />
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cgTag"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivTag"
             app:layout_constraintTop_toBottomOf="@id/tilEmail" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilKeywords"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:hint="@string/label_keywords"
+            app:layout_constraintEnd_toEndOf="@id/cgTag"
+            app:layout_constraintStart_toStartOf="@id/cgTag"
             app:layout_constraintTop_toBottomOf="@id/cgTag">
 
             <com.google.android.material.textfield.TextInputEditText
