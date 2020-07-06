@@ -47,7 +47,7 @@
             android:id="@+id/ivProfile"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_medium"
             android:background="@color/transparent"
             android:src="@drawable/profile_bg"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,9 +93,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_name"
-                    android:textSize="@dimen/size_18" />
+                    android:textSize="@dimen/size_16" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.mespace.utils.CommonEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -141,9 +141,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_email"
-                    android:textSize="@dimen/size_18" />
+                    android:textSize="@dimen/size_16" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.mespace.utils.CommonEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
                 android:background="@color/transparent"
                 android:paddingEnd="@dimen/spacing_small"
                 android:paddingBottom="@dimen/spacing_small"
-                android:src="@drawable/ic_icon_mail"
+                android:src="@drawable/ic_icon_hashtag"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -189,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_keywords"
-                    android:textSize="@dimen/size_18" />
+                    android:textSize="@dimen/size_16" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cgTag"
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_tiny" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.mespace.utils.CommonEditText
                     android:id="@+id/etKeywords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

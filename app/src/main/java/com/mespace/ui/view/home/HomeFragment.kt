@@ -36,6 +36,13 @@ class HomeFragment : Fragment(), LifecycleObserver {
         friend_list.adapter = MyFriendsAdapter({
 
         })
+
+        store_list.adapter = NearByAdapter({
+
+        })
+        my_space.adapter = MySpaceAdapter({
+
+        })
         getUserdetails()
     }
 
@@ -44,9 +51,10 @@ class HomeFragment : Fragment(), LifecycleObserver {
         homeViewModel.getUserList(
             {
                 unblockInput(pbHome)
-                println(" Data " + it.detail.mespace_list)
                 profile_image.loadCircularImage("http://mespace.know3.com/public/uploads/common/images/profile_setup_pic@3x.png")
                 (friend_list.adapter as MyFriendsAdapter).addCategoryList(it.detail.userlist)
+                (store_list.adapter as NearByAdapter).addCategoryList(it.detail.storelist)
+                (my_space.adapter as MySpaceAdapter).addCategoryList(it.detail.mespace_list)
             }, {
                 unblockInput(pbHome)
                 activity?.toast(it)
