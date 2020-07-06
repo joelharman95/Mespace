@@ -25,6 +25,7 @@
                 android:id="@+id/header_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/ic_home_vector_opacity"
                 android:layout_marginTop="75dp" />
 
             <androidx.appcompat.widget.Toolbar
@@ -46,36 +47,34 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/profile_image"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginTop="5dp"
-                            android:padding="5dp" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="match_parent"
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/profile_image"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/ic_icon_recent_chat"
+                                android:padding="5dp" />
+
+                            <com.mespace.utils.CommonTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Vinoth"
+                                android:padding="5dp"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/size_15"
+                                android:layout_gravity="center"
+                                android:gravity="center"
                                 android:textColor="@color/white" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Ndot"
-                                android:textColor="@color/white" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="#Test"
-                                android:textColor="@color/white" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -94,14 +93,21 @@
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:padding="5dp"
-                            android:src="@drawable/ic_arrow_back" />
+                            android:src="@drawable/ic_icon_favorite" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:padding="5dp"
-                            android:src="@drawable/ic_arrow_back" />
+                            android:src="@drawable/ic_icon_recent_chat" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_notifications" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
@@ -116,8 +122,8 @@
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_home_chat" />
 
