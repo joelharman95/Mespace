@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.di.loadCircularImage
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.layout_category_item.view.*
 import kotlinx.android.synthetic.main.layout_user_item.view.*
 
 typealias category = (HomeScreenResponse.Detail.Userlist) -> Unit
@@ -42,7 +40,13 @@ class MyFriendsAdapter(val category: category) :
     inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bindUi(position: Int) {
             view.apply {
+                if (position == 7 && itemCount < 7) {
+                    user_name.text = "See More"
+                    user_image.loadCircularImage(R.drawable.ic_no_image)
+                    return
+                }
                 userList[position].let { _category ->
+                    println("GET______" + _category.name)
                     user_name.text = _category.name
                     user_image.loadCircularImage(_category.profile_image)
 

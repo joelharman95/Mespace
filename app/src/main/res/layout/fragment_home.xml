@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
 
-                android:src="@drawable/ic_home_vector_opacity" />
+                 />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/AppBar"
