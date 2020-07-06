@@ -26,16 +26,12 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-/*
-        ivProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
-        }
-        ivNotification.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
-        }*/
-
         profile_image.loadCircularImage("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+getUserdetails()
+    }
 
+    private fun getUserdetails() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
