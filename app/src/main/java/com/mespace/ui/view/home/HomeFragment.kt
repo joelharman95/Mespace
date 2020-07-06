@@ -33,20 +33,30 @@ class HomeFragment : Fragment(), LifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        friend_list.adapter = MyFriendsAdapter({
+        friend_list.adapter = MyFriendsAdapter {
+            if (it)
+                activity?.toast("Show more clicked")
+            else
+                activity?.toast("Friends clicked")
+        }
 
-        })
+        store_list.adapter = NearByAdapter {
+            if (it)
+                activity?.toast("Show more clicked")
+            else
+                activity?.toast("Stores clicked")
+        }
+        my_space.adapter = MySpaceAdapter {
+            if (it)
+                activity?.toast("Add more clicked")
+            else
+                activity?.toast("Myspace clicked")
+        }
 
-        store_list.adapter = NearByAdapter({
-
-        })
-        my_space.adapter = MySpaceAdapter({
-
-        })
-        getUserdetails()
+        getUserDetails()
     }
 
-    private fun getUserdetails() {
+    private fun getUserDetails() {
         blockInput(pbHome)
         homeViewModel.getUserList(
             {
@@ -58,7 +68,6 @@ class HomeFragment : Fragment(), LifecycleObserver {
             }, {
                 unblockInput(pbHome)
                 activity?.toast(it)
-
             }
         )
 

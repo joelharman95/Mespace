@@ -11,9 +11,9 @@ data class HomeScreenResponse(
         val userlist: List<Userlist>
     ) {
         data class Mespace(
-            val mespace_id: String,
-            val name: String,
-            val profile_image: String
+            val mespace_id: String? = null,
+            val name: String? = null,
+            val profile_image: String? = null
         )
 
         data class Storelist(

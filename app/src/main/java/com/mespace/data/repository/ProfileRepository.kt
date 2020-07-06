@@ -9,7 +9,9 @@
 package com.mespace.data.repository
 
 import com.mespace.data.network.api.request.ReqIsUserExists
+import com.mespace.data.network.api.request.ReqUpdateUser
 import com.mespace.data.network.api.response.ResIsUserExists
+import com.mespace.data.network.api.response.ResUserUpdate
 import com.mespace.data.network.api.service.ProfileApi
 import com.mespace.di.OnError
 import com.mespace.di.OnSuccess
@@ -47,6 +49,32 @@ private class ProfileRepositoryImpl(
         }
     }
 
+    override suspend fun addOrUpdateProfile(
+        reqUpdateUser: ReqUpdateUser,
+        onSuccess: OnSuccess<ResUserUpdate>,
+        onError: OnError<String>
+    ) {
+        withContext(Dispatchers.IO) {
+            try {
+                val response = api.addOrUpdateProfile(reqUpdateUser = reqUpdateUser)
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.status.toString().isSuccess())
+                            withContext(Dispatchers.Main) { onSuccess(it) }
+                        else
+                            withContext(Dispatchers.Main) { onError(it.message.toString()) }
+                    }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        onError(response.message().toString())
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {}
+            }
+        }
+    }
+
 }
 
 interface ProfileRepository {
@@ -54,6 +82,12 @@ interface ProfileRepository {
     suspend fun isUserExists(
         reqIsUserExists: ReqIsUserExists,
         onSuccess: OnSuccess<ResIsUserExists>,
+        onError: OnError<String>
+    )
+
+    suspend fun addOrUpdateProfile(
+        reqUpdateUser: ReqUpdateUser,
+        onSuccess: OnSuccess<ResUserUpdate>,
         onError: OnError<String>
     )
 

@@ -17,6 +17,7 @@ object Constants {
 object API {
     const val INDEX = "index"
     const val USER_EXISTS = "user_exists"
+    const val UPDATE_PROFILE = "update_profile"
     const val Home_API = "homescreen"
 }
 

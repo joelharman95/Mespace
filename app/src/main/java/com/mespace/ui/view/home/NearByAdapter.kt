@@ -8,13 +8,12 @@ import com.mespace.R
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.layout_store_item.view.*
-import kotlinx.android.synthetic.main.layout_user_item.view.*
 import kotlinx.android.synthetic.main.layout_user_item.view.user_image
 import kotlinx.android.synthetic.main.layout_user_item.view.user_name
 
-typealias category = (HomeScreenResponse.Detail.Storelist) -> Unit
+typealias nearBy = (Boolean) -> Unit
 
-class NearByAdapter(val category: category) :
+class NearByAdapter(val nearBy: nearBy) :
     RecyclerView.Adapter<NearByAdapter.CategoryHolder>() {
 
     val userList = mutableListOf<HomeScreenResponse.Detail.Storelist>()
@@ -36,7 +35,6 @@ class NearByAdapter(val category: category) :
     }
 
     fun addCategoryList(_categoryList: List<HomeScreenResponse.Detail.Storelist>) {
-        println("get_all_data" + " " + _categoryList)
         userList.addAll(_categoryList)
         notifyDataSetChanged()
     }
@@ -44,32 +42,29 @@ class NearByAdapter(val category: category) :
     inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bindUi(position: Int) {
             view.apply {
-
-
-                if (position <= 6)
-                {
+                if (position <= 6) {
                     userList[position].let { _category ->
-                        println("GET______" + _category.name)
                         user_name.text = _category.name
                         user_image.loadCircularImage(_category.profile_image)
                         user_distance.text = _category.distance
+                        setOnClickListener {
+                            nearBy.invoke(false)
+                        }
                     }
-
-
-                } else
-                {
+                } else {
                     if (position == 7) {
-
                         user_name.visibility = View.GONE
                         user_distance.visibility = View.GONE
                         user_image.loadCircularImage(R.drawable.ic_no_image)
+                        setOnClickListener {
+                            nearBy.invoke(true)
+                        }
                         return
-                    }
-                    else
-                    {
+                    } else {
                         user_image.visibility = View.GONE
                         user_name.visibility = View.GONE
-                        user_distance.visibility = View.GONE                    }
+                        user_distance.visibility = View.GONE
+                    }
                 }
             }
         }

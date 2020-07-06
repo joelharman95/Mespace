@@ -43,4 +43,5 @@
     <string name="are_you_a_user">Are you a User? </string>
     <string name="label_login">Login</string>
     <string name="label_your_business_phone_no">What is your business phone number?</string>
+    <string name="label_see_more">See More</string>
 </resources>

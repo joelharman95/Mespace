@@ -195,6 +195,7 @@
                     android:id="@+id/cgTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:chipSpacingVertical="@dimen/spacing_tiny"
                     android:layout_marginTop="@dimen/spacing_tiny" />
 
                 <com.mespace.utils.CommonEditText

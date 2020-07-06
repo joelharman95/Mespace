@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqIsUserExists
+import com.mespace.data.network.api.request.ReqUpdateUser
 import com.mespace.data.viewmodel.ProfileViewModel
 import com.mespace.di.*
 import com.mespace.di.utility.BundleConstants.COUNTRY_CODE
@@ -29,12 +31,15 @@ import com.mespace.di.utility.ImageConstants.CAMERA
 import com.mespace.di.utility.ImageConstants.GALLERY
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class ProfileSetupFragment : Fragment(), LifecycleObserver {
 
     private val profileViewModel by viewModel<ProfileViewModel>()
     private val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
+    private var userId = ""
+    private var mBitmap: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +63,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             onImagePicker()
         }
         btnUpdate.setOnClickListener {
-            findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
+            addOrUpdateProfile()
         }
 
         etKeywords.setOnEditorActionListener { v, actionId, event ->
@@ -83,6 +88,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             ), onSuccess = {
                 unblockInput(pbProfile)
                 it.userDetail?.let { userDetail ->
+                    userId = userDetail.userId.toString()
                     etName.setText(userDetail.name?.toString())
                     etEmail.setText(userDetail.email?.toString())
                     ivProfile.loadCircularImage(userDetail.profileImage.toString())
@@ -99,6 +105,34 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 activity?.toast(it)
             }
         )
+    }
+
+    private fun addOrUpdateProfile() {
+        blockInput(pbProfile)
+        profileViewModel.addOrUpdateProfile(
+            reqUpdateUser = ReqUpdateUser(
+                countryCode = arguments?.getString(""),
+                phone = arguments?.getString(""),
+                keywords = "",
+                profileImage = encodeImage(),
+                userId = userId,
+                userName = etName.text.toString(),
+                email = etEmail.text.toString()
+            ), onSuccess = {
+                unblockInput(pbProfile)
+                findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
+            }, onError = {
+                unblockInput(pbProfile)
+                activity?.toast(it)
+            }
+        )
+    }
+
+    private fun encodeImage(): String {
+        val stream = ByteArrayOutputStream()
+        mBitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        val image = stream.toByteArray()
+        return Base64.encodeToString(image, Base64.DEFAULT)
     }
 
     private fun onImagePicker() {
@@ -164,6 +198,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                             selectedImage
                         )
                     ivProfile.loadCircularImage(bitmap)
+                    mBitmap = bitmap
                     val result = getRealPathFromURI(data.data?.toString())
                     val file = File(result)
                 }
@@ -171,6 +206,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                     val bitmap = data.extras?.get("data") as Bitmap
                     val imagePath = context?.savePic(bitmap)
                     ivProfile.loadCircularImage(bitmap)
+                    mBitmap = bitmap
                 }
             }
         }
