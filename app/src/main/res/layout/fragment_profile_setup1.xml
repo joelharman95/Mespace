@@ -1,0 +1,185 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.mespace.ui.view.profile.ProfileSetupFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_normal">
+
+        <ProgressBar
+            android:id="@+id/pbProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/blue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ibBack"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/transparent"
+            android:paddingEnd="@dimen/spacing_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProfileSetup"
+            style="@style/TitleTextView"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:text="@string/label_profile_setup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ibBack" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@color/transparent"
+            android:src="@drawable/profile_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProfileSetup" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEditDp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:padding="@dimen/spacing_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+            app:layout_constraintEnd_toEndOf="@id/ivProfile"
+            app:layout_constraintStart_toStartOf="@id/ivProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivProfile"
+            app:srcCompat="@drawable/ic_camera" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tilName" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@color/transparent"
+            android:hint="@string/label_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivName"
+            app:layout_constraintTop_toBottomOf="@id/ivProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieFirstName"
+                style="@style/ProfileEditText"
+                android:background="@color/transparent"
+                tools:text="James" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tilEmail" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@color/transparent"
+            android:hint="@string/label_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivEmail"
+            app:layout_constraintTop_toBottomOf="@id/tilName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieEmail"
+                style="@style/ProfileEditText"
+                android:background="@color/transparent"
+                android:fontFamily="@font/roboto"
+                android:inputType="textEmailAddress"
+                tools:text="james@gmail.com" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_icon_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cgTag" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgTag"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivTag"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKeywords"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:hint="@string/label_keywords"
+            app:layout_constraintEnd_toEndOf="@id/cgTag"
+            app:layout_constraintStart_toStartOf="@id/cgTag"
+            app:layout_constraintTop_toBottomOf="@id/cgTag">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieKeywords"
+                style="@style/ProfileEditText"
+                android:background="@color/transparent"
+                android:imeOptions="actionDone"
+                tools:text="Clothing" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdate"
+            style="@style/ConnectionButton"
+            android:background="@color/blue"
+            android:backgroundTint="@color/blue"
+            android:text="@string/action_update_profile"
+            app:cornerRadius="@dimen/spacing_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilKeywords" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

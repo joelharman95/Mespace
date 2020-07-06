@@ -28,6 +28,12 @@ import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.ImageConstants.CAMERA
 import com.mespace.di.utility.ImageConstants.GALLERY
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
+import kotlinx.android.synthetic.main.fragment_profile_setup1.btnUpdate
+import kotlinx.android.synthetic.main.fragment_profile_setup1.cgTag
+import kotlinx.android.synthetic.main.fragment_profile_setup1.ibBack
+import kotlinx.android.synthetic.main.fragment_profile_setup1.ivEditDp
+import kotlinx.android.synthetic.main.fragment_profile_setup1.ivProfile
+import kotlinx.android.synthetic.main.fragment_profile_setup1.pbProfile
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -61,10 +67,10 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
         }
 
-        tieKeywords.setOnEditorActionListener { v, actionId, event ->
+        etKeywords.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                addChipToGroup(tieKeywords.text.toString())
-                tieKeywords.setText("")
+                addChipToGroup(etKeywords.text.toString())
+                etKeywords.setText("")
             }
             false
         }
@@ -76,13 +82,15 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
         blockInput(pbProfile)
         profileViewModel.isUserExists(
             ReqIsUserExists(
+                /*"91",
+                "7639989666"*/
                 arguments?.getString(COUNTRY_CODE),
                 arguments?.getString(PHONE_NUMBER)
             ), onSuccess = {
                 unblockInput(pbProfile)
                 it.userDetail?.let { userDetail ->
-                    tieFirstName.setText(userDetail.name?.toString())
-                    tieEmail.setText(userDetail.email?.toString())
+                    etName.setText(userDetail.name?.toString())
+                    etEmail.setText(userDetail.email?.toString())
                     ivProfile.loadCircularImage(userDetail.profileImage.toString())
                     val keywords = userDetail.keywords?.split(",")
                     keywords?.forEach { tag ->
