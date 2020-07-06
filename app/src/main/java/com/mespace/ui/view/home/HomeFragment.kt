@@ -7,10 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import com.mespace.R
+import com.mespace.data.viewmodel.HomeViewModel
+import com.mespace.data.viewmodel.ProfileViewModel
+import com.mespace.di.blockInput
 import com.mespace.di.loadCircularImage
+import com.mespace.di.toast
+import com.mespace.di.unblockInput
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_profile_setup.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), LifecycleObserver {
+    private val homeViewModel by viewModel<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +39,19 @@ getUserdetails()
     }
 
     private fun getUserdetails() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        blockInput(pbHome)
+        homeViewModel.getUserList(
+            {
+                unblockInput(pbHome)
+                println(" Data "+ it.detail.mespace_list)
+
+            },{
+                unblockInput(pbHome)
+                activity?.toast(it)
+
+            }
+        )
+
     }
 
 }
