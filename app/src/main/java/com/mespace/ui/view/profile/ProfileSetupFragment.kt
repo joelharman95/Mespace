@@ -28,12 +28,6 @@ import com.mespace.di.utility.BundleConstants.PHONE_NUMBER
 import com.mespace.di.utility.ImageConstants.CAMERA
 import com.mespace.di.utility.ImageConstants.GALLERY
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
-import kotlinx.android.synthetic.main.fragment_profile_setup1.btnUpdate
-import kotlinx.android.synthetic.main.fragment_profile_setup1.cgTag
-import kotlinx.android.synthetic.main.fragment_profile_setup1.ibBack
-import kotlinx.android.synthetic.main.fragment_profile_setup1.ivEditDp
-import kotlinx.android.synthetic.main.fragment_profile_setup1.ivProfile
-import kotlinx.android.synthetic.main.fragment_profile_setup1.pbProfile
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
