@@ -34,7 +34,6 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        profile_image.loadCircularImage("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
 getUserdetails()
     }
 
@@ -44,6 +43,7 @@ getUserdetails()
             {
                 unblockInput(pbHome)
                 println(" Data "+ it.detail.mespace_list)
+                profile_image.loadCircularImage("http://mespace.know3.com/public/uploads/common/images/profile_setup_pic@3x.png")
 
             },{
                 unblockInput(pbHome)
