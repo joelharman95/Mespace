@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="270dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -101,7 +101,7 @@
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:padding="5dp"
-                            android:src="@drawable/ic_notifications" />
+                            android:src="@drawable/ic_icon_notification" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
@@ -127,23 +127,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_18"
                     android:src="@drawable/ic_home_chat" />
 
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="People NearBy"
+                    android:text="People Nearby"
                     android:textColor="@color/white"
                     android:textSize="@dimen/size_16"
                     android:textStyle="bold" />

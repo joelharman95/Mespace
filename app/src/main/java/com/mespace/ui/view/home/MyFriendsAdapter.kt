@@ -42,8 +42,8 @@ class MyFriendsAdapter(val myFriend: myFriend) :
             view.apply {
                 if (position <= 7) {
                     if (position == 7) {
-                        user_name.text = context.getString(R.string.label_see_more)
-                        user_image.loadCircularImage(R.drawable.ic_no_image)
+                        user_name.text = "Show more"
+                        user_image.loadCircularImage(R.drawable.ic_icon_show_more)
                         setOnClickListener {
                             myFriend.invoke(true)
                         }

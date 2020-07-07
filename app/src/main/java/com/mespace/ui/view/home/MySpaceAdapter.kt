@@ -43,7 +43,7 @@ class MySpaceAdapter(val mySpace: mySpace) :
             view.apply {
                 if (position == itemCount - 1) {
                     user_name.text = "Add a space"
-                    user_image.loadCircularImage(R.drawable.ic_no_image)
+                    user_image.loadCircularImage(R.drawable.ic_icon_add_space)
                     setOnClickListener {
                         mySpace.invoke(true)
                     }

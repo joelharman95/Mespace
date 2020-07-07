@@ -91,6 +91,8 @@
         app:ccp_showFlag="false"
         app:ccp_showFullName="false"
         app:ccp_showNameCode="false"
+        android:contextClickable="true"
+
         app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
         app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
         app:layout_constraintStart_toStartOf="parent"
