@@ -80,38 +80,24 @@
                 android:background="@color/transparent"
                 android:paddingEnd="@dimen/spacing_small"
                 android:paddingBottom="@dimen/spacing_small"
-                android:src="@drawable/ic_icon_name"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:src="@drawable/ic_icon_name" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:orientation="vertical">
+                android:background="@color/transparent"
+                android:hint="@string/label_name">
 
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_name"
-                    android:textSize="@dimen/size_16" />
-
-                <com.mespace.utils.CommonEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
+                    style="@style/ProfileEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLength="20"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp" />
+                    android:background="@color/transparent"
+                    tools:text="James" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/grey" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -132,34 +118,26 @@
                 android:src="@drawable/ic_icon_mail"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:orientation="vertical">
+                android:background="@color/transparent"
+                android:hint="@string/label_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivEmail"
+                app:layout_constraintTop_toBottomOf="@id/tilName">
 
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_email"
-                    android:textSize="@dimen/size_16" />
-
-                <com.mespace.utils.CommonEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:imeOptions="actionNext"
+                    style="@style/ProfileEditText"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/roboto"
                     android:inputType="textEmailAddress"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp" />
+                    tools:text="james@gmail.com" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/grey" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
