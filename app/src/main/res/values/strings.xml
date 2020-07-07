@@ -5,13 +5,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_skip">Skip</string>
     <string name="label_socialize_at_a_distance">Socialize at a distance</string>
-    <string name="label_socialize_subtitle">Find People near you, start a conversation and connect as a community, all within your virtual space.</string>
-    <string name="label_virtual_customer_interaction">Virtual customer interaction</string>
-    <string name="label_customer_interaction_subtitle">Engage with your customers, answer queries and promote your business in the virtual space</string>
+    <string name="label_socialize_subtitle">Find people near you, start a conversation and connect as a community, all within your virtual space.</string>
+    <string name="label_virtual_customer_interaction">Virtual customer interactions</string>
+    <string name="label_customer_interaction_subtitle">Engage with your customers, answer queries and promote your business in the virtual space.</string>
     <string name="label_your_phone_no">What is your phone number?</string>
-    <string name="label_get_started">Tap Get Started to get an SMS confirmation to help you chat. We would like your phone number.</string>
+    <string name="label_get_started">Tap \"Get Started\" to get an SMS confirmation to help you use chat. We would like your phone number.</string>
     <string name="label_country_code">COUNTRY CODE</string>
-    <string name="label_phone_no">Phone Number</string>
+    <string name="label_phone_no">Phone number</string>
     <string name="action_continue">Continue</string>
     <string name="are_you_a_user_login">Are you a User? Login</string>
     <string name="are_you_a_business_sign_up">Are you a Business? Sign Up</string>
@@ -39,7 +39,7 @@
     <string name="label_invalid_no">Invalid phone number</string>
     <string name="label_no_verification_id">No verification id available</string>
     <string name="label_broadcast_your_ideas">Broadcast your ideas</string>
-    <string name="label_location_announcement">Make location-based announcements and say whats on your mind using local tweets</string>
+    <string name="label_location_announcement">Make location-based announcements and say what\'s\ on your mind using local tweets.</string>
     <string name="label_name">NAME</string>
     <string name="are_you_a_user">Are you a User? </string>
     <string name="label_login">Login</string>

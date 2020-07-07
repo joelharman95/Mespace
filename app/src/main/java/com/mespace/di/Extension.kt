@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.mespace.R
 import com.mespace.di.utility.Constants.IMAGE_DIRECTORY
 import com.mespace.di.utility.Constants.IMAGE_FROM_CAMERA
 import com.mespace.di.utility.Constants.IMAGE_FROM_GALLERY
@@ -69,6 +70,7 @@ fun ImageView.loadCircularImage(image: Any) {
                 else -> image
             }
         )
+        .placeholder(ContextCompat.getDrawable(context, R.drawable.profile_bg))
         .circleCrop()
         .into(this)
 }

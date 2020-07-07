@@ -92,10 +92,7 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
             )*/
         }
         tvSignInOrUp.setOnClickListener {
-
-            ccpEt.performClick()
-
-        /*    if (arguments?.getBoolean(IS_BUSINESS) != null && arguments?.getBoolean(IS_BUSINESS)!!) {
+            if (arguments?.getBoolean(IS_BUSINESS) != null && arguments?.getBoolean(IS_BUSINESS)!!) {
                 findNavController().navigate(
                     R.id.action_storePhoneNoFragment_self,
                     bundleOf(IS_BUSINESS to false)
@@ -105,7 +102,7 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
                     R.id.action_storePhoneNoFragment_self,
                     bundleOf(IS_BUSINESS to true)
                 )
-            }*/
+            }
         }
     }
 
