@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import com.mespace.R
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.HomeViewModel
 import com.mespace.di.blockInput
 import com.mespace.di.loadCircularImage
@@ -32,6 +33,11 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        PreferenceManager(requireContext()).apply {
+            ivpProfileImage.loadCircularImage(getUserProfile())
+            tvUserName.text = getUserName()
+        }
 
         friend_list.adapter = MyFriendsAdapter {
             if (it)
@@ -61,7 +67,6 @@ class HomeFragment : Fragment(), LifecycleObserver {
         homeViewModel.getUserList(
             {
                 unblockInput(pbHome)
-                profile_image.loadCircularImage("http://mespace.know3.com/public/uploads/common/images/profile_setup_pic@3x.png")
                 (friend_list.adapter as MyFriendsAdapter).addCategoryList(it.detail.userlist)
                 (store_list.adapter as NearByAdapter).addCategoryList(it.detail.storelist)
                 (my_space.adapter as MySpaceAdapter).addCategoryList(it.detail.mespace_list)

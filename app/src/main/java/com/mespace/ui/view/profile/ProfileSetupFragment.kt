@@ -93,6 +93,8 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                     it.userDetail?.let { userDetail ->
                         PreferenceManager(requireContext()).apply {
                             setUserId(userDetail.userId)
+                            setUserName(userDetail.name)
+                            setUserProfile(userDetail.profileImage)
                         }
                         userId = userDetail.userId.toString()
                         etName.setText(userDetail.name?.toString())
@@ -137,6 +139,8 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 activity?.unblockInput(pbProfile)
                 PreferenceManager(requireContext()).apply {
                     setUserId(it.detail?.passengerId)
+                    setUserName(it.detail?.name)
+                    setUserProfile(it.detail?.profileImage)
                 }
                 findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
             }, onError = {

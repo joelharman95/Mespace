@@ -25,6 +25,12 @@ interface IPreferenceManager {
     fun setUserId(userId: String?)
     fun getUserId(): String
 
+    fun setUserName(userName: String?)
+    fun getUserName(): String
+
+    fun setUserProfile(userProfile: String?)
+    fun getUserProfile(): String
+
     fun setDeviceToken(firebaseToken: String?)
     fun getDeviceToken(): String
 

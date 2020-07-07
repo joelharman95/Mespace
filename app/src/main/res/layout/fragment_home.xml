@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-
                 android:src="@drawable/ic_home_vector_opacity" />
 
             <androidx.appcompat.widget.Toolbar
@@ -48,7 +47,6 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -56,7 +54,7 @@
                             android:orientation="horizontal">
 
                             <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/profile_image"
+                                android:id="@+id/ivpProfileImage"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginTop="5dp"
@@ -64,20 +62,18 @@
                                 android:src="@drawable/ic_icon_recent_chat" />
 
                             <com.mespace.utils.CommonTextView
+                                android:id="@+id/tvUserName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:padding="5dp"
-                                android:text="Vinoth"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/size_16"
-                                android:textStyle="bold" />
-
-
+                                android:textStyle="bold"
+                                tools:text="Vinoth" />
                         </LinearLayout>
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -95,7 +91,6 @@
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_favorite_white" />
 
-
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -110,7 +105,6 @@
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_recent_chat" />
 
-
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -118,7 +112,6 @@
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_search_home" />
                     </LinearLayout>
-
 
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -149,7 +142,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -218,7 +210,6 @@
                     tools:itemCount="8"
                     tools:listitem="@layout/layout_store_item" />
 
-
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -238,7 +229,6 @@
                     tools:itemCount="8"
                     tools:listitem="@layout/layout_user_item" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-
 
         </LinearLayout>
 

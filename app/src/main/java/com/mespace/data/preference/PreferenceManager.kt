@@ -36,6 +36,16 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
     override fun getUserId(): String = pref.getString(USER_ID, "").toString()
 
+    override fun setUserName(userName: String?) =
+        pref.edit().putString(USER_NAME, userName.toString()).apply()
+
+    override fun getUserName(): String = pref.getString(USER_NAME, "").toString()
+
+    override fun setUserProfile(userImage: String?) =
+        pref.edit().putString(USER_IMAGE, userImage.toString()).apply()
+
+    override fun getUserProfile() = pref.getString(USER_IMAGE, "").toString()
+
     override fun setDeviceToken(firebaseToken: String?) {
         pref.edit().putString(TOKEN_ID, firebaseToken!!).apply()
     }
@@ -61,6 +71,8 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
         const val PREFERENCE_NAME = "mespace"
         const val IS_LAUNCHED_ONCE = "is_launched_once"
         const val USER_ID = "user_id"
+        const val USER_NAME = "user_name"
+        const val USER_IMAGE = "user_image"
         const val TOKEN_ID = "FIREBASE_TOKEN_ID"
         const val TOKEN = "token"
         const val LOGGED_IN = "loggedin"
