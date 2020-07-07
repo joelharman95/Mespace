@@ -31,10 +31,10 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
     override fun getLongitude(): String = pref.getString(LONGITUDE, "")!!
 
-    override fun setUserStatus(residenceId: String?) =
-        pref.edit().putString(USER_STATUS, residenceId!!).apply()
+    override fun setUserId(userId: String?) =
+        pref.edit().putString(USER_ID, userId.toString()).apply()
 
-    override fun getUserStatus(): String = pref.getString(USER_STATUS, "")!!
+    override fun getUserId(): String = pref.getString(USER_ID, "").toString()
 
     override fun setDeviceToken(firebaseToken: String?) {
         pref.edit().putString(TOKEN_ID, firebaseToken!!).apply()
@@ -60,7 +60,7 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
     companion object {
         const val PREFERENCE_NAME = "mespace"
         const val IS_LAUNCHED_ONCE = "is_launched_once"
-        const val USER_STATUS = "user_status"
+        const val USER_ID = "user_id"
         const val TOKEN_ID = "FIREBASE_TOKEN_ID"
         const val TOKEN = "token"
         const val LOGGED_IN = "loggedin"

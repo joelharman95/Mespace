@@ -68,35 +68,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:src="@drawable/ic_keyboard_arrow_down"
-        app:layout_constraintBottom_toBottomOf="@id/ccpEt"
-        app:layout_constraintEnd_toEndOf="@id/ccpEt"
-        app:layout_constraintTop_toTopOf="@id/ccpEt" />
-
-    <com.hbb20.CountryCodePicker
-        android:id="@+id/ccpEt"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/country_code_underline"
-        android:gravity="bottom"
-        android:paddingBottom="@dimen/spacing_tiny"
-        app:ccp_arrowColor="@color/black"
-        app:ccp_contentColor="@color/country_code"
-        app:ccp_defaultNameCode="91"
-        app:ccp_showArrow="false"
-        app:ccp_showFlag="false"
-        app:ccp_showFullName="false"
-        app:ccp_showNameCode="false"
-        android:contextClickable="true"
-
         app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
         app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tilCountryCode" />
+        app:layout_constraintTop_toTopOf="@id/tilCountryCode">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccpEt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/country_code_underline"
+            android:gravity="bottom"
+            android:paddingBottom="@dimen/spacing_tiny"
+            app:ccp_arrowColor="@color/black"
+            app:ccp_contentColor="@color/country_code"
+            app:ccp_defaultNameCode="91"
+            app:ccp_showArrow="false"
+            app:ccp_showFlag="false"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:ccp_textGravity="LEFT" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignEnd="@id/ccpEt"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:src="@drawable/ic_keyboard_arrow_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCountryCode"
