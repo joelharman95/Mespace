@@ -3,7 +3,7 @@ package com.mespace.data.network.api.response
 import com.google.gson.annotations.SerializedName
 
 data class ResUserUpdate(
-    @SerializedName("detail") val detail: List<DetailItem?>? = null,
+    @SerializedName("detail") val detail: DetailItem? = null,
     @SerializedName("message") val message: String? = null,
     @SerializedName("status") val status: Int? = null
 )

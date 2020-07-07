@@ -53,14 +53,12 @@ class SplashFragment : Fragment(), LifecycleObserver {
         super.onActivityCreated(savedInstanceState)
         lifecycleScope.launch {
             delay(2000)
-           /* PreferenceManager(requireContext()).apply {
+            PreferenceManager(requireContext()).apply {
                 if (getIsLaunchedOnce())
                     findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
                 else
                     findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
-            }*/
-            findNavController().navigate(R.id.profileSetupFragment)
-
+            }
         }
         //  getToken()
     }

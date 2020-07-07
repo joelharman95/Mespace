@@ -44,4 +44,8 @@
     <string name="label_login">Login</string>
     <string name="label_your_business_phone_no">What is your business phone number?</string>
     <string name="label_see_more">See More</string>
+
+    <string name="username_required">Username required</string>
+    <string name="email_address_required">Email address required</string>
+    <string name="valid_email_required">Valid email address required</string>
 </resources>

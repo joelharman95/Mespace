@@ -9,7 +9,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Base64
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +31,6 @@ import com.mespace.di.utility.ImageConstants.CAMERA
 import com.mespace.di.utility.ImageConstants.GALLERY
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.ByteArrayOutputStream
 import java.io.File
 
 class ProfileSetupFragment : Fragment(), LifecycleObserver {
@@ -40,6 +39,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
     private val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
     private var userId = ""
     private var mBitmap: Bitmap? = null
+    private var keywordList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,11 +63,12 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             onImagePicker()
         }
         btnUpdate.setOnClickListener {
-            addOrUpdateProfile()
+            if (isFieldValid() && isEmailValid())
+                addOrUpdateProfile()
         }
 
         etKeywords.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_DONE && !TextUtils.isEmpty(etKeywords.text.toString())) {
                 addChipToGroup(etKeywords.text.toString())
                 etKeywords.setText("")
             }
@@ -82,23 +83,25 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
         profileViewModel.isUserExists(
             ReqIsUserExists(
                 /*"91",
-                "7639989666"*/
+                "7639989667"*/
                 arguments?.getString(COUNTRY_CODE),
                 arguments?.getString(PHONE_NUMBER)
             ), onSuccess = {
                 unblockInput(pbProfile)
-                it.userDetail?.let { userDetail ->
-                    userId = userDetail.userId.toString()
-                    etName.setText(userDetail.name?.toString())
-                    etEmail.setText(userDetail.email?.toString())
-                    ivProfile.loadCircularImage(userDetail.profileImage.toString())
-                    val keywords = userDetail.keywords?.split(",")
-                    keywords?.forEach { tag ->
-                        addChipToGroup(tag)
+                if (it.userDetails == "1") {
+                    it.userDetail?.let { userDetail ->
+                        userId = userDetail.userId.toString()
+                        etName.setText(userDetail.name?.toString())
+                        etEmail.setText(userDetail.email?.toString())
+                        ivProfile.loadCircularImage(userDetail.profileImage.toString())
+                        val keywords = userDetail.keywords?.split(",")
+                        keywords?.forEach { tag ->
+                            addChipToGroup(tag)
+                        }
+                        /*userDetail.keywords?.forEach { keywords ->
+                            addChipToGroup(keywords.toString())
+                        }*/
                     }
-                    /*userDetail.keywords?.forEach { keywords ->
-                        addChipToGroup(keywords.toString())
-                    }*/
                 }
             }, onError = {
                 unblockInput(pbProfile)
@@ -108,31 +111,55 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
     }
 
     private fun addOrUpdateProfile() {
-        blockInput(pbProfile)
+        activity?.blockInput(pbProfile)
+        var keywords = ""
+        keywordList.forEach {
+            keywords += "$it,"
+        }
         profileViewModel.addOrUpdateProfile(
             reqUpdateUser = ReqUpdateUser(
-                countryCode = arguments?.getString(""),
-                phone = arguments?.getString(""),
-                keywords = "",
-                profileImage = encodeImage(),
+                /*countryCode = "91",
+                phone = "7639989667",*/
+                arguments?.getString(COUNTRY_CODE),
+                phone = arguments?.getString(PHONE_NUMBER),
+                keywords = keywords.removeSuffix(","),
+                profileImage = bitMapToString(mBitmap),
                 userId = userId,
+                /*userName = "ndot",
+                email = "ndottt@ndot.in"*/
                 userName = etName.text.toString(),
                 email = etEmail.text.toString()
             ), onSuccess = {
-                unblockInput(pbProfile)
+                activity?.unblockInput(pbProfile)
                 findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
             }, onError = {
-                unblockInput(pbProfile)
+                activity?.unblockInput(pbProfile)
                 activity?.toast(it)
             }
         )
     }
 
-    private fun encodeImage(): String {
-        val stream = ByteArrayOutputStream()
-        mBitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val image = stream.toByteArray()
-        return Base64.encodeToString(image, Base64.DEFAULT)
+    private fun isFieldValid(): Boolean {
+        return when {
+            TextUtils.isEmpty(etName.text.toString()) -> {
+                activity?.toast(getString(R.string.username_required))
+                false
+            }
+            TextUtils.isEmpty(etEmail.text.toString()) -> {
+                activity?.toast(getString(R.string.email_address_required))
+                false
+            }
+            else -> true
+        }
+    }
+
+    private fun isEmailValid(): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return if (!etEmail.text.toString().trim().matches(emailPattern.toRegex())) {
+            activity?.toast(getString(R.string.valid_email_required))
+            false
+        } else
+            true
     }
 
     private fun onImagePicker() {
@@ -225,12 +252,17 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
 
     private fun addChipToGroup(keyword: String) {
         val chip = Chip(context)
+        keywordList.add(keyword)
         chip.text = "#$keyword"
         chip.isCloseIconVisible = true
         chip.isClickable = true
         chip.isCheckable = false
         cgTag.addView(chip as View)
-        chip.setOnCloseIconClickListener { cgTag.removeView(chip as View) }
+        chip.setOnCloseIconClickListener {
+            val new = chip.text.removePrefix("#")
+            keywordList.remove(new)
+            cgTag.removeView(chip as View)
+        }
     }
 
 }

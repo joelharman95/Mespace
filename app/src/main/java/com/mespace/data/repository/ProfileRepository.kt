@@ -59,10 +59,11 @@ private class ProfileRepositoryImpl(
                 val response = api.addOrUpdateProfile(reqUpdateUser = reqUpdateUser)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        if (it.status.toString().isSuccess())
+                        if (it.status.toString().isSuccess()) {
                             withContext(Dispatchers.Main) { onSuccess(it) }
-                        else
+                        } else {
                             withContext(Dispatchers.Main) { onError(it.message.toString()) }
+                        }
                     }
                 } else {
                     withContext(Dispatchers.Main) {
@@ -70,7 +71,7 @@ private class ProfileRepositoryImpl(
                     }
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {}
+                withContext(Dispatchers.Main) { onError(e.toString()) }
             }
         }
     }

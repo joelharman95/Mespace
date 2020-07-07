@@ -34,8 +34,10 @@ private class HttpClientManagerImpl(
                 )
             }
         }
-            .callTimeout(25, TimeUnit.SECONDS)
-            .readTimeout(25, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            //  .callTimeout(25, TimeUnit.SECONDS)
             .build()
     }
 

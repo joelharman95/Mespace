@@ -18,6 +18,7 @@ import android.graphics.Typeface
 import android.media.MediaScannerConnection
 import android.net.ConnectivityManager
 import android.provider.MediaStore
+import android.util.Base64
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -187,11 +188,16 @@ fun getBitmapFromURL(src: String?): Bitmap? {
     }
 }
 
-fun BitMapToString(userImage1: Bitmap): String {
-    val baos = ByteArrayOutputStream()
-    userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos)
-    val b = baos.toByteArray()
-    return android.util.Base64.encodeToString(b, android.util.Base64.DEFAULT)
+fun bitMapToString(bitmap: Bitmap?): String {
+    return try {
+        val baos = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 60, baos)
+        val b = baos.toByteArray()
+        Base64.encodeToString(b, Base64.DEFAULT)
+    } catch (e: Exception) {
+        println("GET______" + e.toString())
+        ""
+    }
 }
 
 public fun toRequestBody(value: String): RequestBody {

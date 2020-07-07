@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class ResIsUserExists(
     val message: String? = null,
     @SerializedName("userdetail") val userDetail: UserDetail? = null,
-    @SerializedName("status") val status: Int? = null
+    @SerializedName("status") val status: Int? = null,
+    @SerializedName("userdetails") val userDetails: String? = null
 )
 
 data class UserDetail(
