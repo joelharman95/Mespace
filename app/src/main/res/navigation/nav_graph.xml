@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_splashFragment_to_storePhoneNoFragment"
             app:destination="@id/storePhoneNoFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/appIntroFragment"

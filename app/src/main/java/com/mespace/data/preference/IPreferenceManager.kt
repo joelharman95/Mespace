@@ -22,8 +22,8 @@ interface IPreferenceManager {
     fun logIn(isLogged: Boolean)
     fun isLoggedIn(): Boolean
 
-    fun setUserStatus(residenceId: String?)
-    fun getUserStatus(): String
+    fun setUserId(userId: String?)
+    fun getUserId(): String
 
     fun setDeviceToken(firebaseToken: String?)
     fun getDeviceToken(): String

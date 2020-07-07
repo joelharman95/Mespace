@@ -23,6 +23,7 @@ import com.google.android.material.chip.Chip
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqIsUserExists
 import com.mespace.data.network.api.request.ReqUpdateUser
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.ProfileViewModel
 import com.mespace.di.*
 import com.mespace.di.utility.BundleConstants.COUNTRY_CODE
@@ -90,6 +91,9 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 unblockInput(pbProfile)
                 if (it.userDetails == "1") {
                     it.userDetail?.let { userDetail ->
+                        PreferenceManager(requireContext()).apply {
+                            setUserId(userDetail.userId)
+                        }
                         userId = userDetail.userId.toString()
                         etName.setText(userDetail.name?.toString())
                         etEmail.setText(userDetail.email?.toString())
@@ -131,6 +135,9 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 email = etEmail.text.toString()
             ), onSuccess = {
                 activity?.unblockInput(pbProfile)
+                PreferenceManager(requireContext()).apply {
+                    setUserId(it.detail?.passengerId)
+                }
                 findNavController().navigate(R.id.action_profileSetupFragment_to_homeFragment)
             }, onError = {
                 activity?.unblockInput(pbProfile)
