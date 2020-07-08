@@ -55,7 +55,7 @@ class NearByAdapter(val nearBy: nearBy) :
                     if (position == 7) {
                         user_name.text = "Show more"
                         user_distance.visibility = View.GONE
-                        user_image.loadCircularImage(R.drawable.ic_icon_show_more)
+                        user_image.loadCircularImage(R.drawable.ic_icon_show_more_new)
                         setOnClickListener {
                             nearBy.invoke(true)
                         }

@@ -1,9 +1,8 @@
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.mespace.ui.view.search.SearchFragment">
 
@@ -26,21 +25,126 @@
 
         <com.mespace.utils.CommonTextView
             android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:text="@string/label_category"
             style="@style/ToolbarTextView"
+            android:layout_width="0dp"
+            android:text="@string/label_search"
             app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
             app:layout_constraintStart_toEndOf="@id/ivCategoryBack"
             app:layout_constraintTop_toTopOf="@id/ivCategoryBack" />
 
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/black"
-        />
+        android:background="@color/line_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_20"
+        android:background="@drawable/ic_button_shape"
+        android:padding="10dp">
+
+        <com.mespace.utils.CommonEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+
+            android:layout_centerVertical="true"
+            android:drawablePadding="3dp"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_icon_search_home"
+            android:layout_marginLeft="@dimen/size_15"
+            android:hint="@string/search_hint"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right|center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_search"
+            />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_20"
+        android:layout_marginBottom="@dimen/size_20"
+        android:padding="5dp"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+
+            >
+        <com.mespace.utils.CommonTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_18"
+            />
+
+            <FrameLayout
+                android:layout_width="30dp"
+                android:layout_height="5dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="5dp"
+
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+android:orientation="vertical"
+            >
+        <com.mespace.utils.CommonTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textSize="@dimen/size_18"
+            android:text="Store"
+
+            />
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="5dp"
+
+                android:background="@color/colorPrimary"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            >
+            <com.mespace.utils.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:visibility="invisible"
+                android:text="User"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
