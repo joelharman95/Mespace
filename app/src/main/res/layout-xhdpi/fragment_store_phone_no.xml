@@ -31,6 +31,7 @@
         android:id="@+id/tvPhoneNo"
         style="@style/TitleTextView_xxhtpi"
         android:paddingStart="0dp"
+        android:textSize="28sp"
         android:paddingLeft="0dp"
         android:text="@string/label_your_phone_no"
         app:layout_constraintStart_toStartOf="parent"

@@ -37,7 +37,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvProfileSetup"
-            style="@style/TitleTextView"
+            style="@style/TitleTextView_xxhtpi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ibBack"
@@ -51,7 +51,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_below="@id/tvProfileSetup"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -222,6 +222,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.button.MaterialButton

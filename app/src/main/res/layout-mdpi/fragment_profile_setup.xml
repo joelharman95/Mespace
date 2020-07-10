@@ -18,6 +18,7 @@
             android:id="@+id/pbProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:indeterminateTint="@color/blue"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +52,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_below="@id/tvProfileSetup"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -116,8 +117,6 @@
                         style="@style/ProfileEditText"
                         android:layout_width="match_parent"
                         android:backgroundTint="@color/white"
-
-
                         tools:text="James" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -158,7 +157,6 @@
                         style="@style/ProfileEditText"
                         android:background="@color/transparent"
                         android:fontFamily="@font/roboto"
-
                         android:inputType="textEmailAddress"
                         tools:text="james@gmail.com" />
 
@@ -222,6 +220,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.button.MaterialButton
