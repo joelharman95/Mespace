@@ -16,18 +16,6 @@
     android:layout_marginBottom="@dimen/spacing_normal"
     tools:context="com.mespace.ui.view.storephone.StorePhoneNoFragment">
 
-    <ProgressBar
-        android:id="@+id/pbPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_extra_large"
-        android:indeterminateTint="@color/blue"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ibBack"
         android:layout_width="wrap_content"
@@ -112,7 +100,7 @@
         style="@style/EditTextTheme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_normal"
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_large"
         app:hintEnabled="false"
@@ -156,5 +144,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnContinue" />
+
+    <ProgressBar
+        android:id="@+id/pbPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_extra_large"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
