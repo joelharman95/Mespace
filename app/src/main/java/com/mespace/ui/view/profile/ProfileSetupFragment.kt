@@ -70,13 +70,15 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
 
         etKeywords.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE && !TextUtils.isEmpty(etKeywords.text.toString())) {
-                println("Out_put" + " " + etKeywords.text.toString())
-                addChipToGroup(etKeywords.text.toString())
-                etKeywords.setText("")
+                if (keywordList.size < 5) {
+                    addChipToGroup(etKeywords.text.toString())
+                    etKeywords.setText("")
+                } else
+                    activity?.toast(getString(R.string.label_more_keywords))
             }
             false
         }
-        //  isUserExists()
+        // isUserExists()
 
     }
 
@@ -268,10 +270,11 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             val removedEmpty = parts.filter { it != "" }
             removedEmpty.forEach {
                 val removedComma = it.removeSuffix(",")
-                keywordList.add(removedComma)
-            }
-            keywordList.forEach {
-                createChips(it)
+                if (keywordList.size < 5) {
+                    keywordList.add(removedComma)
+                    createChips(removedComma)
+                } else
+                    activity?.toast(getString(R.string.label_more_keywords))
             }
         } else {
             keywordList.add(keyword)
@@ -280,7 +283,6 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
     }
 
     private fun createChips(keyWords: String) {
-        println("GET_______$keyWords")
         val chip = Chip(context)
         chip.text = "#$keyWords"
         chip.isCloseIconVisible = true

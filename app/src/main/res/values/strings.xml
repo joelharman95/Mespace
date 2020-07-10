@@ -50,4 +50,5 @@
     <string name="username_required">Username required</string>
     <string name="email_address_required">Email address required</string>
     <string name="valid_email_required">Valid email address required</string>
+    <string name="label_more_keywords">Cannot add more than five keywords</string>
 </resources>

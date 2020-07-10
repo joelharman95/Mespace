@@ -36,10 +36,10 @@
             app:srcCompat="@drawable/ic_back_1" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/tvProfileSetup"
             style="@style/TitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/ibBack"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
@@ -48,15 +48,11 @@
             app:layout_constraintTop_toBottomOf="@+id/ibBack" />
 
 
-
-
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -66,22 +62,21 @@
                     android:id="@+id/ivProfile"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:background="@color/transparent"
                     android:src="@drawable/profile_bg"
-                    android:layout_gravity="center"
-                    android:layout_centerInParent="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivEditDp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/spacing_small"
                     android:padding="@dimen/spacing_normal"
-                    android:layout_centerInParent="true"
                     app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
                     app:layout_constraintEnd_toEndOf="@id/ivProfile"
                     app:layout_constraintStart_toStartOf="@id/ivProfile"
@@ -101,18 +96,18 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:paddingEnd="@dimen/spacing_small"
-                    android:layout_gravity="center"
 
                     android:paddingBottom="@dimen/spacing_small"
                     android:src="@drawable/ic_icon_name" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilName"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/EditTextTheme"
                     android:layout_marginStart="@dimen/size_15"
                     android:hint="@string/label_name">
 
@@ -134,30 +129,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/llName">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:paddingEnd="5dp"
                     android:paddingBottom="5dp"
-                    android:layout_gravity="center"
                     android:src="@drawable/ic_icon_mail"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilEmail"
+                    style="@style/EditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_15"
-                    style="@style/EditTextTheme"
                     android:background="@color/transparent"
-                    android:hint="@string/label_email"
-                    >
+                    android:hint="@string/label_email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmail"
@@ -177,8 +171,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/llEmail">
 
@@ -229,16 +223,16 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnUpdate"
             style="@style/ConnectionButton"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/spacing_medium"
             android:background="@color/blue"
             android:backgroundTint="@color/blue"
             android:text="@string/action_update_profile"
-            app:cornerRadius="@dimen/spacing_medium"
-            android:layout_marginBottom="50dp"
-            android:layout_alignParentBottom="true"
-            />
+            app:cornerRadius="@dimen/spacing_medium" />
 
     </RelativeLayout>
 
