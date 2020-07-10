@@ -8,10 +8,12 @@
 
 package com.mespace.ui.view.splash
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.lifecycleScope
@@ -35,7 +37,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SplashFragment : Fragment(), LifecycleObserver {
 
     private val viewModel by viewModel<ReferenceViewModel>()
-
+    private val MY_PERMISSIONS_REQUEST_GPS = 111
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
@@ -53,7 +55,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
         super.onActivityCreated(savedInstanceState)
         lifecycleScope.launch {
             delay(2000)
-            PreferenceManager(requireContext()).apply {
+          /*PreferenceManager(requireContext()).apply {
                 if (getIsLaunchedOnce()) {
                     if (getUserId() != "")
                         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
@@ -61,7 +63,9 @@ class SplashFragment : Fragment(), LifecycleObserver {
                         findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
                 } else
                     findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
-            }
+            }*/
+
+            findNavController().navigate(R.id.profileSetupFragment)
         }
         //  getToken()
     }
@@ -81,5 +85,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
         } else
             activity?.toast("No internet available!")
     }
+
+
 
 }

@@ -77,7 +77,7 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
 
         btnContinue.setOnClickListener {
             if (TextUtils.isEmpty(tiePhoneNo.text.toString())) {
-                tiePhoneNo.error = getString(R.string.label_invalid_no)
+
                 activity?.toast(getString(R.string.label_invalid_no))
                 return@setOnClickListener
             }

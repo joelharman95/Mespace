@@ -1,0 +1,52 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.mespace.ui.view.neareststore.NearestStoreFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlCatogory"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivCategoryBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mespace.utils.CommonTextView
+            android:id="@+id/tvTitle"
+            style="@style/ToolbarTextView"
+            android:layout_width="0dp"
+            android:text="@string/label_store"
+            app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
+            app:layout_constraintStart_toEndOf="@id/ivCategoryBack"
+            app:layout_constraintTop_toTopOf="@id/ivCategoryBack" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line_color" />
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nearest_store_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/layout_search_store_item" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

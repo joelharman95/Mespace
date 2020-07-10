@@ -124,6 +124,7 @@
             android:drawableEnd="@drawable/ic_arrow_down"
             android:drawableRight="@drawable/ic_arrow_down"
             android:inputType="number"
+            android:paddingStart="0dp"
             android:longClickable="false"
             android:text="+91" />
 
@@ -137,6 +138,7 @@
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_tiny"
         app:hintEnabled="false"
+        style="@style/EditTextTheme"
         app:layout_constraintBottom_toBottomOf="@id/tilCountryCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tilCountryCode"
@@ -149,6 +151,7 @@
             android:background="@color/transparent"
             android:hint="@string/label_phone_no"
             android:maxLength="11"
+            android:paddingStart="0dp"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:longClickable="false" />

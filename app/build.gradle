@@ -38,7 +38,7 @@ android {
             applicationIdSuffix ".dev"
             buildConfigField 'String', 'BASE_URL', '"http://mespace.know3.com/mespaceapi/"'
             buildConfigField 'String', 'DEVICE', '"android"'
-            resValue "string", "app_name", "Mespace Dev"
+            resValue "string", "app_name", "Mespace"
         }
         prod {
             versionCode 1

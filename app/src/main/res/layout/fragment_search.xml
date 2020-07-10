@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.mespace.ui.view.search.SearchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,58 +51,56 @@
         <com.mespace.utils.CommonEditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-
             android:layout_centerVertical="true"
-            android:drawablePadding="3dp"
+
+            android:layout_marginLeft="@dimen/size_15"
             android:background="@null"
             android:drawableRight="@drawable/ic_icon_search_home"
-            android:layout_marginLeft="@dimen/size_15"
+            android:drawablePadding="3dp"
             android:hint="@string/search_hint"
-            />
+            android:padding="5dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="right|center"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_search"
-            />
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center"
+            android:src="@drawable/ic_search" />
     </RelativeLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginLeft="@dimen/size_20"
         android:layout_marginRight="@dimen/size_20"
         android:layout_marginBottom="@dimen/size_20"
-        android:padding="5dp"
-        >
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:id="@+id/user_heading"
             android:orientation="vertical"
 
             >
-        <com.mespace.utils.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/size_18"
-            />
+
+            <com.mespace.utils.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="User"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                android:textStyle="bold" />
 
             <FrameLayout
                 android:layout_width="30dp"
                 android:layout_height="5dp"
-                android:background="@color/colorPrimary"
                 android:layout_marginLeft="5dp"
+                android:background="@color/colorPrimary"
 
                 />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -110,26 +109,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-android:orientation="vertical"
-            >
-        <com.mespace.utils.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:textSize="@dimen/size_18"
-            android:text="Store"
+            android:id="@+id/store_heading"
+            android:orientation="vertical">
 
-            />
+            <com.mespace.utils.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Store"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                android:textStyle="bold"
+
+                />
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="5dp"
                 android:layout_marginLeft="5dp"
 
-                android:background="@color/colorPrimary"
-                />
+                android:background="@color/colorPrimary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -138,13 +137,52 @@ android:orientation="vertical"
             android:layout_weight="1"
 
             >
+
             <com.mespace.utils.CommonTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-android:visibility="invisible"
                 android:text="User"
-                />
+                android:visibility="invisible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ProgressBar
+        android:id="@+id/pbSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/blue" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/user_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_20"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/layout_search_user_item" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/store_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/size_20"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/store_serach_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/layout_search_store_item" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

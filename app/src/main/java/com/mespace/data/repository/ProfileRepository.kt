@@ -21,7 +21,8 @@ import kotlinx.coroutines.withContext
 
 private class ProfileRepositoryImpl(
     private val api: ProfileApi
-) : ProfileRepository {
+) : ProfileRepository
+{
 
     override suspend fun isUserExists(
         reqIsUserExists: ReqIsUserExists,

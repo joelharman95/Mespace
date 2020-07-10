@@ -98,4 +98,9 @@
         android:name="com.mespace.ui.view.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/nearestStoreFragment"
+        android:name="com.mespace.ui.view.neareststore.NearestStoreFragment"
+        android:label="fragment_nearest_store"
+        tools:layout="@layout/fragment_nearest_store" />
 </navigation>

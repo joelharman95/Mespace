@@ -8,16 +8,17 @@
 
 package com.mespace.ui.view.appintro
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
 import com.mespace.R
 import com.mespace.data.preference.PreferenceManager
 import kotlinx.android.synthetic.main.app_intro_fragment.*
+
 
 class AppIntroFragment : Fragment(), LifecycleObserver {
 
@@ -35,6 +36,13 @@ class AppIntroFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = requireActivity().getWindow()
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(Color.WHITE)
+        }
 
         PreferenceManager(requireContext()).apply {
             saveIsLaunchedOnce(true)

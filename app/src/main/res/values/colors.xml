@@ -16,4 +16,6 @@
     <color name="subtitle_color">#666666</color>
     <color name="country_code">#8992A3</color>
     <color name="line_color">#e4e9f2</color>
+    <color name="light_color">#6e6e6e</color>
+    <color name="gray_color">#959dac</color>
 </resources>

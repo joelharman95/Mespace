@@ -20,12 +20,13 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:maxLength="20"
-
+        android:textColor="@color/black"
         android:singleLine="true"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Add a Space"
         android:padding="5dp"
+
 
 
         />

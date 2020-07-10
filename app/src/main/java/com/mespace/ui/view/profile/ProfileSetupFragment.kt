@@ -70,6 +70,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
 
         etKeywords.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE && !TextUtils.isEmpty(etKeywords.text.toString())) {
+                println("Out_put"+ " "+ etKeywords.text.toString())
                 addChipToGroup(etKeywords.text.toString())
                 etKeywords.setText("")
             }
@@ -184,7 +185,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
     private fun requestRuntimePermission() {
         requestPermissions(
             arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.CAMERA
             ), READ_EXTERNAL_STORAGE_REQUEST_CODE
         )
     }
@@ -262,18 +263,48 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
     }
 
     private fun addChipToGroup(keyword: String) {
-        val chip = Chip(context)
-        keywordList.add(keyword)
-        chip.text = "#$keyword"
-        chip.isCloseIconVisible = true
-        chip.isClickable = true
-        chip.isCheckable = false
-        cgTag.addView(chip as View)
-        chip.setOnCloseIconClickListener {
-            val new = chip.text.removePrefix("#")
-            keywordList.remove(new)
-            cgTag.removeView(chip as View)
+
+        if(keyword.contains("#"))
+        {
+
+            val parts = keyword.split("#")
+            println("Out_put"+ " "+ parts[0] + " "+ parts[1])
+            val chip = Chip(context)
+            keywordList.add(parts[0])
+            keywordList.add(parts[1])
+
+
+
+            for(i in keywordList)
+            {
+                chip.text = "#$i"
+            }
+            chip.isCloseIconVisible = true
+            chip.isClickable = true
+            chip.isCheckable = false
+            cgTag.addView(chip as View)
+            chip.setOnCloseIconClickListener {
+                val new = chip.text.removePrefix("#")
+                keywordList.remove(new)
+                cgTag.removeView(chip as View)
+            }
         }
+        else{
+            val chip = Chip(context)
+            keywordList.add(keyword)
+            chip.text = "#$keyword"
+            chip.isCloseIconVisible = true
+            chip.isClickable = true
+            chip.isCheckable = false
+            cgTag.addView(chip as View)
+            chip.setOnCloseIconClickListener {
+                val new = chip.text.removePrefix("#")
+                keywordList.remove(new)
+                cgTag.removeView(chip as View)
+            }
+        }
+
+
     }
 
 }

@@ -34,6 +34,7 @@
     <string name="label_my_space">My Space</string>
     <string name="label_category">Category</string>
     <string name="label_search">Search</string>
+    <string name="label_store">Near by Stores</string>
     <string name="label_notification">Notification</string>
     <string name="label_phone_no_empty">Phone number cannot be empty</string>
     <string name="label_invalid_no">Invalid phone number</string>

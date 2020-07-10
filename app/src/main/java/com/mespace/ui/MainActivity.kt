@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                             findNavController(R.id.activityNavHost).navigateUp()
                         }
                     }
-                    toast(e.toString())
+                    toast("Kindly check mobile number")
                 } else if (e is FirebaseTooManyRequestsException) {
                     toast("Quota exceeded.")
                 } else

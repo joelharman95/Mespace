@@ -12,15 +12,12 @@ import android.content.Context
 import com.mespace.data.network.api.service.HomeApi
 import com.mespace.data.network.api.service.ProfileApi
 import com.mespace.data.network.api.service.ReferenceApi
+import com.mespace.data.network.api.service.SearchUserApi
 import com.mespace.data.network.http.HttpClientManager
 import com.mespace.data.network.http.createApi
 import com.mespace.data.preference.PreferenceManager.Companion.PREFERENCE_NAME
-import com.mespace.data.repository.HomeRepository
-import com.mespace.data.repository.ProfileRepository
-import com.mespace.data.repository.ReferenceRepository
-import com.mespace.data.viewmodel.HomeViewModel
-import com.mespace.data.viewmodel.ProfileViewModel
-import com.mespace.data.viewmodel.ReferenceViewModel
+import com.mespace.data.repository.*
+import com.mespace.data.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -35,6 +32,7 @@ val NETWORKING_MODULE = module {
     single { get<HttpClientManager>().createApi<ReferenceApi>() }
     single { get<HttpClientManager>().createApi<ProfileApi>() }
     single { get<HttpClientManager>().createApi<HomeApi>() }
+    single { get<HttpClientManager>().createApi<SearchUserApi>() }
 
 }
 
@@ -46,6 +44,8 @@ val REPOSITORY_MODULE = module {
     single { ReferenceRepository.create(get()) }
     single { ProfileRepository.create(get()) }
     single { HomeRepository.create(get()) }
+    single { SearchRepository.create(get()) }
+    single { NearestStoreListRepository.create(get()) }
 }
 
 /**
@@ -55,6 +55,9 @@ val VIEW_MODEL_MODULE = module {
     viewModel { ReferenceViewModel(get(), androidContext()) }
     viewModel { ProfileViewModel(get(), androidContext()) }
     viewModel { HomeViewModel(get(), androidContext()) }
+    viewModel { SearchViewModel(get(), androidContext()) }
+    viewModel { NearestStoreListViewModel(get(), androidContext()) }
+
 }
 
 fun getSharedPreference(context: Context) =

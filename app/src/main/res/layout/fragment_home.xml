@@ -67,7 +67,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/spacing_tiny"
-                                android:maxLength="20"
+                                android:maxLength="15"
+                                android:singleLine="true"
                                 android:padding="5dp"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/size_16"
@@ -92,13 +93,26 @@
                             android:src="@drawable/ic_icon_favorite_white" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                       android:visibility="invisible"
+                            android:layout_marginEnd="@dimen/spacing_tiny"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_icon_favorite_white" />
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_notification" />
-
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:visibility="invisible"
+                            android:layout_marginEnd="@dimen/spacing_tiny"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_icon_favorite_white" />
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -106,7 +120,13 @@
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_recent_chat" />
-
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:visibility="invisible"
+                            android:layout_marginEnd="@dimen/spacing_tiny"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_icon_favorite_white" />
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -129,7 +149,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/size_18"
+                    android:layout_marginTop="30dp"
                     android:src="@drawable/ic_home_chat" />
 
                 <com.mespace.utils.CommonTextView
@@ -198,6 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Near by Stores"
+                    android:layout_marginTop="30dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
@@ -218,6 +239,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="My Space"
+                    android:layout_marginTop="30dp"
+
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
