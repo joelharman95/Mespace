@@ -78,7 +78,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             }
             false
         }
-        // isUserExists()
+        isUserExists()
 
     }
 

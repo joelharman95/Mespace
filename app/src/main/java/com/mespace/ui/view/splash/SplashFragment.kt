@@ -65,7 +65,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
                     findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
             }*/
 
-            findNavController().navigate(R.id.profileSetupFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
         }
         //  getToken()
     }
