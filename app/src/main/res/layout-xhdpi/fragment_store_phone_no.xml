@@ -1,0 +1,160 @@
+<!--
+  ~ /**
+  ~  * Created by Nethaji on 27/6/20 8:11 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27/6/20 8:11 PM
+  ~  */
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginEnd="@dimen/spacing_normal"
+    android:layout_marginBottom="@dimen/spacing_normal"
+    tools:context="com.mespace.ui.view.storephone.StorePhoneNoFragment">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_1" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvPhoneNo"
+        style="@style/TitleTextView_xxhtpi"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:text="@string/label_your_phone_no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibBack" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvSubtitle"
+        style="@style/TextViewSubTitle_xxhtpi"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:text="@string/label_get_started"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhoneNo" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvCountryCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:text="@string/label_country_code"
+        android:textColor="@color/country_code"
+        android:textSize="@dimen/size_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/clCountryCode" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCountryCode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tilPhoneNo"
+        app:layout_constraintEnd_toEndOf="@id/tvCountryCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tilPhoneNo">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccpEt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/country_code_underline"
+            android:gravity="bottom"
+            android:paddingBottom="@dimen/spacing_tiny"
+            app:ccp_arrowColor="@color/black"
+            app:ccp_contentColor="@color/country_code"
+            app:ccp_defaultNameCode="91"
+            app:ccp_showArrow="false"
+            app:ccp_showFlag="false"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:ccp_textGravity="LEFT" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignEnd="@id/ccpEt"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:src="@drawable/ic_keyboard_arrow_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhoneNo"
+        style="@style/EditTextTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/clCountryCode"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:hint="@string/label_phone_no"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:longClickable="false"
+            android:maxLength="11"
+            android:paddingStart="0dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnContinue"
+        style="@style/ConnectionButton"
+        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
+        android:text="@string/action_continue"
+        app:cornerRadius="@dimen/spacing_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilPhoneNo" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvSignInOrUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:padding="@dimen/spacing_small"
+        android:text="@string/are_you_a_business_sign_up"
+        android:textColor="@color/subtitle_color"
+        android:textSize="@dimen/size_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnContinue" />
+
+    <ProgressBar
+        android:id="@+id/pbPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_extra_large"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

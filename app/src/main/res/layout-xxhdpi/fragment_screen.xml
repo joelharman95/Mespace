@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by Nethaji on 27/6/20 5:15 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27/6/20 5:15 PM
+  ~  */
+  -->
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="@string/label_virtual_customer_interaction"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_26" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubTitle"
+                style="@style/TextViewSubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitle"
+android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/label_socialize_subtitle"
+
+                />
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+
+    android:orientation="vertical"
+    >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+
+        android:src="@drawable/ic_walkthrough_1" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_below="@+id/ivPic"
+        android:orientation="horizontal"
+        android:padding="@dimen/size_15">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="@dimen/spacing_small"
+            android:layout_height="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:background="@drawable/circle_shape_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/ivPic" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="@dimen/spacing_small"
+            android:layout_height="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:background="@drawable/circle_shape_grey" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="@dimen/spacing_small"
+            android:layout_height="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--<androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSkip"
+                style="@style/SkipTextView"
+                android:text="@string/action_skip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />-->
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -59,6 +59,7 @@
         app:cursorColor="@color/blue"
         app:itemCount="6"
         app:itemSpacing="@dimen/spacing_small"
+        app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPhoneSubtitle"

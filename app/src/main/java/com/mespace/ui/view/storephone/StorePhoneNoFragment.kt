@@ -8,11 +8,11 @@
 
 package com.mespace.ui.view.storephone
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
@@ -41,6 +41,13 @@ class StorePhoneNoFragment : Fragment(), LifecycleObserver {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = requireActivity().getWindow()
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(Color.WHITE)
+        }
 
         tvSignInOrUp.applySpanPo(
             getString(R.string.are_you_a_business),

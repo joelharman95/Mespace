@@ -9,10 +9,11 @@
 package com.mespace.ui.view.splash
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
@@ -51,8 +52,15 @@ class SplashFragment : Fragment(), LifecycleObserver {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = requireActivity().getWindow()
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(R.color.splash_iamge)
+        }
         lifecycleScope.launch {
             delay(2000)
           /*PreferenceManager(requireContext()).apply {
