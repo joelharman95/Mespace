@@ -51,4 +51,9 @@
     <string name="email_address_required">Email address required</string>
     <string name="valid_email_required">Valid email address required</string>
     <string name="label_more_keywords">Cannot add more than five keywords</string>
+    <string name="label_location">LOCATION</string>
+    <string name="label_space_phone">PHONE</string>
+    <string name="label_open_hours">OPENING HOURS</string>
+    <string name="label_description">DESCRIPTION</string>
+
 </resources>

@@ -1,0 +1,402 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mespace.ui.view.addaspace.AddaspaceFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlCatogory"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/size_20"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ibAddSpaceBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mespace.utils.CommonTextView
+            android:id="@+id/tvTitle"
+            style="@style/ToolbarTextView"
+            android:layout_width="0dp"
+            android:text="Add a Space"
+            app:layout_constraintBottom_toBottomOf="@id/ibAddSpaceBack"
+            app:layout_constraintStart_toEndOf="@id/ibAddSpaceBack"
+            app:layout_constraintTop_toTopOf="@id/ibAddSpaceBack" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line_color" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/size_20"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubTitle"
+                style="@style/TextViewSubTitle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitle"
+                android:gravity="center"
+
+                android:text="Space is a group of people belongs to a"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubTitle_new"
+                style="@style/TextViewSubTitle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitle"
+
+                android:gravity="center"
+
+                android:text="business or a community or an interest."
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:background="@color/transparent"
+                    android:src="@drawable/profile_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivEditDp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:padding="@dimen/spacing_normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                    app:layout_constraintEnd_toEndOf="@id/ivProfile"
+                    app:layout_constraintStart_toStartOf="@id/ivProfile"
+                    app:layout_constraintTop_toTopOf="@+id/ivProfile"
+                    app:srcCompat="@drawable/ic_camera" />
+            </RelativeLayout>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/view_below"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/store"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:checked="true"
+                    android:text="Store" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/community"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Community" />
+
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Second"
+                    android:visibility="invisible" />
+            </RadioGroup>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/EditTextTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_name"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/white"
+                    tools:text="James" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.mespace.utils.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="CATEGORY"
+                android:textColor="@color/light_color"
+                android:textSize="@dimen/size_18" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/friend_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="4"
+                tools:itemCount="8"
+                tools:listitem="@layout/layout_category_item" />
+
+            <LinearLayout
+                android:id="@+id/your_outer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"> <!-- note that vertical is the default -->
+
+                <!-- Other elements here -->
+
+                <LinearLayout
+                    android:id="@+id/eighty_percent_layout_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilLocation"
+                            style="@style/EditTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/label_location"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etLocation"
+                                style="@style/ProfileEditText"
+                                android:layout_width="match_parent"
+                                android:backgroundTint="@color/white"
+                                tools:text="James"
+                                tools:ignore="DuplicateIds" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                   >
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_icon_pin"
+                            android:layout_gravity="center|right"
+                            />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <!-- Other elements here -->
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhoneNo"
+                style="@style/EditTextTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_space_phone"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/white"
+                    tools:text="9791222882"
+                    tools:ignore="DuplicateIds" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_keywords"
+
+                    android:textSize="@dimen/size_16" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cgTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    app:chipSpacingVertical="@dimen/spacing_tiny" />
+
+                <com.mespace.utils.CommonEditText
+                    android:id="@+id/etKeywords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_color" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvCountryCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:text="@string/label_open_hours"
+        android:textColor="@color/country_code"
+        android:textSize="@dimen/size_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/clCountryCode" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilOpenTime"
+            style="@style/EditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+android:layout_weight="1"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:hintEnabled="false"
+            android:layout_marginRight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/clCountryCode"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieOpenTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="@string/label_phone_no"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:longClickable="false"
+                android:maxLength="11"
+                android:paddingStart="0dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCloseTime"
+            style="@style/EditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/clCountryCode"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieCloseTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="@string/label_phone_no"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:longClickable="false"
+                android:maxLength="11"
+                android:paddingStart="0dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDescription"
+        style="@style/EditTextTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_description"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDescription"
+            style="@style/ProfileEditText"
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/white"
+            tools:text="James" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,7 +8,9 @@
 
 package com.mespace.data.repository
 
+import com.mespace.data.network.api.request.ReqIsHomePageExists
 import com.mespace.data.network.api.request.ReqIsUserExists
+import com.mespace.data.network.api.request.ReqUpdateUser
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.network.api.response.ResIsUserExists
 import com.mespace.data.network.api.service.HomeApi
@@ -22,13 +24,14 @@ import kotlinx.coroutines.withContext
 private class HomeRepositoryImpl(
     private val api: HomeApi) : HomeRepository {
 
-    override suspend fun getUserList(
+    override suspend fun getHomePageList(
+            reqHomeUser: ReqIsHomePageExists,
         onSuccess: OnSuccess<HomeScreenResponse>,
         onError: OnError<String>
     ) {
         withContext(Dispatchers.IO) {
             try {
-                val response = api.getUserList()
+                val response = api.getHomePageList(reqIsHomePageExists = reqHomeUser)
                 if (response.isSuccessful) {
                     response.body()?.let {
                         if (it.status.toString().isSuccess())
@@ -51,9 +54,10 @@ private class HomeRepositoryImpl(
 
 interface HomeRepository {
 
-    suspend fun getUserList(
-        onSuccess: OnSuccess<HomeScreenResponse>,
-        onError: OnError<String>
+    suspend fun getHomePageList(
+            reqHomeUser: ReqIsHomePageExists,
+            onSuccess: OnSuccess<HomeScreenResponse>,
+            onError: OnError<String>
     )
 
     companion object Factory {

@@ -39,7 +39,7 @@
 
     <com.mespace.utils.CommonTextView
         android:id="@+id/tvSubtitle"
-        style="@style/TextViewSubTitle_xxhtpi"
+        style="@style/TextViewSubTitle"
         android:paddingStart="0dp"
         android:paddingLeft="0dp"
         android:text="@string/label_get_started"
@@ -81,7 +81,9 @@
             app:ccp_showFlag="false"
             app:ccp_showFullName="false"
             app:ccp_showNameCode="false"
-            app:ccp_textGravity="LEFT" />
+            app:ccp_textGravity="LEFT"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

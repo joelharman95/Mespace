@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="230dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -26,12 +26,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:src="@drawable/ic_home_vector_opacity_new" />
+                android:src="@drawable/ic_home_vector_opacity_h" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/AppBar"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_gravity="top"
                 android:background="@color/blue"
                 app:layout_collapseMode="pin">
@@ -141,15 +141,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+               android:layout_gravity="center"
+                android:id="@+id/near_by_lay"
+                android:layout_marginTop="10dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
+
                     android:src="@drawable/ic_home_chat" />
 
                 <com.mespace.utils.CommonTextView
@@ -157,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:padding="5dp"
+
                     android:text="People Nearby"
                     android:textColor="@color/white"
                     android:textSize="@dimen/size_16"
@@ -194,6 +200,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+                <com.mespace.utils.CommonTextView
+                    android:id="@+id/closest_txt"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Closest to you"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_18"
+                    android:visibility="gone"
+
+                    android:textStyle="bold" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/closest_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="4"
+                    tools:itemCount="8"
+                    android:visibility="gone"
+                    tools:listitem="@layout/layout_user_item" />
+
+
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -202,11 +236,42 @@
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/no_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="There is no friends available"
+                    android:textColor="@color/subtitle_color"
+                    android:textSize="@dimen/size_12"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                  />
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invite from your contact"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/size_12"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/friend_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="10dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -217,11 +282,36 @@
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Near by Stores"
                     android:layout_marginTop="30dp"
+                    android:text="Near by Stores"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
+
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/no_shops"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <com.mespace.utils.CommonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="There is no shops available"
+                        android:textColor="@color/subtitle_color"
+                        android:textSize="@dimen/size_12"
+                        android:layout_marginTop="10dp"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/store_list"
@@ -238,18 +328,52 @@
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="My Space"
                     android:layout_marginTop="30dp"
+                    android:text="My Space"
 
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/add_new_space"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginTop="15dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="5dp"
+                        android:padding="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_icon_add_space" />
+
+                    <com.mespace.utils.CommonTextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:maxLength="25"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Add a Space"
+                        android:padding="5dp"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/my_space"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="10dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

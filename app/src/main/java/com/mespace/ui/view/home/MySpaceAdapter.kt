@@ -34,7 +34,9 @@ class MySpaceAdapter(val mySpace: mySpace) :
 
     fun addCategoryList(_categoryList: List<HomeScreenResponse.Detail.Mespace>) {
         userList.addAll(_categoryList)
-        userList.add(HomeScreenResponse.Detail.Mespace())
+
+       // userList.add(HomeScreenResponse.Detail.Mespace())
+
         notifyDataSetChanged()
     }
 

@@ -8,6 +8,7 @@
 
 package com.mespace.data.network.api.service
 
+import com.mespace.data.network.api.request.ReqIsHomePageExists
 import com.mespace.data.network.api.request.ReqIsUserExists
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.network.api.response.ResIsUserExists
@@ -22,9 +23,10 @@ import retrofit2.http.Query
 
 interface HomeApi {
 
-    @GET(INDEX)
-    suspend fun getUserList(
-        @Query("type") type: String = Home_API
+    @POST(INDEX)
+    suspend fun getHomePageList(
+        @Query("type") type: String = Home_API,
+        @Body reqIsHomePageExists: ReqIsHomePageExists
     ): Response<HomeScreenResponse>
 
 }

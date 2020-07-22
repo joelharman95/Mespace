@@ -18,7 +18,7 @@ object API {
     const val INDEX = "index"
     const val USER_EXISTS = "user_exists"
     const val UPDATE_PROFILE = "update_profile"
-    const val Home_API = "homescreen"
+    const val Home_API = "homescreen_api"
     const val Search_User_Api = "static_users_list"
     const val Search_Store_Api = "static_store_list"
 }

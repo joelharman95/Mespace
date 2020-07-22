@@ -9,12 +9,12 @@ import com.mespace.R
 class TitleTextView : AppCompatTextView {
 
     constructor(context: Context) : super(context) {
-        val typeface = ResourcesCompat.getFont(context, R.font.googlesans_regular);
+        val typeface = ResourcesCompat.getFont(context, R.font.googlesansregular);
         setTypeface(typeface)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        val typeface = ResourcesCompat.getFont(context, R.font.googlesans_regular);
+        val typeface = ResourcesCompat.getFont(context, R.font.googlesansregular);
         setTypeface(typeface)
     }
 
@@ -23,7 +23,7 @@ class TitleTextView : AppCompatTextView {
         attrs,
         defStyleAttr
     ) {
-        val typeface = ResourcesCompat.getFont(context, R.font.googlesans_regular);
+        val typeface = ResourcesCompat.getFont(context, R.font.googlesansregular);
         setTypeface(typeface)
     }
 

@@ -38,7 +38,7 @@
 
     <com.mespace.utils.CommonTextView
         android:id="@+id/tvSubtitle"
-        style="@style/TextViewSubTitle_xxhtpi"
+        style="@style/TextViewSubTitle"
         android:paddingStart="0dp"
         android:paddingLeft="0dp"
         android:text="@string/label_get_started"

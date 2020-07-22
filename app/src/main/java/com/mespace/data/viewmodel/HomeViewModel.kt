@@ -11,7 +11,9 @@ package com.mespace.data.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mespace.data.network.api.request.ReqIsHomePageExists
 import com.mespace.data.network.api.request.ReqIsUserExists
+import com.mespace.data.network.api.request.ReqUpdateUser
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.network.api.response.ResIsUserExists
 import com.mespace.data.repository.HomeRepository
@@ -25,12 +27,14 @@ class HomeViewModel(
     val context: Context
 ) : ViewModel() {
 
-    fun getUserList(
-        onSuccess: OnSuccess<HomeScreenResponse>,
-        onError: OnError<String>
+    fun getHomePageList(
+            reqUpdateUser: ReqIsHomePageExists,
+            onSuccess: OnSuccess<HomeScreenResponse>,
+            onError: OnError<String>
     ) {
         viewModelScope.launch {
-            repository.getUserList(onSuccess, onError)
+            repository.getHomePageList(
+                    reqUpdateUser,onSuccess, onError)
         }
     }
 

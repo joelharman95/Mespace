@@ -103,4 +103,9 @@
         android:name="com.mespace.ui.view.neareststore.NearestStoreFragment"
         android:label="fragment_nearest_store"
         tools:layout="@layout/fragment_nearest_store" />
+    <fragment
+        android:id="@+id/addaspaceFragment"
+        android:name="com.mespace.ui.view.addaspace.AddaspaceFragment"
+        android:label="fragment_addspace"
+        tools:layout="@layout/fragment_addspace" />
 </navigation>
