@@ -22,7 +22,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 private class HomeRepositoryImpl(
-    private val api: HomeApi) : HomeRepository {
+    private val api: HomeApi) : HomeRepository
+{
 
     override suspend fun getHomePageList(
             reqHomeUser: ReqIsHomePageExists,

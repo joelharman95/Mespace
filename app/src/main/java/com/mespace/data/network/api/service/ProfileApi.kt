@@ -24,14 +24,14 @@ interface ProfileApi {
 
     @POST(INDEX)
     suspend fun isUserExists(
-        @Query("type") type: String = USER_EXISTS,
-        @Body reqIsUserExists: ReqIsUserExists
+            @Query("type") type: String = USER_EXISTS,
+            @Body reqIsUserExists: ReqIsUserExists
     ): Response<ResIsUserExists>
 
     @POST(INDEX)
     suspend fun addOrUpdateProfile(
-        @Query("type") type: String = UPDATE_PROFILE,
-        @Body reqUpdateUser: ReqUpdateUser
+            @Query("type") type: String = UPDATE_PROFILE,
+            @Body reqUpdateUser: ReqUpdateUser
     ): Response<ResUserUpdate>
 
 }

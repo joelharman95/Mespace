@@ -1,11 +1,3 @@
-/*
- * *
- *  * Created by Nethaji on 27/6/20 1:18 PM
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 27/6/20 12:32 PM
- *
- */
-
 package com.mespace.di.utility
 
 object Constants {

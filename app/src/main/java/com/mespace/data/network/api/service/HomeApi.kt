@@ -1,11 +1,3 @@
-/*
- * *
- *  * Created by Nethaji on 27/6/20 1:43 PM
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 27/6/20 1:41 PM
- *
- */
-
 package com.mespace.data.network.api.service
 
 import com.mespace.data.network.api.request.ReqIsHomePageExists
@@ -25,8 +17,8 @@ interface HomeApi {
 
     @POST(INDEX)
     suspend fun getHomePageList(
-        @Query("type") type: String = Home_API,
-        @Body reqIsHomePageExists: ReqIsHomePageExists
+            @Query("type") type: String = Home_API,
+            @Body reqIsHomePageExists: ReqIsHomePageExists
     ): Response<HomeScreenResponse>
 
 }
