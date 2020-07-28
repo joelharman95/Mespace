@@ -50,16 +50,16 @@ class SearchStoreUserAdapter(val user: storeUser) :
             view.apply {
 
 
-                    userList[position].let { _category ->
+                userList[position].let { _category ->
 
-                        ivUserPic.loadCircularImage(_category.profile_image)
-                        tvUserName.text = _category.name
-                        tvUserProfile.text = _category.distance
-                        tvDes.text = _category.name
-                       tvShopStatus.text = _category.open_hours
-                        tvCategory.text = _category.close_hours
+                    ivUserPic.loadCircularImage(_category.profile_image)
+                    tvUserName.text = _category.name
+                    tvUserProfile.text = _category.distance
+                    tvDes.text = _category.name
+                    tvShopStatus.text = _category.open_hours
+                    tvCategory.text = _category.close_hours
 
-                    }
+                }
 
 
             }

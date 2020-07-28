@@ -55,5 +55,8 @@
     <string name="label_space_phone">PHONE</string>
     <string name="label_open_hours">OPENING HOURS</string>
     <string name="label_description">DESCRIPTION</string>
+    <string name="label_my_friends">My Friends</string>
+    <string name="closed">Closed</string>
+    <string name="open">Open</string>
 
 </resources>

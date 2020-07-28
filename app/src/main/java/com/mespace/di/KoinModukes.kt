@@ -9,10 +9,7 @@
 package com.mespace.di
 
 import android.content.Context
-import com.mespace.data.network.api.service.HomeApi
-import com.mespace.data.network.api.service.ProfileApi
-import com.mespace.data.network.api.service.ReferenceApi
-import com.mespace.data.network.api.service.SearchUserApi
+import com.mespace.data.network.api.service.*
 import com.mespace.data.network.http.HttpClientManager
 import com.mespace.data.network.http.createApi
 import com.mespace.data.preference.PreferenceManager.Companion.PREFERENCE_NAME
@@ -21,6 +18,7 @@ import com.mespace.data.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import kotlin.math.sin
 
 /**
  * Networking modules here
@@ -33,7 +31,9 @@ val NETWORKING_MODULE = module {
     single { get<HttpClientManager>().createApi<ProfileApi>() }
     single { get<HttpClientManager>().createApi<HomeApi>() }
     single { get<HttpClientManager>().createApi<SearchUserApi>() }
-
+    single { get<HttpClientManager>().createApi<NearestStoreList>() }
+    single { get<HttpClientManager>().createApi<MyFriendsListApi>() }
+    single { get<HttpClientManager>().createApi<ClosestToApi>() }
 }
 
 /**
@@ -46,6 +46,8 @@ val REPOSITORY_MODULE = module {
     single { HomeRepository.create(get()) }
     single { SearchRepository.create(get()) }
     single { NearestStoreListRepository.create(get()) }
+    single { MyFriendsListRepository.create(get()) }
+    single { ClosestToRepository.create(get()) }
 }
 
 /**
@@ -57,7 +59,8 @@ val VIEW_MODEL_MODULE = module {
     viewModel { HomeViewModel(get(), androidContext()) }
     viewModel { SearchViewModel(get(), androidContext()) }
     viewModel { NearestStoreListViewModel(get(), androidContext()) }
-
+    viewModel { MyFriendsListViewModel(get(),androidContext()) }
+    viewModel { ClosestToViewModel(get(),androidContext()) }
 }
 
 fun getSharedPreference(context: Context) =

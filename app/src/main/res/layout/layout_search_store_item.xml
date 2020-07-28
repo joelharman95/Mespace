@@ -79,10 +79,10 @@
 
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/size_13"
-                    tools:text="Description here" />
+                    tools:text="Open till 9 PM" />
 
 
-                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                <com.google.android.material.card.MaterialCardView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

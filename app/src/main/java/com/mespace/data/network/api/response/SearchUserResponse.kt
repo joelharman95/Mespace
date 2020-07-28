@@ -6,7 +6,7 @@ data class SearchUserResponse(
     val status: Int
 ) {
     data class Detail(
-        val userlist: List<Userlist>
+        val user_list: List<Userlist>
     ) {
         data class Userlist(
             val country_code: String,
@@ -15,7 +15,14 @@ data class SearchUserResponse(
             val name: String,
             val phone_no: String,
             val profile_image: String,
-            val user_id: String
+            val user_id: String,
+            val type: String,
+            val tag_name: String,
+            val open_hours: String,
+            val close_hours: String,
+            val categories_name: String,
+            val open_close:String,
+            val description:String
         )
     }
 }

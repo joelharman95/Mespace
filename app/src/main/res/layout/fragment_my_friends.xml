@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.mespace.ui.view.neareststore.NearestStoreFragment">
+    tools:context="com.mespace.ui.view.myfriendslist.MyFriendsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlCatogory"
@@ -29,13 +29,13 @@
             android:id="@+id/tvTitle"
             style="@style/ToolbarTextView"
             android:layout_width="0dp"
-            android:text="@string/label_store"
+            android:text="@string/label_my_friends"
             android:padding="5dp"
             android:textSize="@dimen/size_20"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
             app:layout_constraintStart_toEndOf="@id/ivCategoryBack"
             app:layout_constraintTop_toTopOf="@id/ivCategoryBack" />
+
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/ivSearch"
@@ -46,20 +46,19 @@
             app:layout_constraintTop_toTopOf="@id/ivCategoryBack"
             app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
             app:layout_constraintEnd_toEndOf="parent"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/line_color" />
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nearest_store_list"
+        android:id="@+id/my_friends_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/layout_near_store_item_list" />
+        tools:listitem="@layout/layout_friends_list" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

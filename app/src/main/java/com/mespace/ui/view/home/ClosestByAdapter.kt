@@ -42,7 +42,7 @@ class ClosestByAdapter(val closesBy: closesBy) :
     inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bindUi(position: Int) {
             view.apply {
-                if (position <= 6) {
+                if (position < 6) {
                     closerList[position].let { _category ->
                         user_name.text = _category.name
                         user_image.loadCircularImage(_category.profile_image)
@@ -52,7 +52,7 @@ class ClosestByAdapter(val closesBy: closesBy) :
                         }
                     }
                 } else {
-                    if (position == 7) {
+                    if (position == 6) {
                         user_name.text = "Show more"
                         user_distance.visibility = View.GONE
                         user_image.loadCircularImage(R.drawable.ic_icon_show_more)

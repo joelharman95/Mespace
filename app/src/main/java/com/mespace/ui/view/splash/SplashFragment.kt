@@ -63,7 +63,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
         }
         lifecycleScope.launch {
             delay(2000)
-   /*         PreferenceManager(requireContext()).apply {
+            /*PreferenceManager(requireContext()).apply {
                 if (getIsLaunchedOnce()) {
                     if (getUserId() != "")
                         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
@@ -73,7 +73,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
                     findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
             }*/
 
-            findNavController().navigate(R.id.addaspaceFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
 
         }
         //  getToken()

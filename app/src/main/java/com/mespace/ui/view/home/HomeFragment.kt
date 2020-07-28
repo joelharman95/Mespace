@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqIsHomePageExists
@@ -27,8 +28,8 @@ class HomeFragment : Fragment(), LifecycleObserver {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -68,14 +69,17 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
         friend_list.adapter = MyFriendsAdapter {
             if (it)
-                activity?.toast("Show more clicked")
+                findNavController().navigate(R.id.action_homeFragment_to_myFriendsFragment)
+//                activity?.toast("Show more clicked")
             else
                 activity?.toast("Friends clicked")
         }
 
         store_list.adapter = NearByAdapter {
             if (it)
-                activity?.toast("Show more clicked")
+
+                findNavController().navigate(R.id.action_homeFragment_to_nearestStoreFragment)
+//                activity?.toast("Show more clicked")
             else
                 activity?.toast("Stores clicked")
         }
@@ -85,16 +89,18 @@ class HomeFragment : Fragment(), LifecycleObserver {
             else
                 activity?.toast("Myspace clicked")
         }
-        closest_list.adapter = ClosestByAdapter{
-
+        closest_list.adapter = ClosestByAdapter {
+            if(it)
+                findNavController().navigate(R.id.action_homeFragment_to_closestToYouFragment)
+            else
+                activity?.toast("Myspace clicked")
         }
 
         near_by_lay.setOnClickListener {
             if (closest_list.isShown) {
                 closest_txt.visibility = View.GONE
                 closest_list.visibility = View.GONE
-            }
-            else{
+            } else {
                 closest_txt.visibility = View.VISIBLE
                 closest_list.visibility = View.VISIBLE
             }
@@ -108,54 +114,56 @@ class HomeFragment : Fragment(), LifecycleObserver {
         blockInput(pbHome)
         homeViewModel.getHomePageList((
                 ReqIsHomePageExists(
-                        userid = "20",
-                        latitude = "11.05617456",
-                        longitude = "77.0185673"
+                    userid = "20",
+                    latitude = "11.05617456",
+                    longitude = "77.0185673"
                 )
 
                 ),
-                {
-                    unblockInput(pbHome)
+            {
+                unblockInput(pbHome)
 
-                    (closest_list.adapter as ClosestByAdapter).addCategoryList(it.detail.closest_users)
+                (closest_list.adapter as ClosestByAdapter).addCategoryList(it.detail.closest_users)
 
-                    if (it.detail.userlist.size != 0) {
-                        friend_list.visibility = View.VISIBLE
-                        no_friends.visibility = View.GONE
-                        (friend_list.adapter as MyFriendsAdapter).addCategoryList(it.detail.userlist)
+                println("HomeResponse:........${it.detail.userlist}")
 
-                    } else {
-                        no_friends.visibility = View.VISIBLE
-                        friend_list.visibility = View.GONE
-                    }
+                if (it.detail.userlist.size != 0) {
+                    friend_list.visibility = View.VISIBLE
+                    no_friends.visibility = View.GONE
+                    (friend_list.adapter as MyFriendsAdapter).addCategoryList(it.detail.userlist)
 
-
-                    if (it.detail.storelist.size != 0) {
-                        (store_list.adapter as NearByAdapter).addCategoryList(it.detail.storelist)
-
-                        store_list.visibility = View.VISIBLE
-                        no_shops.visibility = View.GONE
-                    } else {
-                        no_shops.visibility = View.VISIBLE
-                        store_list.visibility = View.GONE
-                    }
+                } else {
+                    no_friends.visibility = View.VISIBLE
+                    friend_list.visibility = View.GONE
+                }
 
 
-                    if (it.detail.mespace_list.size != 0) {
-                        friend_list.visibility = View.VISIBLE
-                        my_space.visibility = View.GONE
-                        (my_space.adapter as MySpaceAdapter).addCategoryList(it.detail.mespace_list)
+                if (it.detail.storelist.size != 0) {
+                    (store_list.adapter as NearByAdapter).addCategoryList(it.detail.storelist)
 
-                    } else {
-                        add_new_space.visibility = View.VISIBLE
-                        my_space.visibility = View.GONE
-                    }
+                    store_list.visibility = View.VISIBLE
+                    no_shops.visibility = View.GONE
+                } else {
+                    no_shops.visibility = View.VISIBLE
+                    store_list.visibility = View.GONE
+                }
 
 
-                }, {
-            unblockInput(pbHome)
-            activity?.toast(it)
-        }
+                if (it.detail.mespace_list.size != 0) {
+                    friend_list.visibility = View.VISIBLE
+                    my_space.visibility = View.GONE
+                    (my_space.adapter as MySpaceAdapter).addCategoryList(it.detail.mespace_list)
+
+                } else {
+                    add_new_space.visibility = View.VISIBLE
+                    my_space.visibility = View.GONE
+                }
+
+
+            }, {
+                unblockInput(pbHome)
+                activity?.toast(it)
+            }
         )
 
     }

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivUserPic"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:padding="5dp"
+        android:text="valentine"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_18"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivUserPic"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTag"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="40dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxEms="20"
+        android:maxLines="1"
+        android:padding="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        tools:text="#clothing" />
+
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:padding="5dp"
+        android:textColor="@color/gray_color"
+        android:textSize="@dimen/size_15"
+        tools:text="2 mi"
+        app:layout_constraintBottom_toBottomOf="@id/tvUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvUserName"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxEms="20"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:textColor="@color/light_color"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivUserPic"
+        app:layout_constraintTop_toBottomOf="@id/tvTag"
+        tools:text="Description here"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvShopStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_13"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivUserPic"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/spacing_normal"
+        app:layout_constraintBottom_toBottomOf="@id/tvShopStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvShopStatus"
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:maxEms="8"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_13"
+            tools:text="Restaurant" />
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

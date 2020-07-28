@@ -82,6 +82,15 @@
         <action
             android:id="@+id/action_homeFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nearestStoreFragment"
+            app:destination="@id/nearestStoreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myFriendsFragment"
+            app:destination="@id/myFriendsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_closestToYouFragment"
+            app:destination="@id/closestToYouFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -108,4 +117,14 @@
         android:name="com.mespace.ui.view.addaspace.AddaspaceFragment"
         android:label="fragment_addspace"
         tools:layout="@layout/fragment_addspace" />
+    <fragment
+        android:id="@+id/myFriendsFragment"
+        android:name="com.mespace.ui.view.myfriendslist.MyFriendsFragment"
+        android:label="fragment_my_friends"
+        tools:layout="@layout/fragment_my_friends" />
+    <fragment
+        android:id="@+id/closestToYouFragment"
+        android:name="com.mespace.ui.view.closesttoyou.ClosestToYouFragment"
+        android:label="fragment_closest_to_you"
+        tools:layout="@layout/fragment_closest_to_you" />
 </navigation>

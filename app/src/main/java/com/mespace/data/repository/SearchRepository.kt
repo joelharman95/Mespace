@@ -8,9 +8,6 @@
 
 package com.mespace.data.repository
 
-import com.mespace.data.network.api.request.ReqIsUserExists
-import com.mespace.data.network.api.response.HomeScreenResponse
-import com.mespace.data.network.api.response.ResIsUserExists
 import com.mespace.data.network.api.response.SearchStoreUserResponse
 import com.mespace.data.network.api.response.SearchUserResponse
 import com.mespace.data.network.api.service.SearchUserApi

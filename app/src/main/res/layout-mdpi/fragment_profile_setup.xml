@@ -156,7 +156,7 @@
                         android:id="@+id/etEmail"
                         style="@style/ProfileEditText"
                         android:background="@color/transparent"
-                        android:fontFamily="@font/roboto"
+                        android:fontFamily="@font/googlesansregular"
                         android:inputType="textEmailAddress"
                         tools:text="james@gmail.com" />
 

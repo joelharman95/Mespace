@@ -78,7 +78,7 @@ class SearchFragment : Fragment(), LifecycleObserver {
         serachViewModel.getUserList(
             {
                 unblockInput(pbSearch)
-                (user_list.adapter as SearchUserAdapter).addCategoryList(it.detail.userlist)
+                (user_list.adapter as SearchUserAdapter).addCategoryList(it.detail.user_list)
             }, {
                 unblockInput(pbSearch)
             }
