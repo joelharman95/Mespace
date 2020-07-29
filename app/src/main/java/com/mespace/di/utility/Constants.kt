@@ -1,7 +1,5 @@
 package com.mespace.di.utility
 
-import com.mespace.data.network.api.service.HomeApi
-
 object Constants {
     const val IMAGE_FROM_GALLERY = 1
     const val IMAGE_FROM_CAMERA = 2
@@ -13,7 +11,8 @@ object API {
     const val USER_EXISTS = "user_exists"
     const val UPDATE_PROFILE = "update_profile"
     const val Home_API = "homescreen_api"
-    const val HOME_API_Static="homescreen"
+    const val Category_list_Api = "category_list"
+    const val Add_new_store = "add_store_community"
     const val Search_User_Api = "static_user_list"
     const val Search_Store_Api = "static_store_list"
     const val Favourites_List = "favourites_list"

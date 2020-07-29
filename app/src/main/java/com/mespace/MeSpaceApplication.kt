@@ -9,6 +9,7 @@
 package com.mespace
 
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 import com.mespace.di.NETWORKING_MODULE
 import com.mespace.di.REPOSITORY_MODULE
@@ -19,7 +20,9 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class MeSpaceApplication : Application() {
+class MeSpaceApplication : MultiDexApplication() {
+
+
 
     override fun onCreate() {
         super.onCreate()

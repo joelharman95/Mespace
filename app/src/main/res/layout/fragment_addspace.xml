@@ -6,11 +6,13 @@
     android:orientation="vertical"
     tools:context="com.mespace.ui.view.addaspace.AddaspaceFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlCatogory"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginLeft="@dimen/lay_space_medium"
+        android:layout_marginRight="@dimen/lay_space_medium"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -48,14 +50,15 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/size_20"
-            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/lay_space_medium"
+            android:layout_marginRight="@dimen/lay_space_medium"
+            android:layout_marginTop="@dimen/lay_space_hight"
             android:orientation="vertical">
 
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSubTitle"
-                style="@style/TextViewSubTitle_new"
+                style="@style/AsTextViewSubTitle_new"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvTitle"
@@ -67,11 +70,10 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSubTitle_new"
-                style="@style/TextViewSubTitle_new"
+                style="@style/AsTextViewSubTitle_new"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvTitle"
-
                 android:gravity="center"
 
                 android:text="business or a community or an interest."
@@ -81,7 +83,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="@dimen/lay_space_hight"
+              >
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivProfile"
@@ -89,7 +92,6 @@
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/spacing_medium"
                     android:background="@color/transparent"
                     android:src="@drawable/profile_bg"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,11 +111,26 @@
                     app:srcCompat="@drawable/ic_camera" />
             </RelativeLayout>
 
+            <ProgressBar
+                android:id="@+id/asLoader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/blue"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <RadioGroup
                 android:id="@+id/radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/view_below"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 android:orientation="horizontal">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -122,6 +139,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:checked="true"
+                    android:textSize="@dimen/size_18"
+                    android:textStyle="bold"
                     android:text="Store" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -129,6 +148,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:textSize="@dimen/size_18"
+                    android:textStyle="bold"
                     android:text="Community" />
 
                 <RadioButton
@@ -147,11 +168,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/label_name"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etName"
+                    android:id="@+id/asName"
                     style="@style/ProfileEditText"
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/white"
@@ -162,19 +184,77 @@
             <com.mespace.utils.CommonTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/lay_space_hight"
+                android:layout_marginBottom="5dp"
                 android:text="CATEGORY"
                 android:textColor="@color/light_color"
                 android:textSize="@dimen/size_18" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/friend_list"
+                android:id="@+id/category_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="4"
-                tools:itemCount="8"
+                app:spanCount="2"
+                android:layout_marginTop="@dimen/lay_space_hight"
+                tools:itemCount="6"
                 tools:listitem="@layout/layout_category_item" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="@dimen/lay_space_hight"
+                    android:layout_marginRight="5dp"
+
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_location"
+                    android:textColor="@color/country_code"
+                    android:textSize="@dimen/size_14"
+                    android:paddingBottom="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/clCountryCode" />
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="@string/label_location"
+                    android:textSize="@dimen/size_18"
+                    android:textStyle="bold"
+
+                    />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.mespace.utils.CommonTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_location"
+                    android:textColor="@color/country_code"
+                    android:textSize="@dimen/size_14"
+                    android:paddingBottom="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                   />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_icon_pin"
+                    android:layout_gravity="center|right" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/your_outer_layout"
@@ -194,42 +274,66 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
-                        >
+                        android:layout_weight="0.8">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilLocation"
-                            style="@style/EditTextTheme"
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llLocation"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/label_location"
                             android:paddingTop="5dp"
-                            android:paddingBottom="5dp">
+                            android:paddingBottom="5dp"
+                            android:layout_marginTop="@dimen/lay_space_hight"
+                            android:layout_marginRight="5dp"
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etLocation"
-                                style="@style/ProfileEditText"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <com.mespace.utils.CommonTextView
                                 android:layout_width="match_parent"
-                                android:backgroundTint="@color/white"
-                                tools:text="James"
-                                tools:ignore="DuplicateIds" />
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_location"
+                                android:textColor="@color/country_code"
+                                android:textSize="@dimen/size_14"
+                                android:paddingBottom="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/clCountryCode" />
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                            <com.mespace.utils.CommonTextView
+                                android:id="@+id/asLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:hint="@string/label_location"
+                                android:textSize="@dimen/size_18"
+                                android:textStyle="bold"
+
+                                />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@color/line_color" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
                     </LinearLayout>
+
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="0.2"
-                   >
+                        android:layout_weight="0.2">
+
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:src="@drawable/ic_icon_pin"
-                            android:layout_gravity="center|right"
-                            />
+                            android:layout_gravity="center|right" />
                     </RelativeLayout>
 
 
@@ -244,6 +348,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/label_space_phone"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp">
 
@@ -253,15 +358,17 @@
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/white"
                     tools:text="9791222882"
+                    android:inputType="number"
                     tools:ignore="DuplicateIds" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 android:orientation="vertical">
 
                 <com.mespace.utils.CommonTextView
@@ -269,17 +376,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/label_keywords"
 
-                    android:textSize="@dimen/size_16" />
+                    android:textSize="@dimen/size_18" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/cgTag"
+                    android:id="@+id/adTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_tiny"
                     app:chipSpacingVertical="@dimen/spacing_tiny" />
 
                 <com.mespace.utils.CommonEditText
-                    android:id="@+id/etKeywords"
+                    android:id="@+id/asKeywords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -294,106 +401,174 @@
                     android:layout_height="1dp"
                     android:background="@color/line_color" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-<androidx.appcompat.widget.LinearLayoutCompat
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <com.mespace.utils.CommonTextView
-        android:id="@+id/tvCountryCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_tiny"
-        android:paddingEnd="@dimen/spacing_medium"
-        android:text="@string/label_open_hours"
-        android:textColor="@color/country_code"
-        android:textSize="@dimen/size_12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/clCountryCode" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilOpenTime"
-            style="@style/EditTextTheme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-android:layout_weight="1"
-            android:layout_marginTop="@dimen/spacing_large"
-            app:hintEnabled="false"
-            android:layout_marginRight="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/clCountryCode"
-            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieOpenTime"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:hint="@string/label_phone_no"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:longClickable="false"
-                android:maxLength="11"
-                android:paddingStart="0dp" />
+                android:layout_marginTop="@dimen/lay_space_hight"
+                android:orientation="vertical">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.mespace.utils.CommonTextView
+                    android:id="@+id/tvCountryCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCloseTime"
-            style="@style/EditTextTheme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/spacing_large"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/clCountryCode"
-            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+                    android:text="@string/label_open_hours"
+                    android:textColor="@color/country_code"
+                    android:textSize="@dimen/size_14"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/clCountryCode" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieCloseTime"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llopen_hour"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <com.mespace.utils.CommonTextView
+                            android:id="@+id/open_hour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:hint="Open Hours"
+android:textSize="@dimen/size_18"
+
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/line_color" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llclose_hour"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <com.mespace.utils.CommonTextView
+                            android:id="@+id/close_hour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:hint="Close hour"
+android:textSize="@dimen/size_18"
+
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/line_color" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDescription"
+                    style="@style/EditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_description"
+                    android:layout_marginTop="@dimen/lay_space_hight"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/asDescription"
+                        style="@style/ProfileEditText"
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/white"
+                        tools:text="James" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:hint="@string/label_phone_no"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:longClickable="false"
-                android:maxLength="11"
-                android:paddingStart="0dp" />
+                android:orientation="horizontal">
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDescription"
-        style="@style/EditTextTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/label_description"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDescription"
-            style="@style/ProfileEditText"
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/white"
-            tools:text="James" />
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-    </com.google.android.material.textfield.TextInputLayout>
+                    <com.mespace.utils.CommonTextView
+                        android:id="@+id/cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:text="Cancel"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/size_18"
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddSpace"
+                        style="@style/ConnectionButton"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/blue"
+                        android:backgroundTint="@color/blue"
+                        android:text="@string/add_space"
+                        app:cornerRadius="@dimen/spacing_medium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

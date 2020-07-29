@@ -85,7 +85,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:imeOptions">actionNext</item>
         <item name="android:inputType">text</item>
-        <item name="android:textSize">@dimen/size_15</item>
+        <item name="android:textSize">@dimen/size_18</item>
         <item name="android:paddingStart">0dp</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="errorTextColor">@color/blue</item>
@@ -135,6 +135,33 @@
         <item name="colorControlNormal">#E4E9F2</item>
         <item name="colorControlActivated">#E4E9F2</item>
         <item name="colorControlHighlight">#E4E9F2</item>
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+    </style>
+
+    <style name="AsTextViewSubTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_18</item>
+        <item name="android:padding">@dimen/spacing_normal</item>
+        <item name="android:textColor">@color/subtitle_color</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_small</item>
+        <item name="lineSpacing">@dimen/size_20</item>
+    </style>
+    <style name="AsTextViewSubTitle_new">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_18</item>
+        <item name="android:textColor">@color/subtitle_color</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_small</item>
+        <item name="lineSpacing">@dimen/size_20</item>
+    </style>
+
+    <style name="AsEditTextTheme" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="colorAccent">#E4E9F2</item>
+        <item name="colorControlNormal">#E4E9F2</item>
+        <item name="colorControlActivated">#E4E9F2</item>
+        <item name="colorControlHighlight">#E4E9F2</item>
+        <item name="android:textSize">@dimen/size_18</item>
         <item name="boxStrokeColor">@color/text_input_box_stroke</item>
     </style>
 </resources>

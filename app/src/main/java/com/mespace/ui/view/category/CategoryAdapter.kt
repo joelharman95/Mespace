@@ -3,17 +3,20 @@ package com.mespace.ui.view.category
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
+import com.mespace.data.network.api.response.CategoryResponse
 import com.mespace.data.network.api.response.ResCategory
 import kotlinx.android.synthetic.main.layout_category_item.view.*
 
-typealias category = (ResCategory) -> Unit
+typealias category = (CategoryResponse.Detail) -> Unit
 
+@Suppress("DEPRECATION")
 class CategoryAdapter(val category: category) :
     RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
-    val categoryList = mutableListOf<ResCategory>()
+    val categoryList = mutableListOf<CategoryResponse.Detail>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
         return CategoryHolder(
@@ -31,7 +34,7 @@ class CategoryAdapter(val category: category) :
         holder.bindUi(position)
     }
 
-    fun addCategoryList(_categoryList: List<ResCategory>) {
+    fun addCategoryList(_categoryList: List<CategoryResponse.Detail>) {
         categoryList.addAll(_categoryList)
         notifyDataSetChanged()
     }
@@ -40,9 +43,25 @@ class CategoryAdapter(val category: category) :
         fun bindUi(position: Int) {
             view.apply {
                 categoryList[position].let { _category ->
-                    tvCategory.text = _category.categoryName
+                    tvCategory.text = _category.category_name
+                    tvtype.text = "false"
+
+
+
                     setOnClickListener {
-                        category.invoke(_category)
+                        if (tvtype.text.toString().equals("false"))
+                        {
+                            tvtype.text = "true"
+                            main_lay_cat.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_cat_select_shape) );
+                        }
+                        else{
+                            tvtype.text = "false"
+                            main_lay_cat.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_cat_shape) );
+                        }
+
+                            category.invoke(_category)
+
+
                     }
                 }
             }

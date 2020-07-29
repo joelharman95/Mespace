@@ -12,17 +12,17 @@ import kotlinx.android.synthetic.main.layout_user_item.view.*
 typealias mySpace = (Boolean) -> Unit
 
 class MySpaceAdapter(val mySpace: mySpace) :
-    RecyclerView.Adapter<MySpaceAdapter.CategoryHolder>() {
+        RecyclerView.Adapter<MySpaceAdapter.CategoryHolder>() {
 
     val userList = mutableListOf<HomeScreenResponse.Detail.Mespace>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
         return CategoryHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_user_item,
-                parent,
-                false
-            )
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.layout_user_item,
+                        parent,
+                        false
+                )
         )
     }
 
@@ -35,7 +35,7 @@ class MySpaceAdapter(val mySpace: mySpace) :
     fun addCategoryList(_categoryList: List<HomeScreenResponse.Detail.Mespace>) {
         userList.addAll(_categoryList)
 
-       // userList.add(HomeScreenResponse.Detail.Mespace())
+        // userList.add(HomeScreenResponse.Detail.Mespace())
 
         notifyDataSetChanged()
     }

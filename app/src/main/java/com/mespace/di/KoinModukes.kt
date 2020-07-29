@@ -34,6 +34,8 @@ val NETWORKING_MODULE = module {
     single { get<HttpClientManager>().createApi<NearestStoreList>() }
     single { get<HttpClientManager>().createApi<MyFriendsListApi>() }
     single { get<HttpClientManager>().createApi<ClosestToApi>() }
+    single { get<HttpClientManager>().createApi<AddSpaceApi>() }
+
 }
 
 /**
@@ -48,6 +50,7 @@ val REPOSITORY_MODULE = module {
     single { NearestStoreListRepository.create(get()) }
     single { MyFriendsListRepository.create(get()) }
     single { ClosestToRepository.create(get()) }
+    single { AddSpaceRepository.create(get()) }
 }
 
 /**
@@ -61,6 +64,9 @@ val VIEW_MODEL_MODULE = module {
     viewModel { NearestStoreListViewModel(get(), androidContext()) }
     viewModel { MyFriendsListViewModel(get(),androidContext()) }
     viewModel { ClosestToViewModel(get(),androidContext()) }
+    viewModel { ClosestToViewModel(get(),androidContext()) }
+    viewModel { AddSpaceViewModel(get(),androidContext()) }
+
 }
 
 fun getSharedPreference(context: Context) =

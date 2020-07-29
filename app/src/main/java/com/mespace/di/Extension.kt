@@ -5,9 +5,7 @@
  *  * Last modified 27/6/20 12:32 PM
  *
  */
-
 package com.mespace.di
-
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -74,6 +72,8 @@ fun ImageView.loadCircularImage(image: Any) {
         .circleCrop()
         .into(this)
 }
+
+
 
 fun Fragment.showDialogToPick() {
     val pickDialog = AlertDialog.Builder(this.context)

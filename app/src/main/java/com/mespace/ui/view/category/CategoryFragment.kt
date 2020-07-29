@@ -30,9 +30,9 @@ class CategoryFragment : Fragment(), LifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rvCategory.adapter = CategoryAdapter { _category ->
+     /*   rvCategory.adapter = CategoryAdapter { _category ->
 
-        }
+        }*/
 
         ivCategoryBack.setOnClickListener {
             findNavController().navigateUp()
@@ -48,7 +48,7 @@ class CategoryFragment : Fragment(), LifecycleObserver {
         val categoryList = mutableListOf<ResCategory>()
         for (i in 1..10)
             categoryList.add(ResCategory(categoryName = "Resturant $i"))
-        (rvCategory.adapter as CategoryAdapter).addCategoryList(categoryList)
+       // (rvCategory.adapter as CategoryAdapter).addCategoryList(categoryList)
         activity?.unblockInput(pbCategory)
     }
 

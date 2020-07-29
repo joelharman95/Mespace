@@ -10,11 +10,13 @@ package com.mespace.ui.view.splash
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.lifecycleScope
@@ -36,7 +38,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * A simple [Fragment] subclass.
  */
 class SplashFragment : Fragment(), LifecycleObserver {
-
+    private val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
     private val viewModel by viewModel<ReferenceViewModel>()
     private val MY_PERMISSIONS_REQUEST_GPS = 111
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,25 +63,32 @@ class SplashFragment : Fragment(), LifecycleObserver {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.statusBarColor = resources.getColor(R.color.splash_iamge)
         }
-        lifecycleScope.launch {
-            delay(2000)
-            /*PreferenceManager(requireContext()).apply {
-                if (getIsLaunchedOnce()) {
-                    if (getUserId() != "")
-                        findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                    else
-                        findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
-                } else
-                    findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
-            }*/
 
-            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-
+        if (!checkRuntimePermission()) {
+            requestRuntimePermission()
         }
-        //  getToken()
-    }
+        else {
+            lifecycleScope.launch {
+                delay(2000)
+                PreferenceManager(requireContext()).apply {
+                    if (getIsLaunchedOnce()) {
+                        if (getUserId() != "")
+                            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                        else
+                            findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
+                    } else
+                        findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
 
-    //  Reference api call
+
+                }
+                //  getToken()
+            }
+        }
+
+
+}
+
+
     private fun getToken() {
         if (isConnected(this.requireActivity())) {
             blockInput(pbMainActivity)
@@ -95,5 +104,29 @@ class SplashFragment : Fragment(), LifecycleObserver {
             activity?.toast("No internet available!")
     }
 
+
+    private fun checkRuntimePermission(): Boolean {
+
+        val writeablePermission =
+                ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+
+                )
+        if (writeablePermission != PackageManager.PERMISSION_GRANTED) {
+            return false
+        }
+        return true
+    }
+
+
+
+    private fun requestRuntimePermission() {
+        requestPermissions(
+                arrayOf(
+                        Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION
+                ), READ_EXTERNAL_STORAGE_REQUEST_CODE
+        )
+    }
 
 }
