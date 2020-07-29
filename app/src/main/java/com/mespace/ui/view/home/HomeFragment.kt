@@ -85,7 +85,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         }
         my_space.adapter = MySpaceAdapter {
             if (it)
-                activity?.toast("Add more clicked")
+                findNavController().navigate(R.id.addaspaceFragment)
             else
                 activity?.toast("Myspace clicked")
         }
@@ -150,8 +150,8 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
 
                 if (it.detail.mespace_list.size != 0) {
-                    friend_list.visibility = View.VISIBLE
-                    my_space.visibility = View.GONE
+                    my_space.visibility = View.VISIBLE
+                    add_new_space.visibility = View.GONE
                     (my_space.adapter as MySpaceAdapter).addCategoryList(it.detail.mespace_list)
 
                 } else {

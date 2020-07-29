@@ -58,8 +58,8 @@ class ClosestToYouFragment : Fragment(), LifecycleObserver {
                 {
                     if (!isLoading){
                         val layoutManager=closest_list.layoutManager!! as LinearLayoutManager
-                        val visibleItemCount = nearest_store_list.layoutManager!!.childCount
-                        val totalItemCount = nearest_store_list.layoutManager!!.itemCount
+                        val visibleItemCount = closest_list.layoutManager!!.childCount
+                        val totalItemCount = closest_list.layoutManager!!.itemCount
                         val pastVisiblesItems =layoutManager.findFirstVisibleItemPosition();
 
                         if (visibleItemCount != null) {

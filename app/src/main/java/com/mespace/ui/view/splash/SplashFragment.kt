@@ -15,6 +15,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -70,7 +71,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
         else {
             lifecycleScope.launch {
                 delay(2000)
-                PreferenceManager(requireContext()).apply {
+               /* PreferenceManager(requireContext()).apply {
                     if (getIsLaunchedOnce()) {
                         if (getUserId() != "")
                             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
@@ -80,7 +81,8 @@ class SplashFragment : Fragment(), LifecycleObserver {
                         findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
 
 
-                }
+                }*/
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                 //  getToken()
             }
         }
@@ -127,6 +129,25 @@ class SplashFragment : Fragment(), LifecycleObserver {
                         Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION
                 ), READ_EXTERNAL_STORAGE_REQUEST_CODE
         )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode)
+        {
+            READ_EXTERNAL_STORAGE_REQUEST_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(context,"Permission Denied By User",Toast.LENGTH_SHORT).show()
+                } else {
+                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+
+                }
+            }
+        }
     }
 
 }
