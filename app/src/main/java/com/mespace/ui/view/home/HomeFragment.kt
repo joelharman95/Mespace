@@ -85,7 +85,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         }
         my_space.adapter = MySpaceAdapter {
             if (it)
-                activity?.toast("Add more clicked")
+                findNavController().navigate(R.id.addaspaceFragment)
             else
                 activity?.toast("Myspace clicked")
         }

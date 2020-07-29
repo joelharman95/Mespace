@@ -59,8 +59,8 @@ class MyFriendsFragment : Fragment(),LifecycleObserver {
                 {
                     if (!isLoading){
                         val layoutManager=my_friends_list.layoutManager!! as LinearLayoutManager
-                        val visibleItemCount = nearest_store_list.layoutManager!!.childCount
-                        val totalItemCount = nearest_store_list.layoutManager!!.itemCount
+                        val visibleItemCount = my_friends_list.layoutManager!!.childCount
+                        val totalItemCount = my_friends_list.layoutManager!!.itemCount
                         val pastVisiblesItems =layoutManager.findFirstVisibleItemPosition();
 
                         if (visibleItemCount != null) {
