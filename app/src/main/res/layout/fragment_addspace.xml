@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:checked="true"
-                    android:textSize="@dimen/size_18"
+                    android:textSize="@dimen/size_15"
                     android:textStyle="bold"
                     android:text="Store" />
 
@@ -148,7 +148,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:textSize="@dimen/size_18"
+                    android:textSize="@dimen/size_15"
                     android:textStyle="bold"
                     android:text="Community" />
 
@@ -164,7 +164,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
-                style="@style/EditTextTheme"
+                style="@style/AsEditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/label_name"
@@ -188,7 +188,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="CATEGORY"
                 android:textColor="@color/light_color"
-                android:textSize="@dimen/size_18" />
+                android:textSize="@dimen/size_15" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category_list"
@@ -200,61 +200,6 @@
                 tools:itemCount="6"
                 tools:listitem="@layout/layout_category_item" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:layout_marginTop="@dimen/lay_space_hight"
-                    android:layout_marginRight="5dp"
-
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_location"
-                    android:textColor="@color/country_code"
-                    android:textSize="@dimen/size_14"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/clCountryCode" />
-
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:hint="@string/label_location"
-                    android:textSize="@dimen/size_18"
-                    android:textStyle="bold"
-
-                    />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_location"
-                    android:textColor="@color/country_code"
-                    android:textSize="@dimen/size_14"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                   />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_icon_pin"
-                    android:layout_gravity="center|right" />
-            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/your_outer_layout"
@@ -306,8 +251,8 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:hint="@string/label_location"
-                                android:textSize="@dimen/size_18"
-                                android:textStyle="bold"
+                                android:textSize="@dimen/size_15"
+
 
                                 />
 
@@ -344,7 +289,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPhoneNo"
-                style="@style/EditTextTheme"
+                style="@style/AsEditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/label_space_phone"
@@ -376,7 +321,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/label_keywords"
 
-                    android:textSize="@dimen/size_18" />
+                    android:textSize="@dimen/size_15" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/adTag"
@@ -444,7 +389,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:hint="Open Hours"
-android:textSize="@dimen/size_18"
+android:textSize="@dimen/size_15"
 
                             />
 
@@ -474,7 +419,7 @@ android:textSize="@dimen/size_18"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:hint="Close hour"
-android:textSize="@dimen/size_18"
+android:textSize="@dimen/size_15"
 
                             />
 
@@ -491,7 +436,7 @@ android:textSize="@dimen/size_18"
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilDescription"
-                    style="@style/EditTextTheme"
+                    style="@style/AsEditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/label_description"

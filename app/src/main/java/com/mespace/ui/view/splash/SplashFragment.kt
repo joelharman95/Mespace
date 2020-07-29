@@ -25,10 +25,7 @@ import com.mespace.R
 import com.mespace.data.network.api.request.ReferenceRequest
 import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.ReferenceViewModel
-import com.mespace.di.blockInput
-import com.mespace.di.isConnected
-import com.mespace.di.toast
-import com.mespace.di.unblockInput
+import com.mespace.di.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -68,21 +65,7 @@ class SplashFragment : Fragment(), LifecycleObserver {
             requestRuntimePermission()
         }
         else {
-            lifecycleScope.launch {
-                delay(2000)
-                PreferenceManager(requireContext()).apply {
-                    if (getIsLaunchedOnce()) {
-                        if (getUserId() != "")
-                            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                        else
-                            findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
-                    } else
-                        findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
-
-
-                }
-                //  getToken()
-            }
+            moveNextScreen()
         }
 
 
@@ -128,5 +111,47 @@ class SplashFragment : Fragment(), LifecycleObserver {
                 ), READ_EXTERNAL_STORAGE_REQUEST_CODE
         )
     }
+
+    override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+    ) {
+        when (requestCode) {
+            READ_EXTERNAL_STORAGE_REQUEST_CODE -> {
+                val granted = grantResults.isNotEmpty()
+                        && permissions.isNotEmpty()
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && !ActivityCompat.shouldShowRequestPermissionRationale(
+                        requireActivity(),
+                        permissions[0]
+                )
+                when (granted) {
+                    true ->moveNextScreen()  //  openImagePicker()
+                    else -> activity?.toast(resources.getString(R.string.permission_denied))
+                }
+            }
+        }
+    }
+
+    fun moveNextScreen()
+    {
+        lifecycleScope.launch {
+            delay(2000)
+            PreferenceManager(requireContext()).apply {
+                if (getIsLaunchedOnce()) {
+                    if (getUserId() != "")
+                        findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                    else
+                        findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
+                } else
+                    findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
+
+
+            }
+            //  getToken()
+        }
+    }
+
 
 }
