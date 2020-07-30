@@ -77,24 +77,7 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    try {
-                        val geocoder = Geocoder(requireContext())
-                        val addressList =
-                                geocoder.getFromLocation(location!!.latitude, location.longitude, 1)
 
-                        asLatitude = location!!.latitude.toString()
-                        asLongitude = location.longitude.toString()
-                        if (addressList != null && addressList.size > 0) {
-                            val country = addressList[0].getAddressLine(0)
-                            asLocation.setText(country)
-                        }
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                }
 
 
         if (!checkRuntimePermission()) {
@@ -216,7 +199,12 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
 
         }
 
-        getcategoryList()
+
+
+
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        showLocation()
     }
 
     private fun addNewStore() {
@@ -243,7 +231,7 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
                         keywords = keywords.removeSuffix(","),
                         open_time = open_hour.text.toString(),
                         close_time = close_hour.text.toString(),
-                        location = asLocation.text.toString(),
+                        location = etLocation.text.toString(),
                         description = asDescription.text.toString(),
                         user_id = "20",
                         user_name = "vinoth",
@@ -318,7 +306,7 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
                         permissions[0]
                 )
                 when (granted) {
-                    true -> this.showDialogToPick()  //  openImagePicker()
+                    true -> showLocation() //  openImagePicker()
                     else -> activity?.toast(resources.getString(R.string.permission_denied))
                 }
             }
@@ -439,6 +427,32 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             false
         } else
             true
+    }
+
+    fun showLocation()
+    {
+        /*fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    try {
+                        val geocoder = Geocoder(requireContext())
+                        val addressList =
+                                geocoder.getFromLocation(location!!.latitude, location.longitude, 1)
+
+                        asLatitude = location!!.latitude.toString()
+                        asLongitude = location.longitude.toString()
+                        if (addressList != null && addressList.size > 0) {
+                            val country = addressList[0].getAddressLine(0)
+                            etLocation.setText(country)
+
+                        }
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }finally {
+                        getcategoryList()
+                    }
+                }*/
+        getcategoryList()
     }
 
 
