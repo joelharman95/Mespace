@@ -3,53 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:padding="@dimen/size_15"
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivUserPic"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:padding="4dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:id="@+id/textLayout"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/solid_circle">
-
-        <com.mespace.utils.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent" >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivUserPic"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:padding="4dp"
-            android:text="1"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:id="@+id/border"
-            android:inputType="textCapCharacters|textCapSentences|textCapWords"
-            />
-    </RelativeLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/textLayout"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/solid_circle">
+
+            <com.mespace.utils.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:id="@+id/border"
+                android:inputType="textCapCharacters|textCapSentences|textCapWords"
+                />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <com.mespace.utils.CommonTextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:padding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:text="valentine"
         android:textColor="@color/black"
         android:textSize="@dimen/size_18"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivUserPic"/>
+        app:layout_constraintStart_toEndOf="@id/imageLayout"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTag"
@@ -77,7 +89,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
-        android:padding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:textColor="@color/gray_color"
         android:textSize="@dimen/size_15"
         tools:text="2 mi"
@@ -102,7 +116,7 @@
         android:textStyle="bold"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivUserPic"
+        app:layout_constraintStart_toEndOf="@id/imageLayout"
         app:layout_constraintTop_toBottomOf="@id/tvTag"
         tools:text="Description here"/>
 
@@ -117,7 +131,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_13"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/ivUserPic"
+        app:layout_constraintStart_toEndOf="@id/imageLayout"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
 
         />

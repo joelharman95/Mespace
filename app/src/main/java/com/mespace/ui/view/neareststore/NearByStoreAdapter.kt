@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.response.NearByStoreResponse
@@ -68,13 +69,18 @@ class NearByStoreAdapter(val user: storeUser) :
                     tvStoreDistance.text = _category.distance
                     tvStoreTag.text=_category.tag_name
                     tvStoreCategory.text=_category.categories
-
                     tvStoreDescription.text=_category.description
                     if(_category.open_close!="1"){
                         tvStoreStatus.text=context.getString(R.string.closed)
                     }else{
                         tvStoreStatus.text="Open till "+_category.close_hours
                     }
+
+                    /*cvCategory.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
+                    cvCategory.strokeColor = ContextCompat.getColor(context, R.color.black)
+                    cvCategory.strokeWidth=1
+                    cvCategory.radius=50f
+                    cvCategory.invalidate()*/
                 }
 
 

@@ -1,15 +1,18 @@
 package com.mespace.ui.view.home
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.layout_store_item.view.*
-import kotlinx.android.synthetic.main.layout_user_item.view.user_image
-import kotlinx.android.synthetic.main.layout_user_item.view.user_name
+
+import java.util.*
 
 typealias nearBy = (Boolean) -> Unit
 
@@ -44,8 +47,17 @@ class NearByAdapter(val nearBy: nearBy) :
             view.apply {
                 if (position <= 6) {
                     userList[position].let { _category ->
+
+                        if(_category.profile_image.isEmpty() || _category.profile_image.contains("no_image")){
+                            drawableColorChange(textLayout)
+                            user_image.visibility=View.GONE
+                            border.text=_category.name.first().toString()
+                        }else{
+                            user_image.loadCircularImage(_category.profile_image)
+                            textLayout.visibility=View.GONE
+                        }
+
                         user_name.text = _category.name
-                        user_image.loadCircularImage(_category.profile_image)
                         user_distance.text = _category.distance
                         setOnClickListener {
                             nearBy.invoke(false)
@@ -55,6 +67,7 @@ class NearByAdapter(val nearBy: nearBy) :
                     if (position == 7) {
                         user_name.text = "Show more"
                         user_distance.visibility = View.GONE
+                        textLayout.visibility=View.GONE
                         user_image.loadCircularImage(R.drawable.ic_icon_show_more)
                         setOnClickListener {
                             nearBy.invoke(true)
@@ -64,10 +77,23 @@ class NearByAdapter(val nearBy: nearBy) :
                         user_image.visibility = View.GONE
                         user_name.visibility = View.GONE
                         user_distance.visibility = View.GONE
+                        textLayout.visibility=View.GONE
                     }
                 }
             }
         }
+    }
+
+    fun drawableColorChange(view: RelativeLayout){
+        val rnd = Random()
+        val color: Int =
+            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        view.setBackgroundColor(color)
+        val gd = GradientDrawable()
+        gd.setColor(color)
+        gd.cornerRadius = 100f
+        gd.setStroke(12, Color.WHITE)
+        view.background=gd
     }
 
 }

@@ -62,7 +62,12 @@ class ClosestToAdapter(val user: myFriends) :
                     if(_category.tag_name==null){
                         tvTag.visibility=View.GONE
                     }
-                    tvTag.text = _category.tag_name
+                    if(_category.tag_name.isNotEmpty()){
+                        tvTag.text = _category.tag_name
+                    }else{
+                        tvTag.visibility=View.GONE
+                    }
+
                     tvDistance.text = _category.distance
 
                 }

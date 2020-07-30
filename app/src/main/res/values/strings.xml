@@ -63,5 +63,7 @@
     <string name="label_my_friends">My Friends</string>
     <string name="closed">Closed</string>
     <string name="label_phone_no_ad">PHONE NUMBER</string>
+    <string name="open_location_settings">Open Location Settings</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

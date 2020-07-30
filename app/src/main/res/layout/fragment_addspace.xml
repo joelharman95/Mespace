@@ -51,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/lay_space_medium"
+            android:layout_marginTop="@dimen/lay_space_hight"
             android:layout_marginRight="@dimen/lay_space_medium"
-    android:layout_marginTop="@dimen/lay_space_hight"
             android:orientation="vertical">
 
 
@@ -83,8 +83,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/lay_space_hight"
-                >
+                android:layout_marginTop="@dimen/lay_space_hight">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivProfile"
@@ -165,8 +164,8 @@
                 style="@style/AsEditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/label_name"
                 android:layout_marginTop="13dp"
+                android:hint="@string/label_name"
                 android:paddingTop="0dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -182,87 +181,92 @@
             <com.mespace.utils.CommonTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CATEGORY"
-                android:paddingTop="20dp"
                 android:layout_marginTop="@dimen/lay_space_hight"
+                android:paddingTop="20dp"
+                android:text="CATEGORY"
                 android:textColor="@color/light_color"
                 android:textSize="@dimen/size_15" />
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categoryChip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                app:chipSpacingVertical="@dimen/spacing_tiny" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="4"
                 tools:itemCount="6"
-                android:layout_marginTop="@dimen/lay_space_hight"
                 tools:listitem="@layout/layout_category_item" />
 
 
+            <!-- Other elements here -->
 
-
-                <!-- Other elements here -->
+            <LinearLayout
+                android:id="@+id/eighty_percent_layout_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_space_hight"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/eighty_percent_layout_holder"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/lay_space_hight"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                   >
+                    android:layout_weight="5">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llLocation"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="5">
+                        android:orientation="vertical">
 
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/llLocation"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilLocation"
+                            style="@style/AsEditTextTheme"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tilLocation"
-                                style="@style/AsEditTextTheme"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/label_location"
+                            android:hint="@string/label_location"
 
 
                             >
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etLocation"
-                                    style="@style/AddSpaceEditText"
-                                    android:layout_width="match_parent"
-                                    android:backgroundTint="@color/white"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etLocation"
+                                style="@style/AddSpaceEditText"
+                                android:layout_width="match_parent"
+                                android:backgroundTint="@color/white"
 
-                                    tools:text="James" />
+                                tools:text="James" />
 
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                    </LinearLayout>
+                </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.5">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerInParent="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_gravity="bottom|right"
-                            android:src="@drawable/ic_icon_pin" />
-                    </RelativeLayout>
-
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="bottom|right"
+                        android:src="@drawable/ic_icon_pin" />
+                </RelativeLayout>
 
 
                 <!-- Other elements here -->
@@ -275,7 +279,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/lay_space_hight"
-
                 android:hint="@string/label_phone_no_ad"
                 android:paddingTop="0dp">
 
@@ -284,7 +287,6 @@
                     style="@style/AddSpaceEditText"
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/white"
-
                     tools:text="James" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -294,22 +296,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/lay_space_hight"
-                android:paddingTop="10dp"
+                android:orientation="vertical"
 
-                android:orientation="vertical">
+                android:paddingTop="10dp">
 
                 <com.mespace.utils.CommonTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
                     android:text="@string/label_keywords"
-android:paddingTop="5dp"
                     android:textSize="@dimen/size_15" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/adTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="5dp"
                     app:chipSpacingVertical="@dimen/spacing_tiny" />
 
@@ -317,12 +319,11 @@ android:paddingTop="5dp"
                     android:id="@+id/asKeywords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:layout_marginTop="5dp"
+                    android:background="@null"
                     android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:maxLength="20"
-                  />
+                    android:maxLength="20" />
 
                 <View
                     android:layout_width="match_parent"
@@ -333,20 +334,19 @@ android:paddingTop="5dp"
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:layout_marginTop="1dp"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
                 <com.mespace.utils.CommonTextView
                     android:id="@+id/tvCountryCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_open_hours"
+                    android:layout_marginTop="@dimen/lay_space_hight"
                     android:paddingTop="5dp"
+                    android:text="@string/label_open_hours"
                     android:textColor="@color/country_code"
                     android:textSize="@dimen/size_12"
-                    android:layout_marginTop="@dimen/lay_space_hight"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/clCountryCode" />
 
@@ -361,8 +361,8 @@ android:paddingTop="5dp"
 
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -370,9 +370,9 @@ android:paddingTop="5dp"
                             android:id="@+id/open_hour"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Open hours"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
+                            android:hint="Open hours"
                             android:textColor="@color/black"
                             android:textSize="@dimen/size_15"
 
@@ -401,9 +401,9 @@ android:paddingTop="5dp"
                             android:id="@+id/close_hour"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Close hours"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
+                            android:hint="Close hours"
                             android:textColor="@color/black"
                             android:textSize="@dimen/size_15"
 
@@ -467,10 +467,7 @@ android:paddingTop="5dp"
                         android:text="Cancel"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/size_18"
-                        android:textStyle="bold"
-
-
-                        />
+                        android:textStyle="bold" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
