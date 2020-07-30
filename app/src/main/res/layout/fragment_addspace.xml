@@ -192,11 +192,11 @@
                 android:id="@+id/categoryChip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/lay_space_hight"
                 android:layout_marginBottom="5dp"
                 app:chipSpacingVertical="@dimen/spacing_tiny" />
 
-            <androidx.recyclerview.widget.RecyclerView
+        <!--    <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="4"
                 tools:itemCount="6"
-                tools:listitem="@layout/layout_category_item" />
+                tools:listitem="@layout/layout_category_item" />-->
 
 
             <!-- Other elements here -->

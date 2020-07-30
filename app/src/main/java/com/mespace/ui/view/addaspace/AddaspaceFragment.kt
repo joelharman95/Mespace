@@ -87,7 +87,8 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
         ivEditDp.setOnClickListener {
             onImagePicker()
         }
-        category_list.adapter = CategoryAdapter { _category ->
+
+     /*   category_list.adapter = CategoryAdapter { _category ->
 
             println("Out_put" + " " + _category.category_id)
             var catId = ""
@@ -114,7 +115,7 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             }
 
 
-        }
+        }*/
 
         llopen_hour.setOnClickListener {
             var am_pm: String = ""
@@ -270,7 +271,10 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
     private fun getcategoryList() {
         blockInput(asLoader)
         addSpaceViewModel.getCategoryList({
-            (category_list.adapter as CategoryAdapter).addCategoryList(it.detail)
+//            (category_list.adapter as CategoryAdapter).addCategoryList(it.detail)
+            for(item in it.detail){
+                categoryList.add(item.category_name)
+            }
             setChipsInCategory(it.detail)
             unblockInput(asLoader)
 
@@ -291,14 +295,15 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
         chip.text = categoryName
         chip.isCloseIconVisible = false
         chip.isClickable = true
-        chip.isCheckable = false
         chip.chipStrokeWidth=5f
+        chip.isCheckedIconVisible=false
+
         val chipDrawable: ChipDrawable? = context?.let {
             ChipDrawable.createFromAttributes(
                 it,
                 null,
                 0,
-                R.style.Widget_MaterialComponents_Chip_Filter
+                R.style.ChipsStyle
             )
         }
         if (chipDrawable != null) {

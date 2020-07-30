@@ -177,4 +177,13 @@
         <item name="colorControlActivated">@color/blue</item>
         <item name="textInputStyle">@style/Widget.AppTheme.TextInputLayout</item>
     </style>
+    
+    <style name="ChipsStyle" parent="@style/Widget.MaterialComponents.Chip.Filter">
+        <item name="chipIconVisible">false</item>
+        <item name="chipStrokeColor">@color/grey</item>
+        <item name="chipBackgroundColor">@color/chips_color_state</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="rippleColor">@color/blue</item>
+    </style>
 </resources>
