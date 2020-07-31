@@ -18,6 +18,8 @@ object API {
     const val Favourites_List = "favourites_list"
     const val GET_NEARBY_STORE_LIST="get_nearby_stores_list"
     const val CLOSEST_TO_API="closest_to_you_search_list"
+    const val PROFILE_SETTING="profile_settings_details"
+    const val MY_SPACEE="my_spacee"
 }
 
 object Preference {

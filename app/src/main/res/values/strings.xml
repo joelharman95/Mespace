@@ -65,5 +65,7 @@
     <string name="label_phone_no_ad">PHONE NUMBER</string>
     <string name="open_location_settings">Open Location Settings</string>
     <string name="cancel">Cancel</string>
+    <string name="label_profile">Profile Settings</string>
+    <string name="label_phone">PHONE</string>
 
 </resources>

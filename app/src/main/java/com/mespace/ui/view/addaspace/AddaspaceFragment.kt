@@ -41,6 +41,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class AddaspaceFragment : Fragment(), LifecycleObserver {
@@ -52,9 +53,9 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
     private val addSpaceViewModel by viewModel<AddSpaceViewModel>()
     private var keywordList = mutableListOf<String>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    var catwords = ""
     var asLatitude: String = ""
     var asLongitude: String = ""
+    private val checkedCategoryList: HashMap<Int, String> = HashMap()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,34 +89,34 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             onImagePicker()
         }
 
-     /*   category_list.adapter = CategoryAdapter { _category ->
+        /*   category_list.adapter = CategoryAdapter { _category ->
 
-            println("Out_put" + " " + _category.category_id)
-            var catId = ""
-            println("Out_put" + " " + catId)
+               println("Out_put" + " " + _category.category_id)
+               var catId = ""
+               println("Out_put" + " " + catId)
 
-            if (categoryList.size == 0) {
-                categoryList.add(_category.category_id)
-            } else {
-
-
-                categoryList.forEach {
-
-                    if (_category.category_id.equals(it)) {
-                        catId = _category.category_id
-                    }
-                }
-
-                if (!catId.equals("")) {
-                    categoryList.add(_category.category_id)
-                } else {
-                    categoryList.remove(_category.category_id)
-                }
-
-            }
+               if (categoryList.size == 0) {
+                   categoryList.add(_category.category_id)
+               } else {
 
 
-        }*/
+                   categoryList.forEach {
+
+                       if (_category.category_id.equals(it)) {
+                           catId = _category.category_id
+                       }
+                   }
+
+                   if (!catId.equals("")) {
+                       categoryList.add(_category.category_id)
+                   } else {
+                       categoryList.remove(_category.category_id)
+                   }
+
+               }
+
+
+           }*/
 
         llopen_hour.setOnClickListener {
             var am_pm: String = ""
@@ -231,9 +232,12 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
         }
 
         var catWords = ""
-        categoryList.forEach {
-            catWords += "$it,"
+        checkedCategoryList.forEach {
+            catWords=catWords+it.value+","
         }
+        /*categoryList.forEach {
+            catWords += "$it,"
+        }*/
         blockInput(asLoader)
         addSpaceViewModel.addNewStore(
 
@@ -272,7 +276,7 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
         blockInput(asLoader)
         addSpaceViewModel.getCategoryList({
 //            (category_list.adapter as CategoryAdapter).addCategoryList(it.detail)
-            for(item in it.detail){
+            for (item in it.detail) {
                 categoryList.add(item.category_name)
             }
             setChipsInCategory(it.detail)
@@ -284,19 +288,21 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
         })
     }
 
-    private fun setChipsInCategory(list:List<CategoryResponse.Detail>){
-        for(item in list){
-            createCategoryChips(item.category_name)
+    private fun setChipsInCategory(list: List<CategoryResponse.Detail>) {
+        for (item in list) {
+            createCategoryChips(item)
         }
     }
 
-    fun createCategoryChips(categoryName:String){
+    fun createCategoryChips(category: CategoryResponse.Detail) {
         val chip = Chip(context)
-        chip.text = categoryName
+        chip.text = category.category_name
+        chip.id = category.category_id.toInt()
         chip.isCloseIconVisible = false
         chip.isClickable = true
-        chip.chipStrokeWidth=5f
-        chip.isCheckedIconVisible=false
+        chip.chipStrokeWidth = 5f
+        chip.isCheckedIconVisible = false
+
 
         val chipDrawable: ChipDrawable? = context?.let {
             ChipDrawable.createFromAttributes(
@@ -310,6 +316,16 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             chip.setChipDrawable(chipDrawable)
         }
         categoryChip.addView(chip as View)
+        chip.setOnCheckedChangeListener { chipView, isChecked ->
+            if (isChecked) {
+                checkedCategoryList[chipView.id] = chipView.text.toString()
+            }
+            else{
+                if(checkedCategoryList.containsKey(chipView.id)){
+                    checkedCategoryList.remove(chipView.id)
+                }
+            }
+        }
         chip.setOnCloseIconClickListener {
 
             /*val new = chip.text.removePrefix("#")
@@ -317,8 +333,8 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             adTag.removeView(chip as View)*/
 
 
-
         }
+
     }
 
     private fun onImagePicker() {

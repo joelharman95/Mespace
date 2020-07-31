@@ -127,4 +127,19 @@
         android:name="com.mespace.ui.view.closesttoyou.ClosestToYouFragment"
         android:label="fragment_closest_to_you"
         tools:layout="@layout/fragment_closest_to_you" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mespace.ui.view.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.mespace.ui.view.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.mespace.ui.view.webview.WebFragment"
+        android:label="fragment_web"
+        tools:layout="@layout/fragment_web" />
 </navigation>

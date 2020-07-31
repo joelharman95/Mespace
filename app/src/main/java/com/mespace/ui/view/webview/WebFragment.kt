@@ -1,0 +1,43 @@
+package com.mespace.ui.view.webview
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.LifecycleObserver
+import androidx.navigation.fragment.findNavController
+import com.mespace.R
+import com.mespace.data.preference.PreferenceManager
+import kotlinx.android.synthetic.main.fragment_web.*
+
+
+class WebFragment : Fragment(), LifecycleObserver {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return inflater.inflate(R.layout.fragment_web, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        PreferenceManager(requireContext()).apply {
+            tvTitle.text = getTitle()
+            webView.loadUrl(getUrl())
+        }
+
+        ivCategoryBack.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+
+    }
+
+}
