@@ -67,6 +67,10 @@ class HomeFragment : Fragment(), LifecycleObserver {
             tvUserName.text = getUserName()
         }
 
+        ivpProfileImage.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+
         friend_list.adapter = MyFriendsAdapter {
             if (it)
                 findNavController().navigate(R.id.action_homeFragment_to_myFriendsFragment)
@@ -105,6 +109,9 @@ class HomeFragment : Fragment(), LifecycleObserver {
                 closest_list.visibility = View.VISIBLE
             }
 
+        }
+        ivSearch.setOnClickListener {
+            findNavController().navigate(R.id.searchFragment)
         }
 
         getUserDetails()

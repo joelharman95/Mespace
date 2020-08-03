@@ -8,8 +8,12 @@
 
 package com.mespace.data.repository
 
+import com.mespace.data.network.api.request.MySpaceRequest
+import com.mespace.data.network.api.request.ProfileSettingRequest
 import com.mespace.data.network.api.request.ReqIsUserExists
 import com.mespace.data.network.api.request.ReqUpdateUser
+import com.mespace.data.network.api.response.MySpaceResponse
+import com.mespace.data.network.api.response.ProfileSettingResponse
 import com.mespace.data.network.api.response.ResIsUserExists
 import com.mespace.data.network.api.response.ResUserUpdate
 import com.mespace.data.network.api.service.ProfileApi
@@ -32,6 +36,32 @@ private class ProfileRepositoryImpl(
         withContext(Dispatchers.IO) {
             try {
                 val response = api.isUserExists(reqIsUserExists = reqIsUserExists)
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.status.toString().isSuccess())
+                            withContext(Dispatchers.Main) { onSuccess(it) }
+                        else
+                            withContext(Dispatchers.Main) { onError(it.message.toString()) }
+                    }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        onError(response.message().toString())
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {}
+            }
+        }
+    }
+
+    override suspend fun getProfileSettings(
+        profileSettingRequest: ProfileSettingRequest,
+        onSuccess: OnSuccess<ProfileSettingResponse>,
+        onError: OnError<String>
+    ) {
+        withContext(Dispatchers.IO) {
+            try {
+                val response = api.getProfileSettings(userId = profileSettingRequest)
                 if (response.isSuccessful) {
                     response.body()?.let {
                         if (it.status.toString().isSuccess())
@@ -77,6 +107,33 @@ private class ProfileRepositoryImpl(
         }
     }
 
+    override suspend fun getMySpaceList(
+        mySpaceRequest: MySpaceRequest,
+        onSuccess: OnSuccess<MySpaceResponse>,
+        onError: OnError<String>
+    ) {
+        withContext(Dispatchers.IO) {
+            try {
+                val response = api.getMySpaceList(mySpaceRequest = mySpaceRequest)
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.status.toString().isSuccess()) {
+                            withContext(Dispatchers.Main) { onSuccess(it) }
+                        } else {
+                            withContext(Dispatchers.Main) { onError(it.message.toString()) }
+                        }
+                    }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        onError(response.message().toString())
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) { onError(e.toString()) }
+            }
+        }
+    }
+
 }
 
 interface ProfileRepository {
@@ -87,11 +144,21 @@ interface ProfileRepository {
         onError: OnError<String>
     )
 
+    suspend fun getProfileSettings(
+        profileSettingRequest: ProfileSettingRequest,
+        onSuccess: OnSuccess<ProfileSettingResponse>,
+        onError: OnError<String>
+    )
+
     suspend fun addOrUpdateProfile(
         reqUpdateUser: ReqUpdateUser,
         onSuccess: OnSuccess<ResUserUpdate>,
         onError: OnError<String>
     )
+
+    suspend fun getMySpaceList(mySpaceRequest: MySpaceRequest,
+                               onSuccess: OnSuccess<MySpaceResponse>,
+                               onError: OnError<String>)
 
     companion object Factory {
         fun create(api: ProfileApi): ProfileRepository =

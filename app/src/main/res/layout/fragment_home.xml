@@ -132,6 +132,7 @@
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:padding="5dp"
+                            android:id="@+id/ivSearch"
                             android:src="@drawable/ic_icon_search_home" />
                     </LinearLayout>
 

@@ -40,4 +40,10 @@ interface IPreferenceManager {
     fun setLongitude(Longitude: String?)
     fun getLongitude(): String
 
+    fun setTitle(title:String)
+    fun getTitle():String
+
+    fun setUrl(url:String)
+    fun getUrl():String
+
 }

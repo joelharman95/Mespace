@@ -64,8 +64,9 @@ val VIEW_MODEL_MODULE = module {
     viewModel { NearestStoreListViewModel(get(), androidContext()) }
     viewModel { MyFriendsListViewModel(get(),androidContext()) }
     viewModel { ClosestToViewModel(get(),androidContext()) }
-
     viewModel { AddSpaceViewModel(get(),androidContext()) }
+    viewModel { ProfileSettingViewModel(get(),androidContext())}
+    viewModel { MySpaceBottomViewModel(get(),androidContext())}
 
 }
 

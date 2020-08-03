@@ -31,6 +31,12 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
     override fun getLongitude(): String = pref.getString(LONGITUDE, "")!!
 
+
+    override fun setTitle(title: String) =pref.edit().putString("title", title).apply()
+    override fun getTitle(): String = pref.getString("title", "")!!
+    override fun setUrl(url: String) =pref.edit().putString("url", url).apply()
+    override fun getUrl(): String = pref.getString("url", "")!!
+
     override fun setUserId(userId: String?) =
         pref.edit().putString(USER_ID, userId.toString()).apply()
 
