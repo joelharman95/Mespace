@@ -12,10 +12,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mespace.data.network.api.request.ReqIsUserExists
-import com.mespace.data.network.api.response.HomeScreenResponse
-import com.mespace.data.network.api.response.ResIsUserExists
-import com.mespace.data.network.api.response.SearchStoreUserResponse
-import com.mespace.data.network.api.response.SearchUserResponse
+import com.mespace.data.network.api.request.RequSearchStoreUser
+import com.mespace.data.network.api.request.RequSearchUser
+import com.mespace.data.network.api.response.*
 import com.mespace.data.repository.HomeRepository
 import com.mespace.data.repository.ProfileRepository
 import com.mespace.data.repository.SearchRepository
@@ -29,22 +28,24 @@ class SearchViewModel(
 ) : ViewModel() {
 
     fun getUserList(
-        onSuccess: OnSuccess<SearchUserResponse>,
+           requSearchUser: RequSearchUser,
+        onSuccess: OnSuccess<UserSearchResponse>,
         onError: OnError<String>
     ) {
         viewModelScope.launch {
-            repository.getUserList(onSuccess, onError)
+            repository.getUserList(requSearchUser,onSuccess, onError)
         }
     }
 
 
-    fun getStoreUselist(
-        onSuccess: OnSuccess<SearchStoreUserResponse>,
-        onError: OnError<String>
-    ) {
+    fun getStoreUserListItem(requSearchStoreUser: RequSearchStoreUser, onSuccess: OnSuccess<StoreUserSearchResponse>, onError: OnError<String>
+    )
+    {
         viewModelScope.launch {
-            repository.getStoreList(onSuccess, onError)
+            repository.getSearchStoreListUser(requSearchStoreUser,onSuccess,onError)
         }
     }
+
+
 
 }

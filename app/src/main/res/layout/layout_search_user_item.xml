@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textColor="@color/black"
+                android:textColor="#505050"
                 android:textSize="@dimen/size_13"
                 tools:text="Description here" />
 

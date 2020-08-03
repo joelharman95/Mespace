@@ -3,7 +3,6 @@ package com.mespace.data.network.api.service
 import com.mespace.data.network.api.request.ClosestToRequest
 import com.mespace.data.network.api.request.MyUserRequest
 import com.mespace.data.network.api.response.ClosestToResponse
-import com.mespace.data.network.api.response.SearchUserResponse
 import com.mespace.di.utility.API
 import retrofit2.Response
 import retrofit2.http.Body

@@ -8,8 +8,12 @@
 
 package com.mespace.data.network.api.service
 
+import com.mespace.data.network.api.request.RequSearchStoreUser
+import com.mespace.data.network.api.request.RequSearchUser
 import com.mespace.data.network.api.response.SearchStoreUserResponse
 import com.mespace.data.network.api.response.SearchUserResponse
+import com.mespace.data.network.api.response.StoreUserSearchResponse
+import com.mespace.data.network.api.response.UserSearchResponse
 import com.mespace.di.utility.API.INDEX
 import com.mespace.di.utility.API.Search_Store_Api
 import com.mespace.di.utility.API.Search_User_Api
@@ -23,12 +27,16 @@ interface SearchUserApi {
 
     @POST(INDEX)
     suspend fun getUserList(
-        @Query("type") type: String = Search_User_Api
-    ): Response<SearchUserResponse>
 
-    @GET(INDEX)
-    suspend fun getStoreList(
-        @Query("type") type: String = Search_Store_Api
-    ): Response<SearchStoreUserResponse>
+        @Query("type") type: String = Search_User_Api,
+        @Body requSearchUser: RequSearchUser
+    ): Response<UserSearchResponse>
+
+    @POST(INDEX)
+    suspend fun getStoreListNew(
+
+        @Query("type") type: String = Search_Store_Api,
+        @Body requSearchStoreUser: RequSearchStoreUser
+    ): Response<StoreUserSearchResponse>
 
 }

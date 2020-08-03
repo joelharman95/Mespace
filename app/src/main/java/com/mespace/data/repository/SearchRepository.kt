@@ -8,8 +8,12 @@
 
 package com.mespace.data.repository
 
+import com.mespace.data.network.api.request.RequSearchStoreUser
+import com.mespace.data.network.api.request.RequSearchUser
 import com.mespace.data.network.api.response.SearchStoreUserResponse
 import com.mespace.data.network.api.response.SearchUserResponse
+import com.mespace.data.network.api.response.StoreUserSearchResponse
+import com.mespace.data.network.api.response.UserSearchResponse
 import com.mespace.data.network.api.service.SearchUserApi
 import com.mespace.di.OnError
 import com.mespace.di.OnSuccess
@@ -21,13 +25,14 @@ private class SearchRepositoryImpl(
     private val api: SearchUserApi) : SearchRepository {
 
     override suspend fun getUserList(
-        onSuccess: OnSuccess<SearchUserResponse>,
+            requSearchUser: RequSearchUser,
+        onSuccess: OnSuccess<UserSearchResponse>,
         onError: OnError<String>
     ) {
         withContext(Dispatchers.IO) {
             try {
 
-                val response = api.getUserList()
+                val response = api.getUserList(requSearchUser = requSearchUser)
                 if (response.isSuccessful) {
                     response.body()?.let {
                         if (it.status.toString().isSuccess())
@@ -46,30 +51,29 @@ private class SearchRepositoryImpl(
         }
     }
 
-    override suspend fun getStoreList(
-        onSuccess: OnSuccess<SearchStoreUserResponse>,
-        onError: OnError<String>
-    ) {
-        withContext(Dispatchers.IO) {
-            try {
+    override suspend fun getSearchStoreListUser(requSearchStoreUser: RequSearchStoreUser, onSuccess: OnSuccess<StoreUserSearchResponse>, onError: OnError<String>) {
+    withContext(Dispatchers.IO){
+        try {
 
-                val response = api.getStoreList()
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        if (it.status.toString().isSuccess())
-                            withContext(Dispatchers.Main) { onSuccess(it) }
-                        else
-                            withContext(Dispatchers.Main) { onError(it.message.toString()) }
-                    }
-                } else {
-                    withContext(Dispatchers.Main) {
-                        onError(response.message().toString())
-                    }
+            val response = api.getStoreListNew(requSearchStoreUser = requSearchStoreUser)
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    if (it.status.toString().isSuccess())
+                        withContext(Dispatchers.Main) { onSuccess(it) }
+                    else
+                        withContext(Dispatchers.Main) { onError(it.message.toString()) }
                 }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {}
+            } else {
+                withContext(Dispatchers.Main) {
+                    onError(response.message().toString())
+                }
             }
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main) {}
         }
+    }
+
+
     }
 
 
@@ -81,14 +85,16 @@ interface SearchRepository {
 
 
     suspend fun getUserList(
-        onSuccess: OnSuccess<SearchUserResponse>,
-        onError: OnError<String>
+            requSearchUser: RequSearchUser,
+            onSuccess: OnSuccess<UserSearchResponse>,
+            onError: OnError<String>
+    )
+    suspend fun getSearchStoreListUser(
+            requSearchStoreUser: RequSearchStoreUser,
+            onSuccess: OnSuccess<StoreUserSearchResponse>,
+            onError: OnError<String>
     )
 
-    suspend fun getStoreList(
-        onSuccess: OnSuccess<SearchStoreUserResponse>,
-        onError: OnError<String>
-    )
 
     companion object Factory {
         fun create(api: SearchUserApi): SearchRepository =

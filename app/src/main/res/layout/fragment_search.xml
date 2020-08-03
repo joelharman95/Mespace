@@ -49,15 +49,17 @@
         android:padding="10dp">
 
         <com.mespace.utils.CommonEditText
+            android:id="@+id/sear_user_edt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-
             android:layout_marginLeft="@dimen/size_15"
             android:background="@null"
             android:drawableRight="@drawable/ic_icon_search_home"
             android:drawablePadding="3dp"
             android:hint="@string/search_hint"
+            android:maxLines="1"
+            android:singleLine="true"
             android:padding="5dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -88,17 +90,20 @@
             >
 
             <com.mespace.utils.CommonTextView
+                android:id="@+id/txt_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="User"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_18"
+                android:text="Users"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/size_20"
                 android:textStyle="bold" />
 
             <FrameLayout
+                android:id="@+id/vi_user"
+
                 android:layout_width="30dp"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 android:layout_marginLeft="5dp"
                 android:background="@color/colorPrimary"
 
@@ -113,19 +118,22 @@
             android:orientation="vertical">
 
             <com.mespace.utils.CommonTextView
+                android:id="@+id/txt_store"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="Store"
+                android:text="Stores"
                 android:textColor="@color/black"
-                android:textSize="@dimen/size_18"
+                android:textSize="@dimen/size_20"
                 android:textStyle="bold"
 
                 />
 
             <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="5dp"
+                android:id="@+id/vi_store"
+                android:layout_width="30dp"
+                android:layout_height="3dp"
                 android:layout_marginLeft="5dp"
 
                 android:background="@color/colorPrimary" />
@@ -175,8 +183,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:orientation="vertical"
         android:layout_marginLeft="@dimen/size_20"
         >
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/search_categoryChip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            app:chipSpacingVertical="@dimen/spacing_tiny" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/store_serach_list"
             android:layout_width="match_parent"
