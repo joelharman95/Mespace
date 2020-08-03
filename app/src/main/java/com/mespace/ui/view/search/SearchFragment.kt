@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class SearchFragment : Fragment(), LifecycleObserver {
     private val serachViewModel by viewModel<SearchViewModel>()
-
+var type : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
@@ -59,15 +59,25 @@ class SearchFragment : Fragment(), LifecycleObserver {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int,
+
                                        before: Int, count: Int) {
 
-                getUserDetailsNew(s.toString())
+                if(type.equals("user"))
+                {
+                    getUserDetails(s.toString())
+
+                }
+                else if(type.equals("store"))
+                {
+                    getStoreUserList(s.toString(), "second")
+                }
+
             }
         })
 
 
         store_heading.setOnClickListener {
-
+            type = "store"
             user_lay.visibility = View.GONE
             store_lay.visibility = View.VISIBLE
             txt_store.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary));
@@ -75,11 +85,11 @@ class SearchFragment : Fragment(), LifecycleObserver {
             vi_store.visibility = View.VISIBLE
             vi_user.visibility = View.GONE
             println("Store_heading" + " " + " Store serach")
-            getStoreUserList()
+            getStoreUserList("","first")
         }
 
         user_heading.setOnClickListener {
-
+            type = "user"
             store_lay.visibility = View.GONE
             user_lay.visibility = View.VISIBLE
             txt_store.setTextColor(ContextCompat.getColor(requireContext(), R.color.black));
@@ -92,19 +102,22 @@ class SearchFragment : Fragment(), LifecycleObserver {
         user_heading.performClick()
     }
 
-    private fun getStoreUserList() {
+    private fun getStoreUserList(s: String, s1: String) {
         serachViewModel.getStoreUserListItem(RequSearchStoreUser(
 
                 latitude = "11.05617456",
                 longitude = "77.0185673",
                 start = "0",
                 limit = "10",
-                keyword = "",
+                keyword = s,
                 category_id = "1"
         ), {
             println("User_list" + " " + it.detail.users_list)
             (store_serach_list.adapter as NearStoreUserAdapter).addCategoryList(it.detail.users_list)
-            setChipsInCategory(it.detail.category_list)
+            if (s1.equals("first")) {
+                setChipsInCategory(it.detail.category_list)
+
+            }
         }, {
             println("User_list" + " " + it)
 
@@ -126,6 +139,8 @@ class SearchFragment : Fragment(), LifecycleObserver {
                     unblockInput(pbSearch)
                     if(it.status==1)
                     {
+                        (user_list.adapter as SearchUserAdapter).removeCategoryList(it.detail.users_list)
+
                         (user_list.adapter as SearchUserAdapter).addCategoryList(it.detail.users_list)
 
                     }
@@ -174,25 +189,7 @@ class SearchFragment : Fragment(), LifecycleObserver {
         }
     }
 
-    private fun getUserDetailsNew(s: String) {
-        serachViewModel.getUserList(RequSearchUser(
-                latitude = "11.05617456",
-                longitude = "77.0185673",
-                start = "0",
-                limit = "10",
-                keyword = s
 
-
-        ),
-                {
-                    unblockInput(pbSearch)
-
-                    (user_list.adapter as SearchUserAdapter).addCategoryList(it.detail.users_list)
-                }, {
-            unblockInput(pbSearch)
-        }
-        )
-    }
 
 
 }

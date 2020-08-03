@@ -37,7 +37,15 @@ class SearchUserAdapter(val user: myUser) :
 
     fun addCategoryList(_categoryList: List<UserSearchResponse.Detail.Users>) {
         userList.removeAll(_categoryList)
+        userList.clear()
         userList.addAll(_categoryList)
+        notifyDataSetChanged()
+    }
+
+
+    fun removeCategoryList(_categoryList: List<UserSearchResponse.Detail.Users>) {
+
+        userList.removeAll(_categoryList)
         notifyDataSetChanged()
     }
 

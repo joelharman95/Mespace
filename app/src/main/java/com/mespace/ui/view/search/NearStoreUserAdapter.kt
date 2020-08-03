@@ -45,6 +45,7 @@ class NearStoreUserAdapter(val user: NearstoreUser) :
     }
 
     fun addCategoryList(_categoryList: List<StoreUserSearchResponse.Detail.Users>) {
+        userList.clear()
         userList.addAll(_categoryList)
         notifyDataSetChanged()
     }
