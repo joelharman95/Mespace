@@ -2,27 +2,26 @@ package com.mespace.ui.view.neareststore
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.response.NearByStoreResponse
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.di.loadCircularImage
-import com.mespace.utils.CommonTextView
 import kotlinx.android.synthetic.main.layout_near_store_item_list.view.*
+
 import java.util.*
 
 
 typealias storeUser = (Boolean) -> Unit
 
-class NearByStoreAdapter(val user: storeUser) :
+class NearByStoreAdapter(val storeUser: storeUser) :
     RecyclerView.Adapter<NearByStoreAdapter.CategoryHolder>() {
 
     val userList = mutableListOf<NearByStoreResponse.Detail.Store_list>()
@@ -39,6 +38,7 @@ class NearByStoreAdapter(val user: storeUser) :
 
     override fun getItemCount() = userList.size
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
         holder.bindUi(position)
     }
@@ -51,6 +51,7 @@ class NearByStoreAdapter(val user: storeUser) :
 
 
     inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        @RequiresApi(Build.VERSION_CODES.M)
         @SuppressLint("SetTextI18n")
         fun bindUi(position: Int) {
             view.apply {
@@ -58,11 +59,20 @@ class NearByStoreAdapter(val user: storeUser) :
                 userList[position].let { _category ->
 
                     if(_category.profile_image.isEmpty() || _category.profile_image.toString().contains("no_image")){
-                        drawableColorChange(textLayout)
+                        val rnd = Random()
+                        val color: Int =
+                            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+                        val strokeWidth = 10
+                        val strokeColor = Color.parseColor("#FFFFFF")
+                        val gD = GradientDrawable()
+                        gD.setColor(color)
+                        gD.shape = GradientDrawable.OVAL
+                        gD.setStroke(strokeWidth, strokeColor)
+                        ivStorePic.background = gD
                         border.text=_category.name.first().toString()
                     }else{
                         ivStorePic.loadCircularImage(_category.profile_image)
-                        textLayout.visibility=View.GONE
+                        border.visibility=View.GONE
                     }
 
                     tvStoreName.text = _category.name
@@ -72,10 +82,18 @@ class NearByStoreAdapter(val user: storeUser) :
                     tvStoreDescription.text=_category.description
                     if(_category.open_close!="1"){
                         tvStoreStatus.text=context.getString(R.string.closed)
+                        tvStoreStatus.setTextColor(resources.getColor(R.color.light_color, null))
                     }else{
+                        tvStoreStatus.setTextColor(resources.getColor(R.color.blue, null))
                         tvStoreStatus.text="Open till "+_category.close_hours
                     }
 
+                    setOnClickListener {
+                        PreferenceManager(context).apply {
+                            setStoreId(_category.space_id.toString())
+                        }
+                        storeUser.invoke(true)
+                    }
                     /*cvCategory.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
                     cvCategory.strokeColor = ContextCompat.getColor(context, R.color.black)
                     cvCategory.strokeWidth=1

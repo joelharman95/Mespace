@@ -1,16 +1,18 @@
 package com.mespace.ui.view.search
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
-import com.mespace.data.network.api.response.HomeScreenResponse
-import com.mespace.data.network.api.response.SearchUserResponse
 import com.mespace.data.network.api.response.UserSearchResponse
 import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.layout_search_user_item.view.*
-import kotlinx.android.synthetic.main.layout_user_item.view.*
+
+import java.util.*
 
 typealias myUser = (Boolean) -> Unit
 
@@ -56,10 +58,18 @@ class SearchUserAdapter(val user: myUser) :
 
                     userList[position].let { _category ->
 
+                        if(_category.profile_image.isEmpty() || _category.profile_image.toString().contains("no_image")){
+                            drawableColorChange(rlBackground)
+                            initialText.text=_category.name.first().toString()
+                        }else{
+                            ivUserPic.loadCircularImage(_category.profile_image)
+                            rlBackground.visibility=View.GONE
+                        }
+
                         ivUserPic.loadCircularImage(_category.profile_image)
                         tvUserName.text = _category.name
-                        tvUserProfile.text = "#"+_category.keywords
-                        tvDes.text = _category.distance
+                        tvTag.text = _category.keywords
+                        tvDis.text = _category.distance
 
                     }
 
@@ -67,5 +77,18 @@ class SearchUserAdapter(val user: myUser) :
             }
         }
     }
+
+    fun drawableColorChange(view: RelativeLayout){
+        val rnd = Random()
+        val color: Int =
+            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        view.setBackgroundColor(color)
+        val gd = GradientDrawable()
+        gd.setColor(color)
+        gd.cornerRadius = 100f
+        // gd.setStroke(6, Color.BLACK)
+        view.background=gd
+    }
+
 
 }

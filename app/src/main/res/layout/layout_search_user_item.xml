@@ -1,73 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_tiny"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-
-        android:orientation="horizontal">
+        android:id="@+id/cl_pic"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivUserPic"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/rlBackground"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/solid_circle">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <com.mespace.utils.CommonTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.mespace.utils.CommonTextView
-                    android:id="@+id/tvUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/black"
-                    tools:text="Valentine" />
-                <com.mespace.utils.CommonTextView
-                    android:id="@+id/tvUserProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/size_13"
-                    app:layout_constraintStart_toEndOf="@+id/tvUserName"
-                    app:layout_constraintTop_toTopOf="@id/tvUserName"
-                    tools:text="#beautician" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvDes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textColor="#505050"
-                android:textSize="@dimen/size_13"
-                tools:text="Description here" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:id="@+id/initialText"
+                android:inputType="textCapCharacters|textCapSentences|textCapWords"
+                />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-    </LinearLayout>
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@id/tvDis"
+        app:layout_constraintStart_toEndOf="@id/cl_pic"
+        app:layout_constraintTop_toTopOf="@id/cl_pic"
+        app:layout_constraintBottom_toTopOf="@id/tvTag"
+        tools:text="Valentine" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/tvTag"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="40dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxEms="20"
+        android:maxLines="1"
+        android:padding="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        tools:text="#beautician"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        app:layout_constraintStart_toEndOf="@id/cl_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/cl_pic"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#505050"
+        android:textSize="@dimen/size_13"
+        android:text="10 m"
+        app:layout_constraintTop_toTopOf="@id/tvUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvUserName"
+         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

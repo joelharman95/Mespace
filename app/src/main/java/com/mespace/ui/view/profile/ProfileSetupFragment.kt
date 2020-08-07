@@ -107,9 +107,9 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                         keywords?.forEach { tag ->
                             addChipToGroup(tag)
                         }
-                        /*userDetail.keywords?.forEach { keywords ->
+                        userDetail.keywords?.forEach { keywords ->
                             addChipToGroup(keywords.toString())
-                        }*/
+                        }
                     }
                 }
             }, onError = {

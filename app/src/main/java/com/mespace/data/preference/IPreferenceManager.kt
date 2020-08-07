@@ -46,4 +46,13 @@ interface IPreferenceManager {
     fun setUrl(url:String)
     fun getUrl():String
 
+    fun setCountryCode(code:String)
+    fun getCountryCode():String
+
+    fun setPhoneNumber(phoneNo:String)
+    fun getPhoneNumber():String
+
+    fun setStoreId(storeId:String)
+    fun getStoreId():String
+
 }

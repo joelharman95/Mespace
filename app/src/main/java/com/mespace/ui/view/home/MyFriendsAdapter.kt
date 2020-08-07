@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.di.loadCircularImage
-import kotlinx.android.synthetic.main.layout_user_item.view.border
-import kotlinx.android.synthetic.main.layout_user_item.view.textLayout
-import kotlinx.android.synthetic.main.layout_user_item.view.user_image
-import kotlinx.android.synthetic.main.layout_user_item.view.user_name
+import kotlinx.android.synthetic.main.layout_user_item.view.*
+
 import java.util.*
 
 typealias myFriend = (Boolean) -> Unit
@@ -22,6 +21,7 @@ class MyFriendsAdapter(val myFriend: myFriend) :
     RecyclerView.Adapter<MyFriendsAdapter.CategoryHolder>() {
 
     val userList = mutableListOf<HomeScreenResponse.Detail.Userlist>()
+    lateinit var navController:NavController
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
         return CategoryHolder(
@@ -44,6 +44,8 @@ class MyFriendsAdapter(val myFriend: myFriend) :
         notifyDataSetChanged()
     }
 
+
+
     inner class CategoryHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bindUi(position: Int) {
             view.apply {
@@ -51,16 +53,28 @@ class MyFriendsAdapter(val myFriend: myFriend) :
                 if (position <= 6) {
                     userList[position].let { _category ->
 
+                        user_name.text = _category.name
+                        border.text=_category.name.first().toString()
+
                         if(_category.profile_image.isEmpty() || _category.profile_image.contains("no_image")){
-                            drawableColorChange(textLayout)
-                            user_image.visibility=View.GONE
-                            border.text=_category.name.first().toString()
+
+                            val rnd = Random()
+                            val color: Int =
+                                Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+                            val strokeWidth = 10
+                            val strokeColor = Color.parseColor("#FFFFFF")
+                            val gD = GradientDrawable()
+                            gD.setColor(color)
+                            gD.shape = GradientDrawable.OVAL
+                            gD.setStroke(strokeWidth, strokeColor)
+                            user_image.background = gD
+
                         }else{
                             user_image.loadCircularImage(_category.profile_image)
-                            textLayout.visibility=View.GONE
+                            border.visibility=View.GONE
                         }
 
-                        user_name.text = _category.name
+
                         setOnClickListener {
                             myFriend.invoke(false)
                         }
@@ -68,7 +82,7 @@ class MyFriendsAdapter(val myFriend: myFriend) :
                 } else {
                     if (position == 7) {
                         user_name.text = "Show more"
-                        textLayout.visibility=View.GONE
+                        border.visibility=View.GONE
                         user_image.loadCircularImage(R.drawable.ic_icon_show_more)
                         setOnClickListener {
                             myFriend.invoke(true)
@@ -77,12 +91,12 @@ class MyFriendsAdapter(val myFriend: myFriend) :
                     } else {
                         user_image.visibility = View.GONE
                         user_name.visibility = View.GONE
-                        textLayout.visibility=View.GONE
+                        border.visibility=View.GONE
                     }
                 }
 
-               /* if (position <= 6) {
-                    if (position == 6) {
+                /*if (position <= 7) {
+                    if (position == 7) {
                         user_name.text = "Show more"
                         user_image.loadCircularImage(R.drawable.ic_icon_show_more)
                         setOnClickListener {

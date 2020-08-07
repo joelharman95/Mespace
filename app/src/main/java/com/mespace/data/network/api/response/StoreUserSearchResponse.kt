@@ -4,27 +4,33 @@ data class StoreUserSearchResponse(
     val detail: Detail,
     val message: String,
     val status: Int
-) {
-    data class Detail(
-        val category_list: List<Category>,
-        val users_list: List<Users>
-    ) {
-        data class Category(
-            val category_id: String,
-            val category_name: String
-        )
+)
 
-        data class Users(
-            val close_hours: String,
-            val country_code: String,
-            val description: String,
-            val distance: String,
-            val keywords: String,
-            val name: String,
-            val open_hours: String,
-            val phone: String,
-            val profile_image: String,
-            val user_id: String
-        )
-    }
-}
+data class Detail(
+    val category_list: List<Category>,
+    val users_list: List<Users>
+)
+data class Users(
+    val close_hours: String,
+    val country_code: String,
+    val description: String,
+    val distance: String,
+    val keywords: String,
+    val name: String,
+    val open_hours: String,
+    val phone: String,
+    val profile_image: String,
+    val user_id: String,
+    val categories_name: String,
+    val open_close:String
+)
+data class Category(
+    val category_id: String,
+    val category_name: String
+)
+data class CategoryListResponses(
+    val categoryList:List<Category>,
+    val checkedCategory:List<Category>
+)
+
+

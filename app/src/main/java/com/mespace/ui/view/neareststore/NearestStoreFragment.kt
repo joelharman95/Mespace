@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
 import com.mespace.data.network.api.request.NearByStoreRequest
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.NearestStoreListViewModel
+import com.mespace.di.toast
+import com.mespace.ui.view.home.HomeFragmentDirections
 import kotlinx.android.synthetic.main.fragment_nearest_store.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,11 +40,23 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         nearest_store_list.adapter = NearByStoreAdapter {
+            if(it){
+                var storeId = ""
+                var userId = ""
+                PreferenceManager(requireContext()).apply {
+                    storeId = getStoreId()
+                    userId = getUserId()
+                }
+                val action = NearestStoreFragmentDirections.actionNearestStoreFragmentToBusinessDetailsFragment(storeId,userId)
+                findNavController().navigate(action)
+            }
+
         }
         getStoreDetails(start)
         ivCategoryBack.setOnClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
+
         nearest_store_list.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -82,7 +97,6 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
             start += 10
         }, {
             isLoading=false
-            println("skdhfguiiiiiiiiiiii" + it)
         })
     }
 }

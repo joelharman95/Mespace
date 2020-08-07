@@ -19,7 +19,10 @@ object API {
     const val GET_NEARBY_STORE_LIST="get_nearby_stores_list"
     const val CLOSEST_TO_API="closest_to_you_search_list"
     const val PROFILE_SETTING="profile_settings_details"
-    const val MY_SPACEE="my_spacee"
+    const val MY_SPACEE="my_space"
+    const val VIEW_STORE_DETAILS="view_store_detail"
+    const val ADD_FAV="add_favourite"
+
 }
 
 object Preference {

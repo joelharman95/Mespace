@@ -14,7 +14,7 @@ data class ProfileSettingResponse (
         val name : String,
         val email : String,
         val status : String,
-        val keywordswords : String,
+        val keywords : String,
         val profile_image : String,
         val user_id : Int,
         val help_page : String,

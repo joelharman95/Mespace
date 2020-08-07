@@ -67,5 +67,6 @@
     <string name="cancel">Cancel</string>
     <string name="label_profile">Profile Settings</string>
     <string name="label_phone">PHONE</string>
+    <string name="search_hint_">Search by Name, Keyword, Phone</string>
 
 </resources>

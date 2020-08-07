@@ -1,0 +1,224 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mespace.ui.view.businessdetails.BusinessDetailsFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStoreBack"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/light_color"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_arrow_back"
+        android:layout_margin="@dimen/size_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBusinessName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="10dp"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:text="Bharath"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvProfileImg" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBusinessTag"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxEms="20"
+        android:maxLines="1"
+        android:paddingStart="@dimen/size_15"
+        android:paddingTop="@dimen/size_10"
+        android:paddingEnd="5dp"
+        android:paddingBottom="@dimen/size_10"
+        android:text="#foodie"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tvBusinessName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBusinessName"
+        app:layout_constraintTop_toTopOf="@id/tvBusinessName" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="5dp"
+        app:chipSpacingVertical="@dimen/spacing_tiny"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBusinessName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:text="Brookefields, Ram Nagar, Coimbatore 641001"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cgCategory" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPhoneNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="5dp"
+        android:drawableStart="@drawable/ic_icon_phone"
+        android:drawablePadding="15dp"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:text="+91 9659976562"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBusinessDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:text="You are braver than you believe, stronger than you seem, smarter than you think, and loved more than you will ever know."
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneNo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOpenClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_20"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:text="Open 9am to 8pm"
+        android:textSize="@dimen/size_15"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBusinessDescription" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivStoreBack" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:drawableStart="@drawable/ic_star_fill"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivFavourite"
+        app:layout_constraintEnd_toStartOf="@id/ivFavourite"
+        app:layout_constraintTop_toTopOf="@id/ivFavourite" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvProfileImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/size_20"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="@dimen/size_10"
+        app:layout_constraintBottom_toBottomOf="@id/ivStoreBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivStoreBack">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/size_10" />
+
+            <RelativeLayout
+                android:id="@+id/textLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/solid_circle"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.mespace.utils.CommonTextView
+                    android:id="@+id/border"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:inputType="textCapCharacters|textCapSentences|textCapWords"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="35dp"
+        app:cardElevation="@dimen/size_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_icon_business_chat" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

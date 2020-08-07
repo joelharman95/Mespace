@@ -2,6 +2,7 @@ package com.mespace.data.network.api.service
 
 import com.mespace.data.network.api.request.ReqAddStore
 import com.mespace.data.network.api.request.ReqIsHomePageExists
+import com.mespace.data.network.api.request.ReqUpdateStore
 import com.mespace.data.network.api.response.AddStoreResponse
 import com.mespace.data.network.api.response.CategoryResponse
 import com.mespace.data.network.api.response.HomeScreenResponse
@@ -27,6 +28,12 @@ interface AddSpaceApi {
     suspend fun getAddNewStore(
             @Query("type") type: String = Add_new_store,
             @Body reqAddStore: ReqAddStore
+    ): Response<AddStoreResponse>
+
+    @POST(INDEX)
+    suspend fun updateStore(
+        @Query("type") type: String = Add_new_store,
+        @Body reqUpdateStore: ReqUpdateStore
     ): Response<AddStoreResponse>
 
 }

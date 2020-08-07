@@ -1,12 +1,12 @@
 package com.mespace.ui.view.profile
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -51,13 +51,13 @@ class ProfileFragment : Fragment(), LifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ivEdit.setOnClickListener {
-            Toast.makeText(context,"Working On It",Toast.LENGTH_SHORT).show()
-//            findNavController().navigate(R.id.editProfileFragment)
+//            Toast.makeText(context,"Working On It",Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.editProfileFragment)
         }
 
         tvProfileMySpace.setOnClickListener {
-//            bottomSheet()
-            Toast.makeText(context,"Working On It",Toast.LENGTH_SHORT).show()
+            bottomSheet()
+           // Toast.makeText(context,"Working On It",Toast.LENGTH_SHORT).show()
         }
 
         ivCategoryBack.setOnClickListener {
@@ -66,6 +66,12 @@ class ProfileFragment : Fragment(), LifecycleObserver {
         ivHome.setOnClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
+
+        tvProfileSettings.setOnClickListener {
+            findNavController().navigate(R.id.settingsFragment)
+        }
+
+
         tvTermsAndCon.setOnClickListener {
             PreferenceManager(requireContext()).apply {
                 setUrl(terms_condition)
@@ -100,6 +106,16 @@ class ProfileFragment : Fragment(), LifecycleObserver {
 
         }
 
+        tvInviteFriends.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "$invite_message  $invite_url")
+            sendIntent.type = "text/plain"
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+
         getProfileSettings()
     }
 
@@ -113,14 +129,19 @@ class ProfileFragment : Fragment(), LifecycleObserver {
                 println("OUTPUTTT" + it.detail)
                 ivProfilePic.loadCircularImage(it.detail.profile_image)
                 tvProfileName.text = it.detail.name
-                if (it.detail.keywordswords.isNullOrEmpty()) {
+                if (it.detail.keywords.isNullOrEmpty()) {
+
                     tvTag.visibility = View.GONE
                 } else {
-                    tvTag.text = it.detail.keywordswords
+                    val str:String = "#"+it.detail.keywords.replace(",",", #")
+                    tvTag.text = str
                 }
-
+                PreferenceManager(requireContext()).apply {
+                    setCountryCode(it.detail.country_code.toString())
+                    setPhoneNumber(it.detail.phone_no)
+                }
                 tvProfilePhone.text =
-                    it.detail.country_code.toString() + " " + it.detail.phone_no.toString()
+                    "+"+it.detail.country_code.toString() + "  " + it.detail.phone_no.toString()
                 tvProfileMail.text = it.detail.email
                 help_page = it.detail.help_page
                 about = it.detail.about
@@ -143,6 +164,8 @@ class ProfileFragment : Fragment(), LifecycleObserver {
             bottomSheetFragment = MySpaceBottomFragment()
             bottomSheetFragment?.show(childFragmentManager, bottomSheetFragment?.tag)
         } else {
+            bottomSheetFragment=null
+            bottomSheetFragment = MySpaceBottomFragment()
             bottomSheetFragment?.show(childFragmentManager, bottomSheetFragment?.tag)
         }
 

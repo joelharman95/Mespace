@@ -68,8 +68,8 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/spacing_tiny"
                                 android:maxLength="15"
-                                android:singleLine="true"
                                 android:padding="5dp"
+                                android:singleLine="true"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/size_16"
                                 android:textStyle="bold"
@@ -90,15 +90,17 @@
                             android:layout_gravity="center"
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
+                            android:id="@+id/favourite"
                             android:src="@drawable/ic_icon_favorite_white" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="5dp"
                             android:layout_height="5dp"
-                       android:visibility="invisible"
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
-                            android:src="@drawable/ic_icon_favorite_white" />
+                            android:src="@drawable/ic_icon_favorite_white"
+                            android:visibility="invisible" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -106,13 +108,15 @@
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_notification" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="5dp"
                             android:layout_height="5dp"
-                            android:visibility="invisible"
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
-                            android:src="@drawable/ic_icon_favorite_white" />
+                            android:src="@drawable/ic_icon_favorite_white"
+                            android:visibility="invisible" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -120,19 +124,21 @@
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
                             android:src="@drawable/ic_icon_recent_chat" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="5dp"
                             android:layout_height="5dp"
-                            android:visibility="invisible"
                             android:layout_marginEnd="@dimen/spacing_tiny"
                             android:padding="5dp"
-                            android:src="@drawable/ic_icon_favorite_white" />
+                            android:src="@drawable/ic_icon_favorite_white"
+                            android:visibility="invisible" />
+
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivSearch"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:padding="5dp"
-                            android:id="@+id/ivSearch"
                             android:src="@drawable/ic_icon_search_home" />
                     </LinearLayout>
 
@@ -140,16 +146,16 @@
             </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
+                android:id="@+id/near_by_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:layout_gravity="center"
-                android:id="@+id/near_by_lay"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:orientation="vertical"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
 
-                android:orientation="vertical">
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="80dp"
@@ -210,9 +216,9 @@
                     android:text="Closest to you"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_18"
-                    android:visibility="gone"
+                    android:textStyle="bold"
 
-                    android:textStyle="bold" />
+                    android:visibility="gone" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -222,10 +228,10 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="10dp"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="4"
                     tools:itemCount="8"
-                    android:visibility="gone"
                     tools:listitem="@layout/layout_user_item" />
 
 
@@ -237,36 +243,34 @@
                     android:textSize="@dimen/size_18"
                     android:textStyle="bold" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/no_friends"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="vertical">
-
-                <com.mespace.utils.CommonTextView
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/no_friends"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="There is no friends available"
-                    android:textColor="@color/subtitle_color"
-                    android:textSize="@dimen/size_12"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                  />
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <com.mespace.utils.CommonTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Invite from your contact"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/size_12"
-                    android:padding="5dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <com.mespace.utils.CommonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="There is no friends available"
+                        android:textColor="@color/subtitle_color"
+                        android:textSize="@dimen/size_12" />
+
+                    <com.mespace.utils.CommonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Invite from your contact"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/size_12" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/friend_list"
@@ -290,26 +294,23 @@
                     android:textStyle="bold" />
 
 
-
-
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/no_shops"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <com.mespace.utils.CommonTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
                         android:text="There is no shops available"
                         android:textColor="@color/subtitle_color"
-                        android:textSize="@dimen/size_12"
-                        android:layout_marginTop="10dp"
-                        android:padding="5dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        />
+                        android:textSize="@dimen/size_12" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -339,10 +340,9 @@
                     android:id="@+id/add_new_space"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
                     android:layout_marginTop="15dp"
-                    >
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/user_image"
@@ -357,15 +357,14 @@
                         android:id="@+id/user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:maxLength="25"
-                        android:textColor="@color/black"
-                        android:singleLine="true"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Add a Space"
+                        android:maxLength="25"
                         android:padding="5dp"
-                        />
+                        android:singleLine="true"
+                        android:text="Add a Space"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

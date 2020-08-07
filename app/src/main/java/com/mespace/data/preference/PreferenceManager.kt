@@ -33,9 +33,24 @@ class PreferenceManager(private val context: Context) : IPreferenceManager {
 
 
     override fun setTitle(title: String) =pref.edit().putString("title", title).apply()
+
     override fun getTitle(): String = pref.getString("title", "")!!
+
     override fun setUrl(url: String) =pref.edit().putString("url", url).apply()
+
     override fun getUrl(): String = pref.getString("url", "")!!
+
+    override fun setCountryCode(code: String)=pref.edit().putString("countryCode", code).apply()
+
+    override fun getCountryCode(): String = pref.getString("countryCode", "")!!
+
+    override fun setPhoneNumber(phoneNo: String) =pref.edit().putString("phoneNumber", phoneNo).apply()
+
+    override fun getPhoneNumber(): String = pref.getString("phoneNumber", "")!!
+
+    override fun setStoreId(storeId: String) =pref.edit().putString("store_id", storeId).apply()
+
+    override fun getStoreId(): String = pref.getString("store_id", "")!!
 
     override fun setUserId(userId: String?) =
         pref.edit().putString(USER_ID, userId.toString()).apply()

@@ -51,6 +51,7 @@ val REPOSITORY_MODULE = module {
     single { MyFriendsListRepository.create(get()) }
     single { ClosestToRepository.create(get()) }
     single { AddSpaceRepository.create(get()) }
+    single { DetailedRepository.create(get()) }
 }
 
 /**
@@ -67,6 +68,9 @@ val VIEW_MODEL_MODULE = module {
     viewModel { AddSpaceViewModel(get(),androidContext()) }
     viewModel { ProfileSettingViewModel(get(),androidContext())}
     viewModel { MySpaceBottomViewModel(get(),androidContext())}
+    viewModel { EditProfileViewModel(get(),androidContext())}
+    viewModel { BusinessDetailsViewmodel(get(),androidContext())}
+    viewModel { EditSpaceViewModel(get(),androidContext()) }
 
 }
 

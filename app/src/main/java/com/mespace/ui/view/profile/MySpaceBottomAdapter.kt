@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
-import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.network.api.response.MySpaceResponse
 import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.layout_user_item.view.*
@@ -52,7 +51,7 @@ class MySpaceBottomAdapter(val mySpace: mySpace) :
                 if (position == itemCount - 1 || itemCount==0) {
                     user_name.text = "Add a space"
                     user_image.loadCircularImage(R.drawable.ic_icon_add_space)
-                    textLayout.visibility= View.GONE
+                    border.visibility= View.GONE
                     setOnClickListener {
                         mySpace.invoke(true)
                     }
@@ -61,12 +60,20 @@ class MySpaceBottomAdapter(val mySpace: mySpace) :
                 userList[position].let { _category ->
                     user_name.text = _category.name
                     if(_category.profile_image.isEmpty() || _category.profile_image.contains("no_image")){
-                        drawableColorChange(textLayout)
-                        user_image.visibility= View.GONE
+                        val rnd = Random()
+                        val color: Int =
+                            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+                        val strokeWidth = 10
+                        val strokeColor = Color.parseColor("#FFFFFF")
+                        val gD = GradientDrawable()
+                        gD.setColor(color)
+                        gD.shape = GradientDrawable.OVAL
+                        gD.setStroke(strokeWidth, strokeColor)
+                        user_image.background = gD
                         border.text=_category.name.first().toString()
                     }else{
                         user_image.loadCircularImage(_category.profile_image)
-                        textLayout.visibility= View.GONE
+                        border.visibility= View.GONE
                     }
                     setOnClickListener {
                         mySpace.invoke(false)

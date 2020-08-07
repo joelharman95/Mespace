@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleObserver
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mespace.R
 import com.mespace.data.network.api.request.MySpaceRequest
 import com.mespace.data.viewmodel.MySpaceBottomViewModel
+import com.mespace.di.toast
 
 
 import kotlinx.android.synthetic.main.fragment_my_space_bottom.*
@@ -21,7 +23,7 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
 
     private val mySpaceBottomViewModel by viewModel<MySpaceBottomViewModel>()
 
-    val startIndex:Int=0
+    val startIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,16 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
         getMySpaceList()
         rvMySpace.adapter = MySpaceBottomAdapter {
+            if (it) {
+                findNavController().navigate(R.id.addaspaceFragment)
+                dismiss()
+            } else
+                activity?.toast("Myspace clicked")
         }
+        dismiss.setOnClickListener {
+            dismiss()
+        }
+
     }
 
     fun getMySpaceList() {
@@ -52,13 +63,14 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
             MySpaceRequest(
                 userId = "1",
                 start = startIndex,
-                limit = "20"),
+                limit = "20"
+            ),
             {
                 (rvMySpace.adapter as MySpaceBottomAdapter).addCategoryList(it.detail.my_space)
-                println("Bharathhhhhh"+it.detail.my_space)
+                println("Bharathhhhhh" + it.detail.my_space)
             },
             {
-                println("Bharathhhhhh"+it)
+                println("Bharathhhhhh" + it)
             })
 
     }

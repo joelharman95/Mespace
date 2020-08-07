@@ -16,17 +16,17 @@ import java.util.*
 typealias mySpace = (Boolean) -> Unit
 
 class MySpaceAdapter(val mySpace: mySpace) :
-        RecyclerView.Adapter<MySpaceAdapter.CategoryHolder>() {
+    RecyclerView.Adapter<MySpaceAdapter.CategoryHolder>() {
 
     val userList = mutableListOf<HomeScreenResponse.Detail.Mespace>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
         return CategoryHolder(
-                LayoutInflater.from(parent.context).inflate(
-                        R.layout.layout_user_item,
-                        parent,
-                        false
-                )
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.layout_user_item,
+                parent,
+                false
+            )
         )
     }
 
@@ -51,7 +51,7 @@ class MySpaceAdapter(val mySpace: mySpace) :
                 if (position == itemCount - 1) {
                     user_name.text = "Add a space"
                     user_image.loadCircularImage(R.drawable.ic_icon_add_space)
-                    textLayout.visibility=View.GONE
+                    border.visibility = View.GONE
                     setOnClickListener {
                         mySpace.invoke(true)
                     }
@@ -59,13 +59,21 @@ class MySpaceAdapter(val mySpace: mySpace) :
                 }
                 userList[position].let { _category ->
                     user_name.text = _category.name
-                    if(_category.profile_image.isEmpty() || _category.profile_image.contains("no_image")){
-                        drawableColorChange(textLayout)
-                        user_image.visibility=View.GONE
-                        border.text=_category.name.first().toString()
-                    }else{
+                    border.text = _category.name.first().toString()
+                    if (_category.profile_image.isEmpty() || _category.profile_image.contains("no_image")) {
+                        val rnd = Random()
+                        val color: Int =
+                            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+                        val strokeWidth = 10
+                        val strokeColor = Color.parseColor("#FFFFFF")
+                        val gD = GradientDrawable()
+                        gD.setColor(color)
+                        gD.shape = GradientDrawable.OVAL
+                        gD.setStroke(strokeWidth, strokeColor)
+                        user_image.background = gD
+                    } else {
                         user_image.loadCircularImage(_category.profile_image)
-                        textLayout.visibility=View.GONE
+                        border.visibility = View.GONE
                     }
                     setOnClickListener {
                         mySpace.invoke(false)
@@ -75,7 +83,7 @@ class MySpaceAdapter(val mySpace: mySpace) :
         }
     }
 
-    fun drawableColorChange(view: RelativeLayout){
+    fun drawableColorChange(view: RelativeLayout) {
         val rnd = Random()
         val color: Int =
             Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
@@ -84,7 +92,7 @@ class MySpaceAdapter(val mySpace: mySpace) :
         gd.setColor(color)
         gd.cornerRadius = 100f
         gd.setStroke(12, Color.WHITE)
-        view.background=gd
+        view.background = gd
     }
 
 }

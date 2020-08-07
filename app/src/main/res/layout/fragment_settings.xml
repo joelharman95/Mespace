@@ -1,0 +1,156 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.mespace.ui.view.SettingsFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlCatogory"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="@dimen/size_15"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivCategoryBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mespace.utils.CommonTextView
+            android:id="@+id/tvTitle"
+            style="@style/ToolbarTextView"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:text="Settings"
+            android:textSize="@dimen/size_20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
+            app:layout_constraintStart_toEndOf="@id/ivCategoryBack"
+            app:layout_constraintTop_toTopOf="@id/ivCategoryBack" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/fShadow"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line_color"
+        app:layout_constraintTop_toBottomOf="@id/rlCatogory" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/discoverMe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="@dimen/size_15"
+        android:text="Discover Me"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/switchDiscoverMe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rlCatogory" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchDiscoverMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_20"
+        app:layout_constraintBottom_toBottomOf="@id/discoverMe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/discoverMe" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNotification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="@dimen/size_15"
+        android:text="Notification"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/switchNotification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discoverMe" />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_20"
+        android:enabled="true"
+        app:layout_constraintBottom_toBottomOf="@id/tvNotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNotification"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNotDistrub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="@dimen/size_15"
+        android:text="Do not distrub"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/switchNotification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNotification" />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchDoNotDistrub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_20"
+        app:layout_constraintBottom_toBottomOf="@id/tvNotDistrub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNotDistrub"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLogOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="@dimen/size_15"
+        android:text="Logout"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvNotDistrub"
+        app:layout_constraintStart_toStartOf="parent"
+       />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDeleteAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="@dimen/size_15"
+        android:text="Delete My Account"
+        android:textColor="@color/light_color"
+        android:textSize="@dimen/size_20"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogOut"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

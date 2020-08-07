@@ -39,6 +39,10 @@ class HomeFragment : Fragment(), LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
 
 
+        PreferenceManager(requireContext()).apply {
+           setUserId("20")
+        }
+
         if (Build.VERSION.SDK_INT >= 21) {
             val window: Window = requireActivity().getWindow()
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -71,6 +75,15 @@ class HomeFragment : Fragment(), LifecycleObserver {
             findNavController().navigate(R.id.profileFragment)
         }
 
+        favourite.setOnClickListener {
+
+
+            /* val action = NavGraphDirections.startBusinessDetailsFragment(storeId,userId)
+             action.*/
+
+
+        }
+
         friend_list.adapter = MyFriendsAdapter {
             if (it)
                 findNavController().navigate(R.id.action_homeFragment_to_myFriendsFragment)
@@ -80,12 +93,28 @@ class HomeFragment : Fragment(), LifecycleObserver {
         }
 
         store_list.adapter = NearByAdapter {
-            if (it)
-
+            if (it) {
                 findNavController().navigate(R.id.action_homeFragment_to_nearestStoreFragment)
-//                activity?.toast("Show more clicked")
-            else
-                activity?.toast("Stores clicked")
+            } else {
+                var storeId = ""
+                var userId = ""
+                PreferenceManager(requireContext()).apply {
+                    storeId = getStoreId()
+                    userId = getUserId()
+                }
+              /*  val action = HomeFragmentDirections.actionHomeFragmentToBusinessDetailsFragment(
+                    storeId,
+                    userId
+                )
+                findNavController().navigate(action)*/
+//                activity?.toast("Stores clicked")
+
+                val action = HomeFragmentDirections.actionHomeFragmentToBusinessDetailsFragment(storeId,userId)
+                findNavController().navigate(action)
+
+
+            }
+
         }
         my_space.adapter = MySpaceAdapter {
             if (it)
@@ -94,7 +123,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
                 activity?.toast("Myspace clicked")
         }
         closest_list.adapter = ClosestByAdapter {
-            if(it)
+            if (it)
                 findNavController().navigate(R.id.action_homeFragment_to_closestToYouFragment)
             else
                 activity?.toast("Myspace clicked")

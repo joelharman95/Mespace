@@ -127,9 +127,9 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
                 cal.set(Calendar.MINUTE, minute)
 
                 if (cal.get(Calendar.AM_PM) == Calendar.AM) {
-                    am_pm = "AM"
+                    am_pm = "am"
                 } else if (cal.get(Calendar.AM_PM) == Calendar.PM) {
-                    am_pm = "PM"
+                    am_pm = "pm"
                 }
 
                 open_hour.setText(SimpleDateFormat("hh:mm").format(cal.time) + " " + am_pm)
@@ -155,9 +155,9 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
                 if (cal.get(Calendar.AM_PM) == Calendar.AM) {
-                    am_pm = "AM"
+                    am_pm = "am"
                 } else if (cal.get(Calendar.AM_PM) == Calendar.PM) {
-                    am_pm = "PM"
+                    am_pm = "pm"
                 }
 
 

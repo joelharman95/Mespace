@@ -6,46 +6,28 @@
     android:layout_height="wrap_content"
     android:padding="15dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/imageLayout"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStorePic"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.mespace.utils.CommonTextView
+        android:id="@+id/border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivStorePic"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:padding="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RelativeLayout
-            android:id="@+id/textLayout"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:background="@drawable/solid_circle"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.mespace.utils.CommonTextView
-                android:id="@+id/border"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:inputType="textCapCharacters|textCapSentences|textCapWords"
-                android:padding="4dp"
-                android:text="1"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        android:gravity="center"
+        android:inputType="textCapCharacters|textCapSentences|textCapWords"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivStorePic"
+        app:layout_constraintEnd_toEndOf="@id/ivStorePic"
+        app:layout_constraintStart_toStartOf="@id/ivStorePic"
+        app:layout_constraintTop_toTopOf="@id/ivStorePic" />
 
     <com.mespace.utils.CommonTextView
         android:id="@+id/tvStoreName"
@@ -59,7 +41,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/size_18"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imageLayout"
+        app:layout_constraintStart_toEndOf="@id/ivStorePic"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -76,7 +58,6 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_15"
         android:textStyle="bold"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvStoreName"
         app:layout_constraintTop_toBottomOf="@id/tvStoreName"
@@ -89,9 +70,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="5dp"
-        android:paddingBottom="5dp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
+        android:paddingBottom="5dp"
         android:textColor="@color/gray_color"
         android:textSize="@dimen/size_15"
         app:layout_constraintBottom_toBottomOf="@id/tvStoreName"
@@ -116,7 +97,7 @@
         android:textStyle="bold"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageLayout"
+        app:layout_constraintStart_toEndOf="@id/ivStorePic"
         app:layout_constraintTop_toBottomOf="@id/tvStoreTag"
         tools:text="Description here" />
 
@@ -128,10 +109,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_13"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imageLayout"
+        app:layout_constraintStart_toEndOf="@id/ivStorePic"
         app:layout_constraintTop_toBottomOf="@id/tvStoreDescription"
         tools:text="Open till 9 PM" />
 

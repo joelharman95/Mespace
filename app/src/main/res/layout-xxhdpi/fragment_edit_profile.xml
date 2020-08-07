@@ -3,259 +3,302 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlCatogory"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/size_15"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rlCatogory"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_marginLeft="@dimen/lay_space_medium"
-            android:layout_marginRight="@dimen/lay_space_medium"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/ibAddSpaceBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:padding="@dimen/spacing_small"
-                android:src="@drawable/ic_arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.mespace.utils.CommonTextView
-                android:id="@+id/tvTitle"
-                style="@style/ToolbarTextView"
-                android:layout_width="0dp"
-                android:text="Edit Profile"
-                app:layout_constraintBottom_toBottomOf="@id/ibAddSpaceBack"
-                app:layout_constraintStart_toEndOf="@id/ibAddSpaceBack"
-                app:layout_constraintTop_toTopOf="@id/ibAddSpaceBack" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <FrameLayout
-            android:id="@+id/flLine"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/line_color"
-            app:layout_constraintTop_toBottomOf="@id/rlCatogory" />
-
-        <RelativeLayout
-            android:id="@+id/rlProfilePic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/size_20"
-            app:layout_constraintTop_toBottomOf="@id/flLine">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivProfile"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:background="@color/transparent"
-                android:src="@drawable/profile_bg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivEditDp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:padding="@dimen/spacing_normal"
-                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
-                app:layout_constraintEnd_toEndOf="@id/ivProfile"
-                app:layout_constraintStart_toStartOf="@id/ivProfile"
-                app:layout_constraintTop_toTopOf="@+id/ivProfile"
-                app:srcCompat="@drawable/ic_camera" />
-        </RelativeLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivNameIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivCategoryBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@color/transparent"
-            android:src="@drawable/ic_icon_name"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rlProfilePic" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilName"
-            style="@style/EditTextTheme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:hint="@string/label_name"
-            app:layout_constraintBottom_toBottomOf="@id/ivNameIcon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivNameIcon"
-            app:layout_constraintTop_toTopOf="@id/ivNameIcon">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                style="@style/ProfileEditText"
-                android:layout_width="match_parent"
-                android:backgroundTint="@color/white"
-                tools:text="James" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivEmailIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_icon_mail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivNameIcon" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmail"
-            style="@style/EditTextTheme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:background="@color/transparent"
-            android:hint="@string/label_email"
-            app:layout_constraintBottom_toBottomOf="@id/ivEmailIcon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivEmailIcon"
-            app:layout_constraintTop_toTopOf="@id/ivEmailIcon">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                style="@style/ProfileEditText"
-                android:background="@color/transparent"
-                android:fontFamily="@font/googlesansregular"
-
-                android:inputType="textEmailAddress"
-                tools:text="james@gmail.com" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivTagIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="20dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_icon_hashtag"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivEmailIcon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.mespace.utils.CommonTextView
-            android:id="@+id/tvKeywordsHint"
+            android:id="@+id/tvTitle"
+            style="@style/ToolbarTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:text="@string/label_keywords"
-            android:textSize="@dimen/size_16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivTagIcon"
-            app:layout_constraintTop_toTopOf="@id/ivTagIcon" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/cgTag"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            app:chipSpacingVertical="@dimen/spacing_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivTagIcon"
-            app:layout_constraintTop_toBottomOf="@id/tvKeywordsHint" />
-
-        <com.mespace.utils.CommonEditText
-            android:id="@+id/etKeywords"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:background="@null"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:maxLength="20"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivTagIcon"
-            app:layout_constraintTop_toBottomOf="@id/cgTag" />
-
-        <View
-            android:id="@+id/vkey"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="@dimen/size_15"
-            android:background="@color/line_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivTagIcon"
-            app:layout_constraintTop_toBottomOf="@id/etKeywords" />
+            android:text="Edit profile"
+            android:padding="5dp"
+            android:layout_marginStart="15dp"
+            android:textSize="@dimen/size_20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivCategoryBack"
+            app:layout_constraintStart_toEndOf="@id/ivCategoryBack"
+            app:layout_constraintTop_toTopOf="@id/ivCategoryBack" />
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivPhoneIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_icon_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vkey" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPhone"
-            style="@style/EditTextTheme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_15"
-            android:hint="@string/label_phone"
-            app:layout_constraintBottom_toBottomOf="@id/ivPhoneIcon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivPhoneIcon"
-            app:layout_constraintTop_toTopOf="@id/ivPhoneIcon">
+    <FrameLayout
+        android:id="@+id/flLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line_color"
+        app:layout_constraintTop_toBottomOf="@id/rlCatogory" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPhone"
-                style="@style/ProfileEditText"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btnUpdate"
+        app:layout_constraintTop_toBottomOf="@id/flLine">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rlProfilePic"
                 android:layout_width="match_parent"
-                android:backgroundTint="@color/white"
-                tools:text="James" />
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_20"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:background="@color/transparent"
+                    android:src="@drawable/profile_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivEditDp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:padding="@dimen/spacing_normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                    app:layout_constraintEnd_toEndOf="@id/ivProfile"
+                    app:layout_constraintStart_toStartOf="@id/ivProfile"
+                    app:layout_constraintTop_toTopOf="@+id/ivProfile"
+                    app:srcCompat="@drawable/ic_camera" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNameIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_icon_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tilName"
+                app:layout_constraintBottom_toBottomOf="@id/tilName"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/EditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:hint="@string/label_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivNameIcon"
+                app:layout_constraintTop_toBottomOf="@id/rlProfilePic"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/white"
+                    tools:text="James" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEmailIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_icon_mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tilEmail"
+                app:layout_constraintBottom_toBottomOf="@id/tilEmail"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                style="@style/EditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/transparent"
+                android:hint="@string/label_email"
+                app:layout_constraintTop_toBottomOf="@id/tilName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivEmailIcon">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    style="@style/ProfileEditText"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/googlesansregular"
+
+                    android:inputType="textEmailAddress"
+                    tools:text="james@gmail.com" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTagIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_icon_hashtag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvKeywordsHint" />
+
+            <com.mespace.utils.CommonTextView
+                android:id="@+id/tvKeywordsHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/label_keywords"
+                android:textSize="@dimen/size_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivTagIcon"
+                app:layout_constraintTop_toBottomOf="@id/tilEmail" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgTag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                app:chipSpacingVertical="@dimen/spacing_tiny"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvKeywordsHint"
+                app:layout_constraintTop_toBottomOf="@id/tvKeywordsHint" />
+
+            <com.mespace.utils.CommonEditText
+                android:id="@+id/etKeywords"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_15"
+                android:layout_marginEnd="15dp"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="20"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvKeywordsHint"
+                app:layout_constraintTop_toBottomOf="@id/cgTag" />
+
+            <View
+                android:id="@+id/vkey"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="@dimen/size_15"
+                android:background="@color/line_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivTagIcon"
+                app:layout_constraintTop_toBottomOf="@id/etKeywords" />
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUpdate"
-            style="@style/ConnectionButton"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="80dp"
-            android:background="@color/blue"
-            android:backgroundTint="@color/blue"
-            android:text="@string/action_update_profile"
-            app:cornerRadius="@dimen/spacing_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-          />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPhoneIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_icon_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tilPhone"
+                app:layout_constraintBottom_toBottomOf="@id/tilPhone"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="70dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                style="@style/EditTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/label_phone"
+                app:layout_constraintTop_toBottomOf="@id/vkey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivPhoneIcon">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    style="@style/ProfileEditText"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/white"
+                    tools:text="James" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnUpdate"
+        style="@style/ConnectionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="@dimen/size_15"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
+        android:text="@string/action_update_profile"
+        app:cornerRadius="@dimen/spacing_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/pbProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="60dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

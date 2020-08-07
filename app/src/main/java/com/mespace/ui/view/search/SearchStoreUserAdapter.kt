@@ -5,17 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mespace.R
-import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.network.api.response.SearchStoreUserResponse
-import com.mespace.data.network.api.response.SearchUserResponse
 import com.mespace.di.loadCircularImage
-import kotlinx.android.synthetic.main.layout_search_store_item.view.*
 import kotlinx.android.synthetic.main.layout_search_user_item.view.*
 import kotlinx.android.synthetic.main.layout_search_user_item.view.ivUserPic
-import kotlinx.android.synthetic.main.layout_search_user_item.view.tvDes
+
 import kotlinx.android.synthetic.main.layout_search_user_item.view.tvUserName
-import kotlinx.android.synthetic.main.layout_search_user_item.view.tvUserProfile
-import kotlinx.android.synthetic.main.layout_user_item.view.*
+
 
 typealias storeUser = (Boolean) -> Unit
 
@@ -54,10 +50,14 @@ class SearchStoreUserAdapter(val user: storeUser) :
 
                     ivUserPic.loadCircularImage(_category.profile_image)
                     tvUserName.text = _category.name
-                    tvUserProfile.text = _category.distance
+                    tvDis.text = _category.distance
+                   /* tvStoreTag.text=_category.keywords
+                    tvStoreCategory.text=_category.description
+                    tvStoreDescription.text=_category.description
+
                     tvDes.text = _category.name
                     tvShopStatus.text = _category.open_hours
-                    tvCategory.text = _category.close_hours
+                    tvCategory.text = _category.close_hours*/
 
                 }
 
