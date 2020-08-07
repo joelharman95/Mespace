@@ -38,6 +38,7 @@ class BusinessDetailsFragment : Fragment(), LifecycleObserver {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         lifecycle.addObserver(this)
     }
 
