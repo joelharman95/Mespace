@@ -205,6 +205,16 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
+        android:id="@+id/viewPostFragment"
+        android:name="com.mespace.ui.view.posts.ViewPostFragment"
+        android:label="fragment_view_post"
+        tools:layout="@layout/fragment_view_post" />
+    <fragment
+        android:id="@+id/createPostfragment"
+        android:name="com.mespace.ui.view.posts.CreatePostFragment"
+        android:label="fragment_create_post"
+        tools:layout="@layout/fragment_create_post" />
+    <fragment
         android:id="@+id/editSpaceFragment"
         android:name="com.mespace.ui.view.addaspace.EditSpaceFragment"
         android:label="fragment_edit_space"
