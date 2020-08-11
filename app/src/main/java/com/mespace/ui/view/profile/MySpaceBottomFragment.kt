@@ -40,7 +40,7 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getMySpaceList()
+
         rvMySpace.adapter = MySpaceBottomAdapter {
             if (it) {
                 findNavController().navigate(R.id.addaspaceFragment)
@@ -51,7 +51,7 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
         dismiss.setOnClickListener {
             dismiss()
         }
-
+        getMySpaceList()
     }
 
     fun getMySpaceList() {

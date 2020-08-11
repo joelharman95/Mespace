@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -23,7 +24,6 @@ import com.mespace.data.network.api.request.BusinessDetailsRequest
 import com.mespace.data.network.api.request.DeleteFavouriteRequest
 import com.mespace.data.network.api.response.StoreDetailsResponse
 import com.mespace.data.viewmodel.BusinessDetailsViewmodel
-import com.mespace.di.getBitmapFromURL
 import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.fragment_business_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -127,6 +127,10 @@ class BusinessDetailsFragment : Fragment(), LifecycleObserver {
                  )
              }
          }
+
+        ivChat.setOnClickListener {
+            findNavController().navigate(R.id.viewPostFragment)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

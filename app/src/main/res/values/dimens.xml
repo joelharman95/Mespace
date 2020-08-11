@@ -6,7 +6,7 @@
   ~  */
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="spacing_2">2dp</dimen>
     <dimen name="spacing_tiny">4dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
@@ -34,5 +34,9 @@
     <dimen name="size_40">40sp</dimen>
 
     <dimen name="app_bar_height">200dp</dimen>
+
+
+    <dimen name="design_fab_image_size" tools:override="true">100dp</dimen>
+
 
 </resources>

@@ -48,7 +48,7 @@ class MySpaceBottomAdapter(val mySpace: mySpace) :
         fun bindUi(position: Int) {
             view.apply {
 
-                if (position == itemCount - 1 || itemCount==0) {
+                if (position == itemCount - 1 ) {
                     user_name.text = "Add a space"
                     user_image.loadCircularImage(R.drawable.ic_icon_add_space)
                     border.visibility= View.GONE

@@ -217,6 +217,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:id="@+id/ivChat"
             android:background="@drawable/ic_icon_business_chat" />
     </androidx.cardview.widget.CardView>
 
