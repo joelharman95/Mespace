@@ -13,7 +13,7 @@ data class DetailItem(
     @SerializedName("phone_no") val phoneNo: String? = null,
     @SerializedName("profile_image") val profileImage: String? = null,
     @SerializedName("keywords") val keywords: String? = null,
-    @SerializedName("passenger_id") val passengerId: String? = null,
+    @SerializedName("user_id") val user_id: String? = null,
     @SerializedName("name") val name: String? = null,
     @SerializedName("email") val email: String? = null,
     @SerializedName("status") val status: String? = null

@@ -85,7 +85,7 @@
                 android:layout_marginTop="@dimen/lay_space_hight">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivProfile"
+                    android:id="@+id/ivEditSpaceProfile"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
@@ -102,9 +102,9 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/spacing_small"
                     app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
-                    app:layout_constraintEnd_toEndOf="@id/ivProfile"
-                    app:layout_constraintStart_toStartOf="@id/ivProfile"
-                    app:layout_constraintTop_toTopOf="@+id/ivProfile"
+                    app:layout_constraintEnd_toEndOf="@id/ivEditSpaceProfile"
+                    app:layout_constraintStart_toStartOf="@id/ivEditSpaceProfile"
+                    app:layout_constraintTop_toTopOf="@+id/ivEditSpaceProfile"
                     app:srcCompat="@drawable/ic_camera" />
             </RelativeLayout>
 

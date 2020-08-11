@@ -22,6 +22,7 @@ object API {
     const val MY_SPACEE="my_space"
     const val VIEW_STORE_DETAILS="view_store_detail"
     const val ADD_FAV="add_favourite"
+    const val VIEW_SPACE_DETAIL="view_space_detail"
 
 }
 

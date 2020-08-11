@@ -139,15 +139,15 @@ class SplashFragment : Fragment(), LifecycleObserver {
         lifecycleScope.launch {
             delay(2000)
        PreferenceManager(requireContext()).apply {
-               /* if (getIsLaunchedOnce()) {
+               if (getIsLaunchedOnce()) {
                     if (getUserId() != "")
                         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                     else
                         findNavController().navigate(R.id.action_splashFragment_to_storePhoneNoFragment)
                 } else
-                    findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)*/
+                    findNavController().navigate(R.id.action_splashFragment_to_appIntroFragment)
 
-           findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+        //   findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
             }
 
 

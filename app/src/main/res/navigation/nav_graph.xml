@@ -204,4 +204,13 @@
         android:name="com.mespace.ui.view.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/editSpaceFragment"
+        android:name="com.mespace.ui.view.addaspace.EditSpaceFragment"
+        android:label="fragment_edit_space"
+        tools:layout="@layout/fragment_edit_space" />
+    <fragment
+        android:id="@+id/myBusinessDetailsFragment"
+        android:name="com.mespace.ui.view.businessdetails.MyBusinessDetailsFragment"
+        android:label="MyBusinessDetailsFragment" />
 </navigation>

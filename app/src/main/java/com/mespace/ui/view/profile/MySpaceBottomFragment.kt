@@ -11,8 +11,12 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mespace.R
 import com.mespace.data.network.api.request.MySpaceRequest
+import com.mespace.data.network.api.response.MySpaceResponse
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.MySpaceBottomViewModel
+import com.mespace.di.loadCircularImage
 import com.mespace.di.toast
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 import kotlinx.android.synthetic.main.fragment_my_space_bottom.*
@@ -24,7 +28,7 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
     private val mySpaceBottomViewModel by viewModel<MySpaceBottomViewModel>()
 
     val startIndex: Int = 0
-
+    var userid :String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
@@ -40,13 +44,28 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getMySpaceList()
-        rvMySpace.adapter = MySpaceBottomAdapter {
-            if (it) {
+
+
+
+        PreferenceManager(requireContext()).apply {
+
+            userid = getUserId()
+            println("Get_user_id"+ " "+ getUserId())
+            getMySpaceList()
+        }
+
+        rvMySpace.adapter = MySpaceBottomAdapter { b: Boolean, mySpace: MySpaceResponse.Detail.My_space ->
+            if (b) {
                 findNavController().navigate(R.id.addaspaceFragment)
                 dismiss()
             } else
-                activity?.toast("Myspace clicked")
+            {
+                PreferenceManager(requireContext()).apply {
+                    setStoreId(mySpace.space_id.toString())
+                    findNavController().navigate(R.id.myBusinessDetailsFragment)
+
+                }
+            }
         }
         dismiss.setOnClickListener {
             dismiss()
@@ -61,7 +80,7 @@ class MySpaceBottomFragment : BottomSheetDialogFragment(), LifecycleObserver {
         }*/
         mySpaceBottomViewModel.getMySpaceList(
             MySpaceRequest(
-                userId = "1",
+                userId = userid,
                 start = startIndex,
                 limit = "20"
             ),

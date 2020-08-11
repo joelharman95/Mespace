@@ -29,6 +29,7 @@ import com.google.android.material.chip.ChipDrawable
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqAddStore
 import com.mespace.data.network.api.response.CategoryResponse
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.AddSpaceViewModel
 import com.mespace.di.*
 import com.mespace.di.utility.ImageConstants
@@ -56,7 +57,8 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
     var asLatitude: String = ""
     var asLongitude: String = ""
     private val checkedCategoryList: HashMap<Int, String> = HashMap()
-
+    var userid :String = ""
+    var userName :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +79,11 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        PreferenceManager(requireContext()).apply {
+            userid = getUserId()
+            userName = getUserName()
+            println("Get_user_id" + " "+ userid)
+        }
 
 
         if (!checkRuntimePermission()) {
@@ -89,6 +96,26 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
             onImagePicker()
         }
 
+        store.setOnCheckedChangeListener { buttonView, isChecked ->
+
+
+            if(isChecked)
+            {
+                store.isChecked = true
+                community.isChecked = false
+            }
+        }
+
+
+        community.setOnCheckedChangeListener { buttonView, isChecked ->
+
+
+            if(isChecked)
+            {
+                community.isChecked = true
+                store.isChecked = false
+            }
+        }
         /*   category_list.adapter = CategoryAdapter { _category ->
 
                println("Out_put" + " " + _category.category_id)
@@ -117,6 +144,8 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
 
 
            }*/
+
+
 
         llopen_hour.setOnClickListener {
             var am_pm: String = ""
@@ -254,8 +283,8 @@ class AddaspaceFragment : Fragment(), LifecycleObserver {
                 close_time = close_hour.text.toString(),
                 location = etLocation.text.toString(),
                 description = asDescription.text.toString(),
-                user_id = "20",
-                user_name = "vinoth",
+                user_id = userid,
+                user_name = userName,
                 categories = catWords.removeSuffix(","),
                 profile_image = bitMapToString(mBitmap),
                 website = "dsfdsf",

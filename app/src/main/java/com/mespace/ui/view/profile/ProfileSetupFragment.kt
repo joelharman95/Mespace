@@ -95,11 +95,13 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 if (it.userDetails == "1") {
                     it.userDetail?.let { userDetail ->
                         PreferenceManager(requireContext()).apply {
+                            println("Get_user_id"+ " "+ userDetail.userId)
                             setUserId(userDetail.userId)
                             setUserName(userDetail.name)
                             setUserProfile(userDetail.profileImage)
                         }
                         userId = userDetail.userId.toString()
+                        println("Get_user_id"+ " "+ userDetail.userId)
                         etName.setText(userDetail.name?.toString())
                         etEmail.setText(userDetail.email?.toString())
                         ivProfile.loadCircularImage(userDetail.profileImage.toString())
@@ -125,6 +127,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
         keywordList.forEach {
             keywords += "$it,"
         }
+        println("Get_user_id"+ " "+ userId)
         profileViewModel.addOrUpdateProfile(
             reqUpdateUser = ReqUpdateUser(
                 /*countryCode = "91",
@@ -134,6 +137,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
                 keywords = keywords.removeSuffix(","),
                 profileImage = bitMapToString(mBitmap),
                 userId = userId,
+
                 /*userName = "ndot",
                 email = "ndottt@ndot.in"*/
                 userName = etName.text.toString(),
@@ -141,7 +145,7 @@ class ProfileSetupFragment : Fragment(), LifecycleObserver {
             ), onSuccess = {
                 activity?.unblockInput(pbProfile)
                 PreferenceManager(requireContext()).apply {
-                    setUserId(it.detail?.passengerId)
+                    setUserId(it.detail?.user_id)
                     setUserName(it.detail?.name)
                     setUserProfile(it.detail?.profileImage)
                 }

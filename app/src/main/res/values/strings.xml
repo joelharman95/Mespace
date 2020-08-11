@@ -28,7 +28,7 @@
     <string name="label_email">EMAIL</string>
     <string name="label_keywords">KEYWORDS</string>
     <string name="action_update_profile">Update Profile</string>
-    <string name="permission_denied">Permission Denied</string>
+    <string name="permission_denied">Permission Denied</string> `
     <string name="label_closest_to_you">Closest to you</string>
     <string name="label_near_by_stores">Near By Stores</string>
     <string name="label_my_space">My Space</string>

@@ -13,7 +13,7 @@ import com.mespace.di.loadCircularImage
 import kotlinx.android.synthetic.main.layout_user_item.view.*
 import java.util.*
 
-typealias mySpace = (Boolean) -> Unit
+typealias mySpace = (Boolean,MySpaceResponse.Detail.My_space) -> Unit
 
 class MySpaceBottomAdapter(val mySpace: mySpace) :
     RecyclerView.Adapter<MySpaceBottomAdapter.CategoryHolder>() {
@@ -49,11 +49,13 @@ class MySpaceBottomAdapter(val mySpace: mySpace) :
             view.apply {
 
                 if (position == itemCount - 1 || itemCount==0) {
-                    user_name.text = "Add a space"
-                    user_image.loadCircularImage(R.drawable.ic_icon_add_space)
-                    border.visibility= View.GONE
-                    setOnClickListener {
-                        mySpace.invoke(true)
+                    userList[position].let { _category ->
+                        user_name.text = "Add a space"
+                        user_image.loadCircularImage(R.drawable.ic_icon_add_space)
+                        border.visibility = View.GONE
+                        setOnClickListener {
+                            mySpace.invoke(true, _category)
+                        }
                     }
                     return
                 }
@@ -76,7 +78,7 @@ class MySpaceBottomAdapter(val mySpace: mySpace) :
                         border.visibility= View.GONE
                     }
                     setOnClickListener {
-                        mySpace.invoke(false)
+                        mySpace.invoke(false,_category)
                     }
                 }
             }

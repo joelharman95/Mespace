@@ -184,7 +184,7 @@ class EditProfileFragment : Fragment(), LifecycleObserver {
             ), onSuccess = {
                 activity?.unblockInput(pbProfile)
                 PreferenceManager(requireContext()).apply {
-                    setUserId(it.detail?.passengerId)
+                    setUserId(it.detail?.user_id)
                     setUserName(it.detail?.name)
                     setUserProfile(it.detail?.profileImage)
                 }

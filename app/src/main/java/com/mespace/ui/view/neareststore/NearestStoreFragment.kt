@@ -23,7 +23,8 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
 
     private var start:Int=0
     var isLoading = false
-
+    var userid :String = ""
+    var userName :String = ""
     private val nearestStoreListViewModel by viewModel<NearestStoreListViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,13 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        PreferenceManager(requireContext()).apply {
+            userid = getUserId()
+            userName = getUserName()
+        }
+
         nearest_store_list.adapter = NearByStoreAdapter {
             if(it){
                 var storeId = ""
@@ -52,7 +60,7 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
             }
 
         }
-        getStoreDetails(start)
+
         ivCategoryBack.setOnClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
@@ -86,7 +94,7 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
 
     private fun getStoreDetails(startIndex:Int ) {
         nearestStoreListViewModel.getStoreUselist(NearByStoreRequest(
-            userId = "1",
+            userId =userid,
             longitude = "77.0185673",
             latitude = "11.05617456",
             start = startIndex,
@@ -98,5 +106,10 @@ class NearestStoreFragment : Fragment(), LifecycleObserver {
         }, {
             isLoading=false
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getStoreDetails(0)
     }
 }

@@ -41,3 +41,8 @@ data class ReqUpdateStore(
     @SerializedName("space_type") val space_type: String? = null,
     @SerializedName("space_id") val space_id:String?=null
 )
+
+data class ReqViewStore(
+    @SerializedName("space_id") val space_id: String? = null,
+    @SerializedName("user_id") val user_id: String? = null
+)

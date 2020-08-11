@@ -28,12 +28,18 @@ import com.google.android.material.chip.ChipDrawable
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqAddStore
 import com.mespace.data.network.api.request.ReqUpdateStore
+import com.mespace.data.network.api.request.ReqViewStore
 import com.mespace.data.network.api.response.CategoryResponse
+import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.AddSpaceViewModel
 import com.mespace.data.viewmodel.EditSpaceViewModel
 import com.mespace.di.*
 import com.mespace.di.utility.ImageConstants
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_edit_space.*
+import kotlinx.android.synthetic.main.fragment_edit_space.etPhone
+import kotlinx.android.synthetic.main.fragment_edit_space.ibAddSpaceBack
+import kotlinx.android.synthetic.main.fragment_edit_space.ivEditDp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.text.SimpleDateFormat
@@ -41,7 +47,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 
-class EditSpaceFragment : Fragment(), LifecycleObserver {
+class  EditSpaceFragment : Fragment(), LifecycleObserver {
 
 
     private val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
@@ -54,7 +60,10 @@ class EditSpaceFragment : Fragment(), LifecycleObserver {
     var asLatitude: String = ""
     var asLongitude: String = ""
     private val checkedCategoryList: HashMap<Int, String> = HashMap()
-
+    var userid :String = ""
+    var userName :String = ""
+    var store_id :String = ""
+    var profile_image :String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
@@ -71,6 +80,14 @@ class EditSpaceFragment : Fragment(), LifecycleObserver {
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        PreferenceManager(requireContext()).apply {
+            userid = getUserId()
+            userName = getUserName()
+            store_id = getStoreId()
+            println("Get_user_id" + " "+ userid)
+        }
+        getStoreDetails()
 
         if (!checkRuntimePermission()) {
             requestRuntimePermission()
@@ -163,8 +180,17 @@ class EditSpaceFragment : Fragment(), LifecycleObserver {
                 selectedSpace_type = "C";
             }
 
-            if (mBitmap == null) {
-                activity?.toast("Kindly upload profile image")
+            if (mBitmap == null ) {
+                if(profile_image.equals(""))
+                {
+                    activity?.toast("Kindly upload profile image")
+                }
+                else{
+                    if (isFieldValid()) {
+                        addNewStore()
+                    }
+                }
+
             } else {
                 if (isFieldValid()) {
                     addNewStore()
@@ -176,6 +202,27 @@ class EditSpaceFragment : Fragment(), LifecycleObserver {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         showLocation()
 
+    }
+
+    private fun getStoreDetails() {
+        addSpaceViewModel.viewSpaceDetils(ReqViewStore(space_id = store_id,user_id = userid),{
+            etPhone.setText( it.space_detail.phone_no)
+            asName.setText( it.space_detail.name)
+            open_hour.setText(it.space_detail.open_hours)
+            close_hour.setText(it.space_detail.close_hours)
+            etLocation.setText(it.space_detail.location)
+            asDescription.setText(it.space_detail.description)
+            ivEditSpaceProfile.loadCircularImage(it.space_detail.profile_image.toString())
+
+            profile_image = it.space_detail.profile_image.toString()
+            val keywords = it.space_detail.keywords?.split(",")
+
+            keywords?.forEach { tag ->
+                addChipToGroup(tag)
+            }
+        },{
+            println("Out_put_array"+ " "+ it)
+        })
     }
 
     private fun addNewStore() {
@@ -209,13 +256,14 @@ class EditSpaceFragment : Fragment(), LifecycleObserver {
                 close_time = close_hour.text.toString(),
                 location = etLocation.text.toString(),
                 description = asDescription.text.toString(),
-                user_id = "20",
-                user_name = "vinoth",
+                user_id = userid,
+                user_name = userName,
                 categories = catWords.removeSuffix(","),
+
                 profile_image = bitMapToString(mBitmap),
                 website = "dsfdsf",
                 space_type = selectedSpace_type,
-                space_id = "1"//Static
+                space_id = store_id//Static
             ), {
                 activity?.toast(it.message)
                 findNavController().navigate(R.id.homeFragment)

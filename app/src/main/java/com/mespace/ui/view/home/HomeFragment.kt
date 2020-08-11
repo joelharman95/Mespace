@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.mespace.R
 import com.mespace.data.network.api.request.ReqIsHomePageExists
+import com.mespace.data.network.api.response.HomeScreenResponse
 import com.mespace.data.preference.PreferenceManager
 import com.mespace.data.viewmodel.HomeViewModel
 import com.mespace.di.blockInput
@@ -21,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), LifecycleObserver {
     private val homeViewModel by viewModel<HomeViewModel>()
-
+    var userid :String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
@@ -39,9 +40,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
 
 
-        PreferenceManager(requireContext()).apply {
-           setUserId("20")
-        }
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             val window: Window = requireActivity().getWindow()
@@ -69,6 +68,14 @@ class HomeFragment : Fragment(), LifecycleObserver {
         PreferenceManager(requireContext()).apply {
             ivpProfileImage.loadCircularImage(getUserProfile())
             tvUserName.text = getUserName()
+            userid = getUserId()
+            println("Get_user_id"+ " "+ getUserId())
+            getUserDetails()
+        }
+
+        add_new_space.setOnClickListener {
+            findNavController().navigate(R.id.addaspaceFragment)
+
         }
 
         ivpProfileImage.setOnClickListener {
@@ -116,11 +123,23 @@ class HomeFragment : Fragment(), LifecycleObserver {
             }
 
         }
-        my_space.adapter = MySpaceAdapter {
-            if (it)
+        my_space.adapter = MySpaceAdapter { b: Boolean, mespace: HomeScreenResponse.Detail.Mespace ->
+            if (b)
+            {
                 findNavController().navigate(R.id.addaspaceFragment)
+
+            }
+
+
             else
-                activity?.toast("Myspace clicked")
+            {
+                PreferenceManager(requireContext()).apply {
+                    setStoreId(mespace.space_id)
+                    findNavController().navigate(R.id.myBusinessDetailsFragment)
+
+                }
+            }
+
         }
         closest_list.adapter = ClosestByAdapter {
             if (it)
@@ -143,14 +162,14 @@ class HomeFragment : Fragment(), LifecycleObserver {
             findNavController().navigate(R.id.searchFragment)
         }
 
-        getUserDetails()
+
     }
 
     private fun getUserDetails() {
         blockInput(pbHome)
         homeViewModel.getHomePageList((
                 ReqIsHomePageExists(
-                    userid = "20",
+                    userid = userid,
                     latitude = "11.05617456",
                     longitude = "77.0185673"
                 )

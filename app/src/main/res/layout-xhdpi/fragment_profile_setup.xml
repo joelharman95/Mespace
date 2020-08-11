@@ -43,7 +43,7 @@
             android:layout_below="@+id/ibBack"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
-            android:text="profile_xdpi"
+            android:text="@string/label_profile_setup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ibBack" />
 

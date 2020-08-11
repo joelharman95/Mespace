@@ -34,6 +34,7 @@ class ProfileFragment : Fragment(), LifecycleObserver {
     private var invite_url: String = ""
 
     private lateinit var behavior: BottomSheetBehavior<View>
+    var userid :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +51,12 @@ class ProfileFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        PreferenceManager(requireContext()).apply {
+            userid = getUserId()
+        }
+
         ivEdit.setOnClickListener {
 //            Toast.makeText(context,"Working On It",Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.editProfileFragment)
@@ -123,7 +130,7 @@ class ProfileFragment : Fragment(), LifecycleObserver {
     private fun getProfileSettings() {
         blockInput(pbProfile)
         profileSettingViewModel.getProfileSettings(
-            ProfileSettingRequest(userId = "1"),
+            ProfileSettingRequest(userId = userid),
             onSuccess = {
                 unblockInput(pbProfile)
                 println("OUTPUTTT" + it.detail)
